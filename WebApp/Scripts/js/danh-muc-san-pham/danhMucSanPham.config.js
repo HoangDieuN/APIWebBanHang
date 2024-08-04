@@ -1,10 +1,15 @@
 ﻿
+
 class DanhMucSanPham {
     constructor() {
         //validate rules
         this.validateRules = {
             rules: {
                 TenDanhMucSP: {
+                    required: !0,
+                    maxlength: 200
+                },
+                MaDanhMucSP: {
                     required: !0,
                     maxlength: 200
                 },
@@ -16,6 +21,10 @@ class DanhMucSanPham {
             },
             messages: {
                 TenDanhMucSP: {
+                    required: "Vui lòng nhập thông tin",
+                    maxlength: "Không được vượt quá 200 ký tự"
+                },
+                MaDanhMucSP: {
                     required: "Vui lòng nhập thông tin",
                     maxlength: "Không được vượt quá 200 ký tự"
                 },
@@ -59,6 +68,12 @@ class DanhMucSanPham {
         //endpoints
         this.endpoints = {
             fetchList: "/Admin/DMSanPham/ListDanhMucSanPham",
+            pvForm: (id) => {
+                let params = { id };
+                const searchParams = new URLSearchParams(params);
+                return `/Admin/DMSanPham/_FormDMSanPham?${searchParams.toString()}`;
+            },
+            save:"/Admin/DMSanPham/Save"
         }
     }
     //#region properties
@@ -108,6 +123,20 @@ class DanhMucSanPham {
             }
         })
         this.setTable(table);
+    }
+
+    pvForm(id, callback) {
+        let { endpoints } = this;
+        $.fn.loading();
+        $.fn.getData(endpoints.pvForm(id), {}, res => {
+            $.fn.offLoading();
+            if (callback) callback(res);
+        })
+    }
+    save(data, callback) {
+        let { endpoints } = this;
+        $.fn.loading();
+        $.fn.postFormData(endpoints.save, data, callback);
     }
     //#region action
 

@@ -36,6 +36,18 @@
             e.preventDefault();
             _this.loadTable();
         })
+        //add
+        $("#btn-add").on("click", function () {
+            danhMucSanPham.pvForm(0, (res) => {
+                showModal({
+                    elm: "#modal",
+                    title: "Thêm mới danh mục sản phẩm",
+                    content: res,
+                    size: "xl",
+                    button:modalButton.save
+                })
+            });
+        })
         _this.selectInit();
 
     },
