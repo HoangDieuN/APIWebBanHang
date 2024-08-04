@@ -1,0 +1,952 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3D53FA44-1BA5-4E4F-86DF-D509BFAFEB98}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApp</RootNamespace>
+    <AssemblyName>WebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44333</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=6.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.6.4.0\lib\netstandard2.0\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=6.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.6.1.0\lib\net472\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DMSanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ServiceProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\assets2\css\app.min.css" />
+    <Content Include="Content\assets2\css\base.css" />
+    <Content Include="Content\assets2\css\bootstrap.min.css" />
+    <Content Include="Content\assets2\css\button.css" />
+    <Content Include="Content\assets2\css\custom.min.css" />
+    <Content Include="Content\assets2\css\customstyle-portal.css" />
+    <Content Include="Content\assets2\css\customstyle.css" />
+    <Content Include="Content\assets2\css\icons.min.css" />
+    <Content Include="Content\assets2\css\keyframe.css" />
+    <Content Include="Content\assets2\css\loading.css" />
+    <Content Include="Content\assets2\css\modal.css" />
+    <Content Include="Content\assets2\fonts\boxicons.html" />
+    <Content Include="Content\assets2\fonts\boxiconsd41d.svg" />
+    <Content Include="Content\assets2\fonts\la-brands-400.html" />
+    <Content Include="Content\assets2\fonts\la-brands-400.svg" />
+    <Content Include="Content\assets2\fonts\la-regular-400.html" />
+    <Content Include="Content\assets2\fonts\la-regular-400.svg" />
+    <Content Include="Content\assets2\fonts\la-solid-900.html" />
+    <Content Include="Content\assets2\fonts\la-solid-900.svg" />
+    <Content Include="Content\assets2\fonts\materialdesignicons-webfont1d2d.html" />
+    <Content Include="Content\assets2\fonts\remixicondf6d.html" />
+    <Content Include="Content\assets2\fonts\remixicondf6d.svg" />
+    <Content Include="Content\assets2\images\flags\china.svg" />
+    <Content Include="Content\assets2\images\flags\french.svg" />
+    <Content Include="Content\assets2\images\flags\germany.svg" />
+    <Content Include="Content\assets2\images\flags\italy.svg" />
+    <Content Include="Content\assets2\images\flags\russia.svg" />
+    <Content Include="Content\assets2\images\flags\spain.svg" />
+    <Content Include="Content\assets2\images\flags\us.svg" />
+    <Content Include="Content\assets2\images\logo\logo-full.png" />
+    <Content Include="Content\assets2\images\logo\logo.png" />
+    <Content Include="Content\assets2\images\placeholder\placeholder-news.png" />
+    <Content Include="Content\assets2\images\svg\bell.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\aave.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\ada.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\add.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\ant.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\ark.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\arn.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\atm.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\bcbc.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\bela.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\bix.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\bnb.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\btc.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\cs.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\dash.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\doge.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\dot.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\etc.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\eth.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\eur.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\fil.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\gbp.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\jpy.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\ltc.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\mkr.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\mln.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\neo.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\ppt.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\rise.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\sol.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\usdt.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\vtc.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\xmr.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\xpm.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\xrp.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\xsg.svg" />
+    <Content Include="Content\assets2\images\svg\crypto-icons\yfi.svg" />
+    <Content Include="Content\assets2\images\users\multi-user.jpg" />
+    <Content Include="Content\assets2\images\users\user-avatar.png" />
+    <Content Include="Content\assets2\images\users\user-dummy-img.jpg" />
+    <Content Include="Content\assets2\js\app-init.js" />
+    <Content Include="Content\assets2\js\app.js" />
+    <Content Include="Content\assets2\js\jquery-3.4.1.min.js" />
+    <Content Include="Content\assets2\js\layout.js" />
+    <Content Include="Content\assets2\js\pages\landing.init.js" />
+    <Content Include="Content\assets2\js\pages\plugins\lord-icon-2.1.0.js" />
+    <Content Include="Content\assets2\js\plugins.js" />
+    <Content Include="Content\assets2\libs\%40ckeditor\ckeditor5-build-classic\build\ckeditor.js" />
+    <Content Include="Content\assets2\libs\%40simonwep\pickr\pickr.min.js" />
+    <Content Include="Content\assets2\libs\%40simonwep\pickr\themes\classic.min.css" />
+    <Content Include="Content\assets2\libs\%40simonwep\pickr\themes\monolith.min.css" />
+    <Content Include="Content\assets2\libs\%40simonwep\pickr\themes\nano.min.css" />
+    <Content Include="Content\assets2\libs\%40tarekraafat\autocomplete.js\autoComplete.min.js" />
+    <Content Include="Content\assets2\libs\%40tarekraafat\autocomplete.js\css\autoComplete.css" />
+    <Content Include="Content\assets2\libs\%40tarekraafat\autocomplete.js\css\images\search.svg" />
+    <Content Include="Content\assets2\libs\aos\aos.css" />
+    <Content Include="Content\assets2\libs\aos\aos.js" />
+    <Content Include="Content\assets2\libs\apexcharts\apexcharts.min.js" />
+    <Content Include="Content\assets2\libs\bootstrap4-toggle\bootstrap4-toggle.min.css" />
+    <Content Include="Content\assets2\libs\bootstrap4-toggle\bootstrap4-toggle.min.js" />
+    <Content Include="Content\assets2\libs\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\assets2\libs\chart.js\chart.min.js" />
+    <Content Include="Content\assets2\libs\cleave.js\cleave.min.js" />
+    <Content Include="Content\assets2\libs\datatables\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\assets2\libs\datatables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\assets2\libs\datatables\css\select.dataTables.min.css" />
+    <Content Include="Content\assets2\libs\datatables\images\sort_asc.png" />
+    <Content Include="Content\assets2\libs\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Content\assets2\libs\datatables\images\sort_both.png" />
+    <Content Include="Content\assets2\libs\datatables\images\sort_desc.png" />
+    <Content Include="Content\assets2\libs\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Content\assets2\libs\datatables\js\dataTables.fixedColumns.min.js" />
+    <Content Include="Content\assets2\libs\datatables\js\dataTables.fixedHeader.min.js" />
+    <Content Include="Content\assets2\libs\datatables\js\dataTables.rowsGroup.js" />
+    <Content Include="Content\assets2\libs\datatables\js\dataTables.select.min.js" />
+    <Content Include="Content\assets2\libs\datatables\js\jquery.dataTables.min.js" />
+    <Content Include="Content\assets2\libs\datepicker\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\assets2\libs\datepicker\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\assets2\libs\datetimepicker\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\assets2\libs\datetimepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\assets2\libs\docx-viewer\docx-preview.js" />
+    <Content Include="Content\assets2\libs\docx-viewer\jquery.min.js" />
+    <Content Include="Content\assets2\libs\docx-viewer\jszip.min.js" />
+    <Content Include="Content\assets2\libs\docx-viewer\viewer.css" />
+    <Content Include="Content\assets2\libs\dom-autoscroller\dom-autoscroller.min.js" />
+    <Content Include="Content\assets2\libs\dragula\dragula.min.css" />
+    <Content Include="Content\assets2\libs\dragula\dragula.min.js" />
+    <Content Include="Content\assets2\libs\dropzone\dropzone-min.js" />
+    <Content Include="Content\assets2\libs\dropzone\dropzone.css" />
+    <Content Include="Content\assets2\libs\echarts\echarts.min.js" />
+    <Content Include="Content\assets2\libs\feather-icons\feather.min.js" />
+    <Content Include="Content\assets2\libs\fg-emoji-picker\fgEmojiPicker.js" />
+    <Content Include="Content\assets2\libs\filepond-plugin-file-encode\filepond-plugin-file-encode.min.js" />
+    <Content Include="Content\assets2\libs\filepond-plugin-file-validate-size\filepond-plugin-file-validate-size.min.js" />
+    <Content Include="Content\assets2\libs\filepond-plugin-image-exif-orientation\filepond-plugin-image-exif-orientation.min.js" />
+    <Content Include="Content\assets2\libs\filepond-plugin-image-preview\filepond-plugin-image-preview.min.css" />
+    <Content Include="Content\assets2\libs\filepond-plugin-image-preview\filepond-plugin-image-preview.min.js" />
+    <Content Include="Content\assets2\libs\filepond\filepond.min.css" />
+    <Content Include="Content\assets2\libs\filepond\filepond.min.js" />
+    <Content Include="Content\assets2\libs\fontawesome-pro-5.15.3-web\fontawesome.min.css" />
+    <Content Include="Content\assets2\libs\fontawesome-pro-5.15.3-web\fontawesome.min.js" />
+    <Content Include="Content\assets2\libs\fullcalendar\main.min.css" />
+    <Content Include="Content\assets2\libs\fullcalendar\main.min.js" />
+    <Content Include="Content\assets2\libs\glightbox\css\glightbox.min.css" />
+    <Content Include="Content\assets2\libs\glightbox\js\glightbox.min.js" />
+    <Content Include="Content\assets2\libs\gmaps\gmaps.min.js" />
+    <Content Include="Content\assets2\libs\gridjs\gridjs.umd.js" />
+    <Content Include="Content\assets2\libs\gridjs\theme\mermaid.min.css" />
+    <Content Include="Content\assets2\libs\inputmask\jquery.inputmask.bundle.min.js" />
+    <Content Include="Content\assets2\libs\isotope-layout\isotope.pkgd.min.js" />
+    <Content Include="Content\assets2\libs\jquery-smartwizard\dist\css\smart_wizard.min.css" />
+    <Content Include="Content\assets2\libs\jquery-smartwizard\dist\css\smart_wizard_all.min.css" />
+    <Content Include="Content\assets2\libs\jquery-smartwizard\dist\js\jquery.smartWizard.js" />
+    <Content Include="Content\assets2\libs\jquery-smartwizard\dist\js\jquery.smartWizard.min.js" />
+    <Content Include="Content\assets2\libs\jquery-validate\jquery.validate.min.js" />
+    <Content Include="Content\assets2\libs\jsvectormap\css\jsvectormap.min.css" />
+    <Content Include="Content\assets2\libs\jsvectormap\js\jsvectormap.min.js" />
+    <Content Include="Content\assets2\libs\jsvectormap\maps\canada.js" />
+    <Content Include="Content\assets2\libs\jsvectormap\maps\russia.js" />
+    <Content Include="Content\assets2\libs\jsvectormap\maps\spain.js" />
+    <Content Include="Content\assets2\libs\jsvectormap\maps\us-merc-en.js" />
+    <Content Include="Content\assets2\libs\jsvectormap\maps\world-merc.js" />
+    <Content Include="Content\assets2\libs\leaflet\images\layers-2x.png" />
+    <Content Include="Content\assets2\libs\leaflet\images\layers.png" />
+    <Content Include="Content\assets2\libs\leaflet\images\marker-icon.png" />
+    <Content Include="Content\assets2\libs\leaflet\leaflet.css" />
+    <Content Include="Content\assets2\libs\leaflet\leaflet.js" />
+    <Content Include="Content\assets2\libs\list.js\list.min.js" />
+    <Content Include="Content\assets2\libs\list.pagination.js\list.pagination.min.js" />
+    <Content Include="Content\assets2\libs\masonry-layout\masonry.pkgd.min.js" />
+    <Content Include="Content\assets2\libs\moment\min\moment.min.js" />
+    <Content Include="Content\assets2\libs\moment\moment-with-locales.min.js" />
+    <Content Include="Content\assets2\libs\moment\moment.js" />
+    <Content Include="Content\assets2\libs\moment\moment.min.js" />
+    <Content Include="Content\assets2\libs\multi.js\multi.min.css" />
+    <Content Include="Content\assets2\libs\multi.js\multi.min.js" />
+    <Content Include="Content\assets2\libs\node-waves\waves.min.js" />
+    <Content Include="Content\assets2\libs\nouislider\nouislider.min.css" />
+    <Content Include="Content\assets2\libs\nouislider\nouislider.min.js" />
+    <Content Include="Content\assets2\libs\oidc-client\oidc-client.js" />
+    <Content Include="Content\assets2\libs\oidc-client\oidc-client.min.js" />
+    <Content Include="Content\assets2\libs\oidc-client\oidc-client.rsa256.slim.js" />
+    <Content Include="Content\assets2\libs\oidc-client\oidc-client.rsa256.slim.min.js" />
+    <Content Include="Content\assets2\libs\oidc-client\oidc-client.slim.js" />
+    <Content Include="Content\assets2\libs\oidc-client\oidc-client.slim.min.js" />
+    <Content Include="Content\assets2\libs\particles.js\particles.js" />
+    <Content Include="Content\assets2\libs\pdfjs\build\pdf.mjs" />
+    <Content Include="Content\assets2\libs\pdfjs\build\pdf.sandbox.mjs" />
+    <Content Include="Content\assets2\libs\pdfjs\build\pdf.worker.mjs" />
+    <Content Include="Content\assets2\libs\pdfjs\web\debugger.css" />
+    <Content Include="Content\assets2\libs\pdfjs\web\debugger.mjs" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\altText_add.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\altText_done.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\annotation-check.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\annotation-comment.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\annotation-help.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\annotation-insert.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\annotation-key.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\annotation-newparagraph.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\annotation-noicon.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\annotation-note.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\annotation-paperclip.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\annotation-paragraph.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\annotation-pushpin.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\cursor-editorFreeText.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\cursor-editorInk.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\editor-toolbar-delete.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\findbarButton-next.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\findbarButton-previous.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\gv-toolbarButton-download.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\gv-toolbarButton-openinapp.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\loading-icon.gif" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\loading.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-documentProperties.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-firstPage.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-handTool.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-lastPage.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-rotateCcw.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-rotateCw.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-scrollHorizontal.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-scrollPage.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-scrollVertical.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-scrollWrapped.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-selectTool.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-spreadEven.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-spreadNone.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\secondaryToolbarButton-spreadOdd.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-bookmark.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-currentOutlineItem.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-download.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-editorFreeText.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-editorInk.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-editorStamp.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-menuArrow.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-openFile.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-pageDown.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-pageUp.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-presentationMode.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-print.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-search.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-secondaryToolbarToggle.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-sidebarToggle.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-viewAttachments.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-viewLayers.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-viewOutline.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-viewThumbnail.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-zoomIn.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\toolbarButton-zoomOut.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\treeitem-collapsed.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\images\treeitem-expanded.svg" />
+    <Content Include="Content\assets2\libs\pdfjs\web\viewer.css" />
+    <Content Include="Content\assets2\libs\pdfjs\web\viewer.html" />
+    <Content Include="Content\assets2\libs\pdfjs\web\viewer.mjs" />
+    <Content Include="Content\assets2\libs\prismjs\prism.js" />
+    <Content Include="Content\assets2\libs\quill\quill.bubble.css" />
+    <Content Include="Content\assets2\libs\quill\quill.core.css" />
+    <Content Include="Content\assets2\libs\quill\quill.min.js" />
+    <Content Include="Content\assets2\libs\quill\quill.snow.css" />
+    <Content Include="Content\assets2\libs\rater-js\index.js" />
+    <Content Include="Content\assets2\libs\select2\css\select2.css" />
+    <Content Include="Content\assets2\libs\select2\css\select2.min.css" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\af.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\ar.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\az.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\bg.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\bn.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\bs.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\build.txt" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\ca.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\cs.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\da.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\de.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\dsb.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\el.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\en.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\eo.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\es.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\et.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\eu.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\fa.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\fi.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\fr.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\gl.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\he.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\hi.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\hr.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\hsb.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\hu.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\hy.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\id.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\is.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\it.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\ja.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\ka.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\km.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\ko.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\lt.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\lv.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\mk.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\ms.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\nb.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\ne.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\nl.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\pa.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\pl.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\ps.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\pt-BR.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\pt.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\ro.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\ru.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\sk.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\sl.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\sq.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\sr-Cyrl.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\sr.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\sv.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\te.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\th.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\tk.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\tr.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\uk.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\vi.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\zh-CN.js" />
+    <Content Include="Content\assets2\libs\select2\js\i18n\zh-TW.js" />
+    <Content Include="Content\assets2\libs\select2\js\select2.full.js" />
+    <Content Include="Content\assets2\libs\select2\js\select2.full.min.js" />
+    <Content Include="Content\assets2\libs\select2\js\select2.js" />
+    <Content Include="Content\assets2\libs\select2\js\select2.min.js" />
+    <Content Include="Content\assets2\libs\shepherd.js\css\shepherd.css" />
+    <Content Include="Content\assets2\libs\shepherd.js\js\shepherd.min.js" />
+    <Content Include="Content\assets2\libs\simplebar\simplebar.min.js" />
+    <Content Include="Content\assets2\libs\sortablejs\Sortable.min.js" />
+    <Content Include="Content\assets2\libs\sweetalert2\sweetalert2.min.css" />
+    <Content Include="Content\assets2\libs\sweetalert2\sweetalert2.min.js" />
+    <Content Include="Content\assets2\libs\swiper\swiper-bundle.min.css" />
+    <Content Include="Content\assets2\libs\swiper\swiper-bundle.min.js" />
+    <Content Include="Content\assets2\libs\toastr\css\toastr.min.css" />
+    <Content Include="Content\assets2\libs\toastr\js\toastr.min.js" />
+    <Content Include="Content\assets2\libs\toast\toast.css" />
+    <Content Include="Content\assets2\libs\toast\toast.js" />
+    <Content Include="Content\assets2\libs\treegrid\dist\css\jquery.treegrid.css" />
+    <Content Include="Content\assets2\libs\treegrid\dist\images\loader.gif" />
+    <Content Include="Content\assets2\libs\treegrid\dist\js\jquery.treegrid.js" />
+    <Content Include="Content\assets2\libs\treegrid\dist\js\jquery.treegrid.min.js" />
+    <Content Include="Content\assets2\libs\wnumb\wNumb.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\extens\cards.js" />
+    <Content Include="Scripts\extens\common-select.js" />
+    <Content Include="Scripts\extens\common-upload-file.js" />
+    <Content Include="Scripts\extens\common.js" />
+    <Content Include="Scripts\extens\constants.js" />
+    <Content Include="Scripts\extens\dataTable.js" />
+    <Content Include="Scripts\extens\dateTimePicker.js" />
+    <Content Include="Scripts\extens\icheck.js" />
+    <Content Include="Scripts\extens\inputmask.js" />
+    <Content Include="Scripts\extens\modal.js" />
+    <Content Include="Scripts\extens\notiflix.js" />
+    <Content Include="Scripts\extens\select2.js" />
+    <Content Include="Scripts\extens\starter.js" />
+    <Content Include="Scripts\extens\sweetalert.js" />
+    <Content Include="Scripts\extens\toastr.js" />
+    <Content Include="Scripts\extens\userManager.util.js" />
+    <Content Include="Scripts\extens\validate.js" />
+    <Content Include="Scripts\js\danh-muc-san-pham\danhMucSanPham.config.js" />
+    <Content Include="Scripts\js\danh-muc-san-pham\viewIndex.js" />
+    <Content Include="Scripts\js\san-pham\sanPham.config.js" />
+    <Content Include="Scripts\js\san-pham\viewIndex.js" />
+    <Content Include="Scripts\js\views\Shared\_Layout.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\SanPham\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\SanPham\" />
+    <Folder Include="Models\" />
+    <Folder Include="Scripts\root\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_PartialSideBar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Header.cshtml" />
+    <Content Include="Areas\Admin\Views\DMSanPham\Index.cshtml" />
+    <Content Include="Content\assets2\fonts\boxicons.eot" />
+    <Content Include="Content\assets2\fonts\boxicons.ttf" />
+    <Content Include="Content\assets2\fonts\boxicons.woff" />
+    <Content Include="Content\assets2\fonts\la-brands-400.eot" />
+    <Content Include="Content\assets2\fonts\la-brands-400.ttf" />
+    <Content Include="Content\assets2\fonts\la-brands-400.woff" />
+    <Content Include="Content\assets2\fonts\la-brands-400d41d.eot" />
+    <Content Include="Content\assets2\fonts\la-regular-400.eot" />
+    <Content Include="Content\assets2\fonts\la-regular-400.ttf" />
+    <Content Include="Content\assets2\fonts\la-regular-400.woff" />
+    <Content Include="Content\assets2\fonts\la-regular-400d41d.eot" />
+    <Content Include="Content\assets2\fonts\la-solid-900.eot" />
+    <Content Include="Content\assets2\fonts\la-solid-900.ttf" />
+    <Content Include="Content\assets2\fonts\la-solid-900.woff" />
+    <Content Include="Content\assets2\fonts\la-solid-900d41d.eot" />
+    <Content Include="Content\assets2\fonts\materialdesignicons-webfont1d2d.eot" />
+    <Content Include="Content\assets2\fonts\materialdesignicons-webfont1d2d.ttf" />
+    <Content Include="Content\assets2\fonts\materialdesignicons-webfont1d2d.woff" />
+    <Content Include="Content\assets2\fonts\materialdesignicons-webfontd41d.eot" />
+    <Content Include="Content\assets2\fonts\remixicondf6d.eot" />
+    <Content Include="Content\assets2\fonts\remixicondf6d.ttf" />
+    <Content Include="Content\assets2\fonts\remixicondf6d.woff" />
+    <Content Include="Content\assets2\libs\pdfjs\build\pdf.mjs.map" />
+    <Content Include="Content\assets2\libs\pdfjs\build\pdf.sandbox.mjs.map" />
+    <Content Include="Content\assets2\libs\pdfjs\build\pdf.worker.mjs.map" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\78-EUC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\78-EUC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\78-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\78-RKSJ-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\78-RKSJ-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\78-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\78ms-RKSJ-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\78ms-RKSJ-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\83pv-RKSJ-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\90ms-RKSJ-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\90ms-RKSJ-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\90msp-RKSJ-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\90msp-RKSJ-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\90pv-RKSJ-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\90pv-RKSJ-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Add-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Add-RKSJ-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Add-RKSJ-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Add-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-CNS1-0.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-CNS1-1.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-CNS1-2.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-CNS1-3.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-CNS1-4.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-CNS1-5.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-CNS1-6.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-CNS1-UCS2.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-GB1-0.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-GB1-1.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-GB1-2.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-GB1-3.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-GB1-4.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-GB1-5.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-GB1-UCS2.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Japan1-0.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Japan1-1.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Japan1-2.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Japan1-3.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Japan1-4.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Japan1-5.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Japan1-6.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Japan1-UCS2.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Korea1-0.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Korea1-1.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Korea1-2.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Adobe-Korea1-UCS2.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\B5-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\B5-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\B5pc-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\B5pc-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\CNS-EUC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\CNS-EUC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\CNS1-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\CNS1-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\CNS2-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\CNS2-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\ETen-B5-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\ETen-B5-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\ETenms-B5-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\ETenms-B5-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\ETHK-B5-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\ETHK-B5-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\EUC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\EUC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Ext-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Ext-RKSJ-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Ext-RKSJ-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Ext-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GB-EUC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GB-EUC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GB-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GB-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBK-EUC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBK-EUC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBK2K-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBK2K-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBKp-EUC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBKp-EUC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBpc-EUC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBpc-EUC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBT-EUC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBT-EUC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBT-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBT-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBTpc-EUC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\GBTpc-EUC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Hankaku.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Hiragana.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKdla-B5-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKdla-B5-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKdlb-B5-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKdlb-B5-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKgccs-B5-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKgccs-B5-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKm314-B5-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKm314-B5-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKm471-B5-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKm471-B5-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKscs-B5-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\HKscs-B5-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Katakana.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSC-EUC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSC-EUC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSC-Johab-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSC-Johab-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSCms-UHC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSCms-UHC-HW-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSCms-UHC-HW-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSCms-UHC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSCpc-EUC-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\KSCpc-EUC-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\LICENSE" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\NWP-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\NWP-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\RKSJ-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\RKSJ-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\Roman.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniCNS-UCS2-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniCNS-UCS2-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniCNS-UTF16-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniCNS-UTF16-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniCNS-UTF32-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniCNS-UTF32-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniCNS-UTF8-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniCNS-UTF8-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniGB-UCS2-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniGB-UCS2-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniGB-UTF16-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniGB-UTF16-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniGB-UTF32-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniGB-UTF32-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniGB-UTF8-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniGB-UTF8-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS-UCS2-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS-UCS2-HW-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS-UCS2-HW-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS-UCS2-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS-UTF16-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS-UTF16-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS-UTF32-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS-UTF32-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS-UTF8-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS-UTF8-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS2004-UTF16-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS2004-UTF16-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS2004-UTF32-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS2004-UTF32-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS2004-UTF8-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJIS2004-UTF8-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJISPro-UCS2-HW-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJISPro-UCS2-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJISPro-UTF8-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJISX0213-UTF32-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJISX0213-UTF32-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJISX02132004-UTF32-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniJISX02132004-UTF32-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniKS-UCS2-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniKS-UCS2-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniKS-UTF16-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniKS-UTF16-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniKS-UTF32-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniKS-UTF32-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniKS-UTF8-H.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\UniKS-UTF8-V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\V.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\cmaps\WP-Symbol.bcmap" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ach\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\af\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\an\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ar\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ast\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\az\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\be\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\bg\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\bn\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\bo\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\brx\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\br\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\bs\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\cak\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ca\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ckb\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\cs\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\cy\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\da\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\de\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\dsb\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\el\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\en-CA\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\en-GB\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\en-US\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\eo\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\es-AR\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\es-CL\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\es-ES\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\es-MX\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\et\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\eu\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\fa\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ff\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\fi\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\fr\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\fur\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\fy-NL\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ga-IE\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\gd\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\gl\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\gn\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\gu-IN\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\he\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\hi-IN\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\hr\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\hsb\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\hu\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\hy-AM\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\hye\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ia\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\id\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\is\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\it\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ja\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\kab\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ka\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\kk\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\km\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\kn\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ko\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\lij\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\locale.json" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\lo\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ltg\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\lt\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\lv\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\meh\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\mk\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\mr\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ms\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\my\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\nb-NO\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ne-NP\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\nl\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\nn-NO\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\oc\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\pa-IN\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\pl\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\pt-BR\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\pt-PT\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\rm\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ro\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ru\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\sat\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\scn\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\sco\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\sc\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\si\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\skr\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\sk\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\sl\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\son\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\sq\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\sr\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\sv-SE\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\szl\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ta\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\te\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\tg\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\th\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\tl\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\trs\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\tr\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\uk\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\ur\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\uz\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\vi\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\wo\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\xh\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\zh-CN\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\locale\zh-TW\viewer.ftl" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\FoxitDingbats.pfb" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\FoxitFixed.pfb" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\FoxitFixedBold.pfb" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\FoxitFixedBoldItalic.pfb" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\FoxitFixedItalic.pfb" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\FoxitSerif.pfb" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\FoxitSerifBold.pfb" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\FoxitSerifBoldItalic.pfb" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\FoxitSerifItalic.pfb" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\FoxitSymbol.pfb" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\LiberationSans-Bold.ttf" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\LiberationSans-BoldItalic.ttf" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\LiberationSans-Italic.ttf" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\LiberationSans-Regular.ttf" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\LICENSE_FOXIT" />
+    <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\LICENSE_LIBERATION" />
+    <Content Include="Content\assets2\libs\pdfjs\web\viewer.mjs.map" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\APIServices\APIServices.csproj">
+      <Project>{3c74f7f5-30d8-42b3-a3a4-d9066e28d977}</Project>
+      <Name>APIServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{47B7F849-A74D-48DC-BD75-F333D03397ED}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Content\assets2\libs\oidc-client\oidc-client.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54571</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44333/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
