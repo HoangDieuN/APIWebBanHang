@@ -43,25 +43,45 @@
                     elm: "#modal",
                     title: "Thêm mới danh mục sản phẩm",
                     content: res,
-                    size: "xl",
+                    size: "lg",
                     button:modalButton.save
                 })
             });
         })
+        
+
         _this.selectInit();
 
     },
     tableEvents: function () {
         let _this = viewIndex;
-        let { danhMucSanPham, elmTable } = _this;    
+        let { danhMucSanPham, elmTable } = _this;
+        $(`${elmTable} .btn-edit`).off().on("click", function () {
+            debugger
+            let table = danhMucSanPham.getTable();
+            let tr = $(this).closest("tr");
+            let row = table.row(tr).data();
+            if (row.Id) {
+                danhMucSanPham.pvForm(row.Id, (res) => {
+                    showModal({
+                        elm: "#modal",
+                        title: "CẬP NHẬT DANH MỤC SẢN PHẨM",
+                        content: res,
+                        size: "lg",
+                        button: modalButton.save
+                    })
+                });
+            } else {
+                $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");
+            }
+        })
     },
     selectInit: function () {
         let _this = viewIndex;
         
     },
     handleSelectChange: function (name, value) {
-        let _this = viewIndex;
-      
+        let _this = viewIndex;    
     },
     loadTable: function () {
         debugger
