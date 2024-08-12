@@ -13,7 +13,7 @@
                 },
                 TenDanhMucSP: {
                     required: !0
-                }
+                },            
             },
             message: {
 
@@ -24,11 +24,12 @@
                 type: "index",
                 columns: () => [
                     { data: "Stt", title: "STT", name: "Stt", width: 25 },
-                    { data: "TenSanPham", title: "Tên sanr phẩm", name: "TenSanPham", width: 150 },
-                    { data: "MoTa", title: "Mô tả", name: "MoTa", width: 100 },
+                    { data: "TenSanPham", title: "Tên sản phẩm", name: "TenSanPham", width: 150 },
+                    { data: "MoTa", title: "Mô tả", name: "MoTa", width: 250 },
                     { data: "GiaGoc", title: "Gía gốc", name: "GiaGoc", width: 100 },
-                    { data: "TacGia", title: "Tác giả", name: "TacGia", width: 100 },
-                    { data: "SoTacGia", title: "Số tác giả", name: "SoTacGia", width: 100 },
+                    { data: "TenDanhMucSP", title: "Tên danh mục", name: "TenDanhMucSP", width: 150 },
+                    { data: "Nam", title: "Năm", name: "Nam", width: 50 },
+
                     {
                         data: "Id", title: "Thao tác", name: "action", with: 80,
                         render: function (data, type, row) {
@@ -51,20 +52,25 @@
             fetchList: "/SanPham/ListSanPham",
             save: "/SanPham/Save",
             delete: "/SanPham/Delete",
-            fetchOptions:"/DMSanPham/SelectDanhMucSanPham",
+            fetchOptions: "/DMSanPham/SelectDanhMucSanPham",
+            pvForm: (id) => {
+                let params = { id };
+                const searchParams = new URLSearchParams(params);
+                return `/SanPham/_FormSanPham?${searchParams.toString()}`;
+            },
         }
-
     }
     getTable = () => { return this.table; }
     setTable = (val) => { this.table = val; }
-    getKeywords = () => { return this.keywords; }
-    setKeywords = (val) => { this.table = val; }
-    getNam = () => { return this.nam; }
-    setNam = (val) => { this.nam = val; }
+    getKeywords = () => this.keywords;
+    setKeywords = val => { this.keywords = val; }
+    getNam = () => { return this.Nam; }
+    setNam = (val) => { this.Nam = val; }
     getDanhMucSanPham = () => { return this.DanhMucId;}
     setDanhMucSanPham = (val) => { this.DanhMucId = val; }
 
     dataTableInit = ({ elm, url, type, callback }) => {
+        debugger
         //get columns
         let tableColumnsConfig = this.tableColumnsConfig.find(x => x.type == type);
         let maxWidth = $(elm).closest(".table-responsive").width();
@@ -91,7 +97,7 @@
                 type: "POST",
                 data: (params) => {
                     params.keywords = this.getKeywords();            
-                    params.nam = this.getNam();
+                    params.Nam = this.getNam();
                     params.DanhMucId = this.getDanhMucSanPham();
                 }
             },
@@ -105,5 +111,13 @@
             }
         })
         this.setTable(table);
+    }
+    pvForm(id, callback) {
+        let { endpoints } = this;
+        $.fn.loading();
+        $.fn.getData(endpoints.pvForm(id), {}, res => {
+            $.fn.offLoading();
+            if (callback) callback(res);
+        })
     }
 }

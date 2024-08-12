@@ -9,6 +9,10 @@ namespace APIServices
 {
     public interface ISanPhamApiService
     {
+        Task<int> Creat(SanPham requestModel);
+        Task<int> Delete(SanPham requestModel);
         Task<SanPhamPaging> GetAll(SanPhamRequest requestModel);
+        Task<SanPham> GetById(int id);
+        Task<int> Update(SanPham requestModel);
     }
 }

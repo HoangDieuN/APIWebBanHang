@@ -24,7 +24,7 @@ namespace WebApp.Controllers
         }
   
         [HttpPost]
-        public async Task<ActionResult> ListGiaiThuong(SanPhamRequest requestModel)
+        public async Task<ActionResult> ListSanPham(SanPhamRequest requestModel)
         {
             //call api
             SanPhamPaging model = await _sanPhamApiService.GetAll(requestModel);
@@ -39,5 +39,6 @@ namespace WebApp.Controllers
                 message = "Tải dữ liệu thành công"
             });
         }
+
     }
 }

@@ -532,6 +532,7 @@
     <Content Include="Scripts\js\danh-muc-san-pham\_FormDMSanPham.js" />
     <Content Include="Scripts\js\san-pham\sanPham.config.js" />
     <Content Include="Scripts\js\san-pham\viewIndex.js" />
+    <Content Include="Scripts\js\san-pham\_FormSanPham.js" />
     <Content Include="Scripts\js\views\Shared\_Layout.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -547,12 +548,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\SanPham\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\SanPham\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\root\" />
   </ItemGroup>
@@ -892,6 +891,8 @@
     <Content Include="Content\assets2\libs\pdfjs\web\standard_fonts\LICENSE_LIBERATION" />
     <Content Include="Content\assets2\libs\pdfjs\web\viewer.mjs.map" />
     <Content Include="Areas\Admin\Views\DMSanPham\_FormDMSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\_FormSanPham.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

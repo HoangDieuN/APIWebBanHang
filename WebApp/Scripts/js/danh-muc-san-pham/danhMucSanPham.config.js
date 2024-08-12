@@ -73,7 +73,9 @@ class DanhMucSanPham {
                 const searchParams = new URLSearchParams(params);
                 return `/Admin/DMSanPham/_FormDMSanPham?${searchParams.toString()}`;
             },
-            save:"/Admin/DMSanPham/Save"
+            save: "/Admin/DMSanPham/Save",
+            delete: "/Admin/DMSanPham/Delete",
+            fetchOptions:"DMSanPham/SelectDanhMucSanPham"
         }
     }
     //#region properties
@@ -137,6 +139,30 @@ class DanhMucSanPham {
         let { endpoints } = this;
         $.fn.loading();
         $.fn.postFormData(endpoints.save, data, callback);
+    }
+    delete(data, callback) {
+        let { endpoints } = this;
+        $.fn.swalConfirm("Xoá!", "Bạn chắc chắn muốn xóa?", res => {
+            if (res.value) {
+                $.fn.loading();
+                $.fn.postData(endpoints.delete, data, (res) => {
+                    $.fn.offLoading();
+                    if (callback) callback(res);
+                });
+            }
+        })
+    }
+    allOptions(callback) {
+        let { endpoints } = this;
+        let data = window.categories[OPT_DM_SANPHAM];
+        if (data != null && data !== undefined && data.length > 0) {
+            if (callback) callback(data);
+        } else {
+            $.fn.postData(endpoints.fetchOptions, {}, (res) => {
+                window.categories[OPT_DM_SANPHAM] = res.data;
+                if (callback) callback(res.data);
+            });
+        }
     }
 
     //#region action

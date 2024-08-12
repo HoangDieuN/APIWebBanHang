@@ -22,7 +22,7 @@ namespace WebApp.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<ActionResult> ListGiaiThuong(SanPhamRequest requestModel)
+        public async Task<ActionResult> ListSanPham(SanPhamRequest requestModel)
         {
             //call api
             SanPhamPaging model = await _sanPhamApiService.GetAll(requestModel);
@@ -36,6 +36,20 @@ namespace WebApp.Areas.Admin.Controllers
                 result = "success",
                 message = "Tải dữ liệu thành công"
             });
+        }
+        [HttpGet]
+        public async Task<ActionResult> _FormSanPham(int id)
+        {
+            SanPham model = new SanPham();
+            if (id > 0)
+            {
+                SanPham result = await _sanPhamApiService.GetById(id);
+                if (result != null)
+                {
+                    model = result;
+                }
+            }
+            return PartialView(model);
         }
     }
 }

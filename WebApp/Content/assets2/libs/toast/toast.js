@@ -1,5 +1,6 @@
 // Toast function
 function toast({ title = "", message = "", type = "info", duration = 3000 }) {
+    debugger
     const main = document.getElementById("toast_msg");
     if (main) {
         const toast = document.createElement("div");

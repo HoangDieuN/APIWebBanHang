@@ -47,15 +47,14 @@
                     button:modalButton.save
                 })
             });
-        })
-        
-
+        })   
         _this.selectInit();
 
     },
     tableEvents: function () {
         let _this = viewIndex;
         let { danhMucSanPham, elmTable } = _this;
+        //edit
         $(`${elmTable} .btn-edit`).off().on("click", function () {
             debugger
             let table = danhMucSanPham.getTable();
@@ -70,6 +69,20 @@
                         size: "lg",
                         button: modalButton.save
                     })
+                });
+            } else {
+                $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");
+            }
+        })
+        //delete
+        $(`${elmTable} .btn-del`).off().on("click", function () {
+            debugger
+            let table = danhMucSanPham.getTable();
+            let tr = $(this).closest("tr");
+            let row = table.row(tr).data();
+            if (row.Id) {
+                danhMucSanPham.delete({ ids: row.Id }, () => {
+                    table.ajax.reload(null, false);
                 });
             } else {
                 $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");

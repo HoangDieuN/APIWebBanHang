@@ -31,7 +31,7 @@ namespace Repositories
                 parameters.Add("@GiaGoc", requestModel.GiaGoc);
                 parameters.Add("@PhanTramGiam", requestModel.PhanTramGiam);
                 parameters.Add("@IsSale", requestModel.IsSale);
-                parameters.Add("@IsActive", requestModel.IsActive);
+                //parameters.Add("@IsActive", requestModel.IsActive);
                 parameters.Add("@CreatedBy", requestModel.CreatedBy);
                 var result = await _baseRepository.GetValue<int>("SanPham_Creat", parameters);
                 return result;

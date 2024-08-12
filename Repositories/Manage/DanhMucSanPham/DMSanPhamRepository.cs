@@ -25,7 +25,7 @@ namespace Repositories
                 parameters.Add("@TenDanhMucSP", requestModel.TenDanhMucSP);
                 parameters.Add("@MoTa", requestModel.MoTa);
                 parameters.Add("@MaDanhMucSP", requestModel.MaDanhMucSP);
-                parameters.Add("@IsActive", requestModel.IsActive);
+                //parameters.Add("@IsActive", requestModel.IsActive);
                 parameters.Add("@CreatedBy", requestModel.CreatedBy);
                 var result = await _baseRepository.GetValue<int>("DanhMucSanPham_Creat", parameters);
                 return result;
@@ -45,7 +45,6 @@ namespace Repositories
                 parameters.Add("@TenDanhMucSP", requestModel.TenDanhMucSP);
                 parameters.Add("@MoTa", requestModel.MoTa);
                 parameters.Add("@MaDanhMucSP", requestModel.MaDanhMucSP);
-                parameters.Add("@IsActive", requestModel.IsActive);
                 parameters.Add("@IsActive", requestModel.IsActive);
                 parameters.Add("@UpdatedBy", requestModel.UpdatedBy);
                 var result = await _baseRepository.GetValue<int>("DanhMucSanPham_Update", parameters);
