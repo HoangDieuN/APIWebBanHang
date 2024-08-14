@@ -85,8 +85,12 @@
     </div>
 </div>
 <div class="nv-modal xl" id="modal"></div>
+<div class="nv-modal lg" id="modal-file"></div>
 @section scripts {
+    <script src="~/Scripts/extens/common-upload-file.js?v=@(DateTime.Now.Ticks)"></script>
+
     <script src="~/Scripts/js/danh-muc-san-pham/danhMucSanPham.config.js?v=@(DateTime.Now.Ticks)"></script>
+
     <script src="~/Scripts/js/san-pham/sanPham.config.js?v=@(DateTime.Now.Ticks)"></script>
     <script src="~/Scripts/js/san-pham/viewIndex.js?v=@(DateTime.Now.Ticks)"></script>
 }

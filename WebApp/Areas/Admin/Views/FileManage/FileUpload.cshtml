@@ -1,0 +1,44 @@
+﻿@model Entity.FileUploadModel
+
+<input type="file" @(Model.IsMultiple ? "multiple" : "") @(Model.IsDisabled ? "disabled" : "") class="form-control file-upload" id="file_@Model.Id" name="file_@Model.Id" hidden>
+<label for="file_@Model.Id">
+    <span class="btn btn-success btn-sm">
+        <i class="fas fa-upload"></i> Chọn tệp
+    </span>
+</label>
+<table id="list_@Model.Id" class="table table-striped">
+    <tbody>
+    </tbody>
+</table>
+
+<script>
+    var @(Model.Id)_upload = new FileUpload([], [], "@Model.Id");
+    $(function () {
+        //default value
+        let fileUploaded = $("#@Model.ListKey").val();
+        let defaultValue = fileUploaded != null && fileUploaded != '' ? JSON.parse(fileUploaded) : [];
+        if (defaultValue != "") {
+            @(Model.Id)_upload.setUploaded(defaultValue.filter(x => x.FileKey == "@Model.Id"));
+            @(Model.Id)_upload.viewListFiles("@Model.Id");
+        }
+        //onchange
+        $("#file_@Model.Id").on("change", function (e) {
+            let files = e.target.files;
+            let isOverwrite = "@Model.IsOverwrite";
+            if (isOverwrite == 1) {
+                @(Model.Id)_upload.setFileQueue([]);
+            }
+            //add files
+            @(Model.Id)_upload.addFile(files);
+            //view list file
+            @(Model.Id)_upload.viewListFiles("@Model.Id");
+        })
+    })
+
+    removeFile = (id) => {
+        //remove file
+        @(Model.Id)_upload.removeFile(id);
+        //view list file
+        @(Model.Id)_upload.viewListFiles("@Model.Id");
+    }
+</script>

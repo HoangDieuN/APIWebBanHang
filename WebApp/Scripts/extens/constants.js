@@ -30,6 +30,16 @@ const featherIcons = {
 }
 //#endregion feather icons
 //#region constants action
+const ACT_FILEMANAGE_DOWNLOAD = "/Admin/FileManage/DownloadFile";
+const ACT_FILEMANAGE_VIEWLISTFILES = "/Admin/FileManage/_ViewListFiles";
+const ACT_FILEMANAGE_VIEWPREVIEWFILE = "/Admin/FileManage/_PreviewFile";
+const ACT_FILEMANAGE_PREVIEWFILE = "/Admin/FileManage/PreviewFile";
+const ACT_FILEMANAGE_LIST = "/Admin/FileManage/ListAttachedFile";
+const ACT_FILEMANAGE_LISTBYGROUPPRODUCT = "/Admin/FileManage/ListAttachedFileByGroupProduct";
+const ACT_FILEMANAGE_UPLOADFILE = "/Admin/FileManage/UploadFile";
+const ACT_FILEMANAGE_DELETE = "/Admin/FileManage/Delete";
+const ACT_FILEMANAGE_FILEPATHDECODE = "/Admin/FileManage/FilePathDecode";
+
 
 const OPT_DM_SANPHAM = "OPT_DM_SANPHAM";
 
@@ -48,7 +58,9 @@ const OPT_DM_SANPHAM = "OPT_DM_SANPHAM";
 //#endregion constants key obj
 
 //#region constants status code
-
+const moduleConst = {
+    sanPham: "SanPham"
+}
 const statusConst = {
     inProgress: 0,
     accept: 1,

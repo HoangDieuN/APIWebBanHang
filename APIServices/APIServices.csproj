@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachedFile\AttachedFileApiService.cs" />
+    <Compile Include="AttachedFile\IAttachedFileApiService.cs" />
     <Compile Include="DanhMucSanPham\DMSanPhamApiService.cs" />
     <Compile Include="DanhMucSanPham\IDMSanPhamApiService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

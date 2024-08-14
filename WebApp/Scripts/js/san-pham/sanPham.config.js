@@ -49,14 +49,14 @@
         ];
         //end points
         this.endpoints = {
-            fetchList: "/SanPham/ListSanPham",
-            save: "/SanPham/Save",
-            delete: "/SanPham/Delete",
-            fetchOptions: "/DMSanPham/SelectDanhMucSanPham",
+            fetchList: "/Admin/SanPham/ListSanPham",
+            save: "/Admin/SanPham/Save",
+            delete: "/Admin/SanPham/Delete",
+            fetchOptions: "/Admin/DMSanPham/SelectDanhMucSanPham",
             pvForm: (id) => {
                 let params = { id };
                 const searchParams = new URLSearchParams(params);
-                return `/SanPham/_FormSanPham?${searchParams.toString()}`;
+                return `/Admin/SanPham/_FormSanPham?${searchParams.toString()}`;
             },
         }
     }
@@ -111,6 +111,10 @@
             }
         })
         this.setTable(table);
+    }
+    save(data, callback) {
+        let { endpoints } = this;
+        $.fn.postFormData(endpoints.save, data, callback);
     }
     pvForm(id, callback) {
         let { endpoints } = this;

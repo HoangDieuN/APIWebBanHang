@@ -17,7 +17,7 @@ namespace APIServices
             try
             {
                 int result = 0;
-                Response response = await RestfulApi<Response>.PostAsync($"/api/danh-muc-san-pham/creat", requestModel, CommonConstants.ApiUrl);
+                Response response = await RestfulApi<Response>.PostAsync($"api/danh-muc-san-pham/creat", requestModel, CommonConstants.ApiUrl);
                 if(response.code== ResponseCode.SUCCESS)
                 {
                     result = JsonConvert.DeserializeObject<int>(response.result.ToString());
@@ -36,7 +36,7 @@ namespace APIServices
             try
             {
                 int result = 0;
-                Response response = await RestfulApi<Response>.PutAsync($"/api/danh-muc-san-pham/update", requestModel, CommonConstants.ApiUrl);
+                Response response = await RestfulApi<Response>.PutAsync($"api/danh-muc-san-pham/update", requestModel, CommonConstants.ApiUrl);
                 if(response.code == ResponseCode.SUCCESS)
                 {
                     result = JsonConvert.DeserializeObject<int>(response.result.ToString());
@@ -54,7 +54,7 @@ namespace APIServices
             try
             {
                 DanhMucSanPhamPaging result = new DanhMucSanPhamPaging();
-                Response response = await RestfulApi<Response>.PostAsync("/api/danh-muc-san-pham/danh-sach", requestModel, CommonConstants.ApiUrl);
+                Response response = await RestfulApi<Response>.PostAsync("api/danh-muc-san-pham/danh-sach", requestModel, CommonConstants.ApiUrl);
                 if (response.code == ResponseCode.SUCCESS)
                 {
                     result = JsonConvert.DeserializeObject<DanhMucSanPhamPaging>(response.result.ToString());
@@ -72,7 +72,7 @@ namespace APIServices
             try
             {
                 int result = 0;
-                Response response = await RestfulApi<Response>.DeleteAsync($"/api/danh-muc-san-pham/delete", requestModel, CommonConstants.ApiUrl);
+                Response response = await RestfulApi<Response>.DeleteAsync($"api/danh-muc-san-pham/delete", requestModel, CommonConstants.ApiUrl);
                 if (response.code == ResponseCode.SUCCESS)
                 {
                     result = JsonConvert.DeserializeObject<int>(response.result.ToString());
@@ -92,7 +92,7 @@ namespace APIServices
             try
             {
                 DanhMucSanPham result = null;
-                Response response = await RestfulApi<Response>.GetAsync($"/api/danh-muc-san-pham/danh-sach/{id}", null, CommonConstants.ApiUrl);
+                Response response = await RestfulApi<Response>.GetAsync($"api/danh-muc-san-pham/danh-sach/{id}", null, CommonConstants.ApiUrl);
                 if (response.code == ResponseCode.SUCCESS)
                 {
                     result = JsonConvert.DeserializeObject<DanhMucSanPham>(response.result.ToString());
