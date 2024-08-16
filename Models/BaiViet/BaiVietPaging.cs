@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Models
-{ 
-    public class UserRequest : BaseRequest
+{
+    public class BaiVietPaging :BasePaging
     {
-
+        List<BaiViet> listBaiViet {  get; set; } = new List<BaiViet>();
     }
 }

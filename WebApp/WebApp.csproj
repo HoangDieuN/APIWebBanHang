@@ -57,6 +57,15 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.7.1\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.7.1\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.7.1\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
@@ -75,6 +84,9 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.7.1\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -85,6 +97,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -161,6 +174,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\DMSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\FileManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -175,6 +189,66 @@
     <Compile Include="Utils\ServiceProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assetkh\images\banner_1.jpg" />
+    <Content Include="Content\assetkh\images\banner_2.jpg" />
+    <Content Include="Content\assetkh\images\banner_3.jpg" />
+    <Content Include="Content\assetkh\images\blog_1.jpg" />
+    <Content Include="Content\assetkh\images\blog_2.jpg" />
+    <Content Include="Content\assetkh\images\blog_3.jpg" />
+    <Content Include="Content\assetkh\images\deal_ofthe_week.png" />
+    <Content Include="Content\assetkh\images\desc_1.jpg" />
+    <Content Include="Content\assetkh\images\desc_2.jpg" />
+    <Content Include="Content\assetkh\images\desc_3.jpg" />
+    <Content Include="Content\assetkh\images\map_marker.png" />
+    <Content Include="Content\assetkh\images\product_1.png" />
+    <Content Include="Content\assetkh\images\product_10.png" />
+    <Content Include="Content\assetkh\images\product_2.png" />
+    <Content Include="Content\assetkh\images\product_3.png" />
+    <Content Include="Content\assetkh\images\product_4.png" />
+    <Content Include="Content\assetkh\images\product_5.png" />
+    <Content Include="Content\assetkh\images\product_6.png" />
+    <Content Include="Content\assetkh\images\product_7.png" />
+    <Content Include="Content\assetkh\images\product_8.png" />
+    <Content Include="Content\assetkh\images\product_9.png" />
+    <Content Include="Content\assetkh\images\single_1.jpg" />
+    <Content Include="Content\assetkh\images\single_1_thumb.jpg" />
+    <Content Include="Content\assetkh\images\single_2.jpg" />
+    <Content Include="Content\assetkh\images\single_2_thumb.jpg" />
+    <Content Include="Content\assetkh\images\single_3.jpg" />
+    <Content Include="Content\assetkh\images\single_3_thumb.jpg" />
+    <Content Include="Content\assetkh\images\slider_1.jpg" />
+    <Content Include="Content\assetkh\js\categories_custom.js" />
+    <Content Include="Content\assetkh\js\contact_custom.js" />
+    <Content Include="Content\assetkh\js\custom.js" />
+    <Content Include="Content\assetkh\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\assetkh\js\single_custom.js" />
+    <Content Include="Content\assetkh\plugins\easing\easing.js" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Content\assetkh\plugins\Isotope\isotope.pkgd.min.js" />
+    <Content Include="Content\assetkh\plugins\jquery-ui-1.12.1.custom\jquery-ui.css" />
+    <Content Include="Content\assetkh\plugins\jquery-ui-1.12.1.custom\jquery-ui.js" />
+    <Content Include="Content\assetkh\plugins\OwlCarousel2-2.2.1\ajax-loader.gif" />
+    <Content Include="Content\assetkh\plugins\OwlCarousel2-2.2.1\animate.css" />
+    <Content Include="Content\assetkh\plugins\OwlCarousel2-2.2.1\owl.carousel.css" />
+    <Content Include="Content\assetkh\plugins\OwlCarousel2-2.2.1\owl.carousel.js" />
+    <Content Include="Content\assetkh\plugins\OwlCarousel2-2.2.1\owl.theme.default.css" />
+    <Content Include="Content\assetkh\plugins\OwlCarousel2-2.2.1\owl.video.play.png" />
+    <Content Include="Content\assetkh\plugins\themify-icons\fonts\themify.svg" />
+    <Content Include="Content\assetkh\plugins\themify-icons\themify-icons.css" />
+    <Content Include="Content\assetkh\styles\bootstrap4\bootstrap.min.css" />
+    <Content Include="Content\assetkh\styles\bootstrap4\bootstrap.min.js" />
+    <Content Include="Content\assetkh\styles\bootstrap4\popper.js" />
+    <Content Include="Content\assetkh\styles\categories_responsive.css" />
+    <Content Include="Content\assetkh\styles\categories_styles.css" />
+    <Content Include="Content\assetkh\styles\contact_responsive.css" />
+    <Content Include="Content\assetkh\styles\contact_styles.css" />
+    <Content Include="Content\assetkh\styles\main_styles.css" />
+    <Content Include="Content\assetkh\styles\responsive.css" />
+    <Content Include="Content\assetkh\styles\single_responsive.css" />
+    <Content Include="Content\assetkh\styles\single_styles.css" />
     <Content Include="Content\assets2\css\app.min.css" />
     <Content Include="Content\assets2\css\base.css" />
     <Content Include="Content\assets2\css\bootstrap.min.css" />
@@ -204,8 +278,6 @@
     <Content Include="Content\assets2\images\flags\russia.svg" />
     <Content Include="Content\assets2\images\flags\spain.svg" />
     <Content Include="Content\assets2\images\flags\us.svg" />
-    <Content Include="Content\assets2\images\logo\logo-full.png" />
-    <Content Include="Content\assets2\images\logo\logo.png" />
     <Content Include="Content\assets2\images\placeholder\placeholder-news.png" />
     <Content Include="Content\assets2\images\svg\bell.svg" />
     <Content Include="Content\assets2\images\svg\crypto-icons\aave.svg" />
@@ -530,8 +602,8 @@
     <Content Include="Scripts\extens\starter.js" />
     <Content Include="Scripts\extens\sweetalert.js" />
     <Content Include="Scripts\extens\toastr.js" />
-    <Content Include="Scripts\extens\userManager.util.js" />
     <Content Include="Scripts\extens\validate.js" />
+    <Content Include="Scripts\js\account\login.js" />
     <Content Include="Scripts\js\danh-muc-san-pham\danhMucSanPham.config.js" />
     <Content Include="Scripts\js\danh-muc-san-pham\viewIndex.js" />
     <Content Include="Scripts\js\danh-muc-san-pham\_FormDMSanPham.js" />
@@ -901,6 +973,45 @@
     <Content Include="Areas\Admin\Views\FileManage\_ViewListFiles.cshtml" />
     <Content Include="Areas\Admin\Views\FileManage\FileUpload.cshtml" />
     <Content Include="Areas\Admin\Views\FileManage\Index.cshtml" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Content\assetkh\plugins\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Content\assetkh\plugins\themify-icons\fonts\themify.eot" />
+    <Content Include="Content\assetkh\plugins\themify-icons\fonts\themify.ttf" />
+    <Content Include="Content\assetkh\plugins\themify-icons\fonts\themify.woff" />
+    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

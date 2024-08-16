@@ -1,13 +1,17 @@
 ﻿using Autofac;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Repositories;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace APIWebBanHang
@@ -71,8 +75,29 @@ namespace APIWebBanHang
             //register all type ends with "Repository"
             builder.RegisterAssemblyTypes(typeof(BaseRepository).Assembly).Where(t => t.Name.EndsWith("Repository")).AsImplementedInterfaces();
         }
+        /// <summary>
+        /// swagger configs
+        /// </summary>
+        /// <param name="services"></param>
+        public static void TokenConfigs(IServiceCollection services, IConfiguration configuration)
+        {   
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddJwtBearer(options =>
+             {
+                 options.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuer = false,
+                     ValidateAudience = false,
+                     ValidateLifetime = true,
+                     ValidateIssuerSigningKey = true,
+                     ValidIssuer = configuration["Jwt:Issuer"],
+                     ValidAudience = configuration["Jwt:Audience"],
+                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
+                 };
+             });
+        }
     }
-
+    
     public class ConfigureSwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
     {
         public void Configure(SwaggerGenOptions options)

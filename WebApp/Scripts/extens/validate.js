@@ -19,6 +19,7 @@ jQuery.extend(jQuery.validator.messages, {
     min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
 });
 
+
 $.fn.renderRequired = (rules) => {
     if (rules) {
         for (var property in rules) {
@@ -33,6 +34,7 @@ $.fn.renderRequired = (rules) => {
 }
 
 $.fn.validateForm = (elm, obj) => {
+    debugger
     let config = {
         errorClass: "invalid-feedback animated fadeInUp",
         errorElement: "span",

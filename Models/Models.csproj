@@ -112,18 +112,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\LoginModel.cs" />
     <Compile Include="AttachedFile\AttachedFile.cs" />
     <Compile Include="AttachedFile\AttachedFilePaging.cs" />
     <Compile Include="AttachedFile\AttachedFileRequest.cs" />
+    <Compile Include="BaiViet\BaiViet.cs" />
+    <Compile Include="BaiViet\BaiVietPaging.cs" />
+    <Compile Include="BaiViet\BaiVietRequest.cs" />
     <Compile Include="BaseModel\BaseModel.cs" />
     <Compile Include="BaseModel\PagedResponse.cs" />
     <Compile Include="BaseModel\PagingRequestBase.cs" />
     <Compile Include="DanhMucSanPham\DanhMucSanPham.cs" />
     <Compile Include="DanhMucSanPham\DanhMucSanPhamPaging.cs" />
     <Compile Include="DanhMucSanPham\DanhMucSanPhamRequest.cs" />
-    <Compile Include="NguoiDung\User.cs" />
-    <Compile Include="NguoiDung\UserPaging.cs" />
-    <Compile Include="NguoiDung\UserRequest.cs" />
+    <Compile Include="Account\User.cs" />
+    <Compile Include="Account\UserPaging.cs" />
+    <Compile Include="Account\UserRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseModel\Response.cs" />
     <Compile Include="SanPham\SanPham.cs" />

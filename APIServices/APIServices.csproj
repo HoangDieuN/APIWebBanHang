@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AccountApiService.cs" />
+    <Compile Include="Account\IAccountApiService.cs" />
     <Compile Include="AttachedFile\AttachedFileApiService.cs" />
     <Compile Include="AttachedFile\IAttachedFileApiService.cs" />
     <Compile Include="DanhMucSanPham\DMSanPhamApiService.cs" />
