@@ -60,6 +60,7 @@
     //#region methods
     //get list file by group and product id
     getListByGroupProduct(group, products, callback) {
+        debugger
         $.fn.postData(ACT_FILEMANAGE_LISTBYGROUPPRODUCT, {
             fileGroupCode: group,
             productIds: products
@@ -75,14 +76,6 @@
         let arr = this.listFiles;
         for (var i = 0; i < files.length; i++) {
             let id = self.crypto.randomUUID();
-            // let check = false;
-            // while (check == false) {
-            //     if (arr.find(x => x.Id == id)) {
-            //         id = $.fn.generateID();
-            //     } else {
-            //         check = true;
-            //     }
-            // }
             files[i].Id = id;
             files[i].TempCode = this.getProductID();
             files[i].ProductID = this.getProductID();
@@ -101,6 +94,7 @@
     }
     //view list files
     viewListFiles() {
+        debugger
         let _this = this;
         let str = '';
         //list files to view
@@ -153,6 +147,7 @@
     }
     //init event
     initEvent() {
+        debugger
         let _this = this;
         let { elmForm } = _this;
         $(`#modal-file #tbl-list-files .btn-download`).off().on("click", function () {
@@ -167,6 +162,7 @@
         })
 
         $(`#modal-file #tbl-list-files .btn-del-file`).off().on("click", function () {
+            debugger
             let listFiles = _this.getListFiles();
             let id = $(this).closest("tr").data("id");
             let file = listFiles.find(x => x.Id == id);
@@ -180,6 +176,7 @@
         })
 
         $(".btn-preview").off().on('click', function () {
+            debugger
             let id = $(this).closest("tr").data("id");
             let listFiles = _this.getListFiles();
             if (listFiles && listFiles.length > 0) {

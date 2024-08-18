@@ -54,7 +54,7 @@ namespace APIServices
             try
             {
                 int result = 0;
-                Response response = await RestfulApi<Response>.DeleteAsync("api/attached-file/danh-sach", requestModel, CommonConstants.ApiUrl);
+                Response response = await RestfulApi<Response>.DeleteAsync("api/attached-file/delete", requestModel, CommonConstants.ApiUrl);
                 if (response.code == ResponseCode.SUCCESS)
                 {
                     result = JsonConvert.DeserializeObject<int>(response.result.ToString());
@@ -73,7 +73,7 @@ namespace APIServices
             try
             {
                 List<AttachedFile> result = new List<AttachedFile>();
-                Response response = await RestfulApi<Response>.PostAsync("api/attached-file/danh-sach", requestModel, CommonConstants.ApiUrl);
+                Response response = await RestfulApi<Response>.PostAsync("api/attached-file/list-by-group-products", requestModel);
                 if (response.code == ResponseCode.SUCCESS)
                 {
                     result = JsonConvert.DeserializeObject<List<AttachedFile>>(response.result.ToString());
@@ -92,7 +92,7 @@ namespace APIServices
             try
             {
                 AttachedFile result = null;
-                Response response = await RestfulApi<Response>.PostAsync("api/attached-file/danh-sach", requestModel, CommonConstants.ApiUrl);
+                Response response = await RestfulApi<Response>.PostAsync("api/attached-file/danh-sach/id", requestModel, CommonConstants.ApiUrl);
                 if (response.code == ResponseCode.SUCCESS)
                 {
                     result = JsonConvert.DeserializeObject<AttachedFile>(response.result.ToString());

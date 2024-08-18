@@ -8,6 +8,6 @@ namespace Models
 {
     public class BaiVietPaging :BasePaging
     {
-        List<BaiViet> listBaiViet {  get; set; } = new List<BaiViet>();
+        public List<BaiViet> ListBaiViet {  get; set; } = new List<BaiViet>();
     }
 }

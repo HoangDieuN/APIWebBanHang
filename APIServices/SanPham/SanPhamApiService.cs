@@ -67,7 +67,7 @@ namespace APIServices
                 return 0;
             }
         }
-        public async Task<int> Delete(SanPham requestModel)
+        public async Task<int> Delete(SanPhamRequest requestModel)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace APIServices
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"DMSanPhamApiService Error: {ex.Message}");
+                Debug.WriteLine($"SanPhamApiService Error: {ex.Message}");
                 return null;
             }
         }

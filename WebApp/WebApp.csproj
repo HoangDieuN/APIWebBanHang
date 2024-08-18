@@ -175,9 +175,11 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaiVietController.cs" />
     <Compile Include="Areas\Admin\Controllers\DMSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\FileManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
@@ -603,7 +605,12 @@
     <Content Include="Scripts\extens\sweetalert.js" />
     <Content Include="Scripts\extens\toastr.js" />
     <Content Include="Scripts\extens\validate.js" />
+    <Content Include="Scripts\js\account\account.config.js" />
     <Content Include="Scripts\js\account\login.js" />
+    <Content Include="Scripts\js\account\viewIndex.js" />
+    <Content Include="Scripts\js\bai-viet\baiViet.config.js" />
+    <Content Include="Scripts\js\bai-viet\viewIndex.js" />
+    <Content Include="Scripts\js\bai-viet\_FormBaiViet.js" />
     <Content Include="Scripts\js\danh-muc-san-pham\danhMucSanPham.config.js" />
     <Content Include="Scripts\js\danh-muc-san-pham\viewIndex.js" />
     <Content Include="Scripts\js\danh-muc-san-pham\_FormDMSanPham.js" />
@@ -629,6 +636,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Role\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\root\" />
   </ItemGroup>
@@ -1012,6 +1020,8 @@
     <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiViet\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiViet\_FormBaiViet.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

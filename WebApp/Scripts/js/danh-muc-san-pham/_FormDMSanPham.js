@@ -66,10 +66,10 @@
                     _this.loadListDanhMucSanPham();
                     closeModal(elmModal);
                 }
-                $.fn.toastrMessage(res.message, "Thông báo", res.result);
+                $.fn.showAlert(res.message,'success');
             })
         } else {
-            $.fn.toastrMessage(res.message, "Thông báo", "warning");
+            $.fn.showAlert(res.message, 'warning');
         }
     }
 }

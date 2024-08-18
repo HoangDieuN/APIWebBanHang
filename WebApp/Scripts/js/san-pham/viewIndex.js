@@ -57,7 +57,39 @@
     tableEvents: function () {
         let _this = viewIndex;
         let { sanPham, elmTable } = _this;
-       
+        //edit
+        $(`${elmTable} .btn-edit`).off().on("click", function () {
+            debugger
+            let table = sanPham.getTable();
+            let tr = $(this).closest("tr");
+            let row = table.row(tr).data();
+            if (row.Id) {
+                sanPham.pvForm(row.Id, (res) => {
+                    showModal({
+                        elm: "#modal",
+                        title: "CẬP NHẬT SẢN PHẨM",
+                        content: res,
+                        size: "xl",
+                        button: modalButton.save
+                    })
+                });
+            } else {
+                $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");
+            }
+        })
+        //delete
+        $(`${elmTable} .btn-del`).off().on("click", function () {
+            let table = sanPham.getTable();
+            let tr = $(this).closest("tr");
+            let row = table.row(tr).data();
+            if (row.Id) {
+                sanPham.delete({ ids: row.Id }, () => {
+                    table.ajax.reload(null, false);
+                });
+            } else {
+                $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");
+            }
+        })
     },
     selectInit: function () {
         let _this = viewIndex;

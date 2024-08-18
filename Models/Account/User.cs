@@ -13,8 +13,11 @@ namespace Models
         public string Email { get; set; }
         public string DiaChi { get; set; }
         public string HoTen {  get; set; }
+        public int RoleId {  get; set; }
         public string RoleName { get; set; }
         public string SoDT { get; set; }
-
+        public bool IsDisabled {  get; set; }
+        public string DeletedBy {  get; set; }
+        public DateTime? DeletedDate { get; set; }
     }
 }

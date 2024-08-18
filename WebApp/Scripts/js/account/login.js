@@ -12,7 +12,7 @@ pageEventInit = () => {
 
         // Kiểm tra giá trị nhập vào
         if (!validateForm(obj)) {
-            alert("nhập thông tin hợp lệ");
+            $.fn.showAlert('Vui lòng nhập thông tin hợp lệ', 'warning');  
             return;
         }
         // Đăng nhập
@@ -21,7 +21,7 @@ pageEventInit = () => {
             if (res.result === "success") {
                 location.href = "/Admin/Home/Index";
             }
-            alert("Đăng nhập thành công");  
+            $.fn.showAlert(res.message, 'success');  
             $.fn.offLoading();
         });
     });

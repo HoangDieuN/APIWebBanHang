@@ -10,9 +10,11 @@ namespace Models
     {
         public string TenBaiViet {  get; set; }
         public string ThongTin { get; set; }
-        public string GroupFile   { get; set; }
+        public string GroupFile { get; set; }
         public string MoTa { get; set; }
+        public string NoiDung { get; set; }
         public bool IsActive { get; set; }
-
+        public string DeletedBy {  get; set; }
+        public DateTime? DeletedDate{ get; set; }
     }
 }

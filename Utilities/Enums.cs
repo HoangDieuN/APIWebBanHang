@@ -10,7 +10,9 @@ namespace Utilities
     {
         public enum AttachFileGroup
         {
-            SanPham =1
+            SanPham = 1,
+            BaiViet = 2,
+            QuyTrinh = 3
         }
     }
 }

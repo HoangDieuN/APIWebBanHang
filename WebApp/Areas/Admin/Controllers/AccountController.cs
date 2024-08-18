@@ -44,7 +44,7 @@ namespace WebApp.Areas.Admin.Controllers
                 {
                     data = user,
                     result = "success",
-                    message = "Tải dữ liệu thành công"
+                    message = "Đăng nhập  thành công"
                 });
             }
             return Json(new

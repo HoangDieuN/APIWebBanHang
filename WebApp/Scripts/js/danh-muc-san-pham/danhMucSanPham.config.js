@@ -1,6 +1,4 @@
-﻿
-
-class DanhMucSanPham {
+﻿class DanhMucSanPham {
     constructor() {
         //validate rules
         this.validateRules = {

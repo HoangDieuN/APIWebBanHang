@@ -86,7 +86,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 AttachedFile attachFile = JsonConvert.DeserializeObject<AttachedFile>(Request.Params["fileInfo"]);
                 var files = Request.Files;
-                string type = Enum.GetName(typeof(Enums.AttachFileGroup),Enums.AttachFileGroup.SanPham);
+                string type = Enum.GetName(typeof(Enums.AttachFileGroup),Enums.AttachFileGroup.QuyTrinh);
                 if (files.Count > 0)
                 {
                     List<AttachedFile> listAttachedFiles = new List<AttachedFile>();

@@ -12,11 +12,6 @@
     loadListSanPham: function () {
         if ($loadListSanPham) $loadListSanPham();
     },
-    getListThanhVien: function () {
-        let _listTV = [];
-        if ($getListThanhVien) _listTV = $getListThanhVien();
-        return _listTV;
-    },
     init: function () {
         let { sanPham, viewFileConfig, fileUpload } = this;
         //config view file
@@ -124,7 +119,7 @@
         }
         let isValidFile = $.fn.requiredUploadFile(fileKeys, fileUpload.getListFiles());
        
-        error.isValid = isValidForm;
+        error.isValid = isValidForm && isValidFile;
         return error;
     },
     //save
@@ -156,10 +151,10 @@
                     _this.loadListSanPham();
                     closeModal(elmModal);
                 }
-                $.fn.toastrMessage(res.message, "Thông báo", res.result);
+                $.fn.showAlert(res.message, 'success');
             })
         } else {
-            $.fn.toastrMessage(error.message, "Thông báo", "warning");
+            $.fn.showAlert(res.message, 'warning');
         }
     }
 }

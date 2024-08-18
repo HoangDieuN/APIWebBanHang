@@ -32,5 +32,6 @@ namespace Utilities
     public class ModuleConstants
     {
         public const string SanPhamCode = "SanPham";
+        public const string BaiVietCode = "BaiViet";
     }
 }

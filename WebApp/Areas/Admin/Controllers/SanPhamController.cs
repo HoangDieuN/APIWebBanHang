@@ -69,13 +69,13 @@ namespace WebApp.Areas.Admin.Controllers
                 if (requestModel.Id > 0)
                 {
                     //requestModel.UpdateBy = User.ID_cb;
-                    //call api update bài báo
+                    //call api update sản phẩm
                     result = await _sanPhamApiService.Update(requestModel);
                 }
                 else
                 {
                     //requestModel.CreatedBy = User.ID_cb;
-                    //call api insert bài báo
+                    //call api insert sản phẩm
                     result = await _sanPhamApiService.Creat(requestModel);
 
                 }
@@ -126,6 +126,26 @@ namespace WebApp.Areas.Admin.Controllers
                     return Json(new { result = "success", message = "Lưu thông tin thành công" });
                 }
                 return Json(new { result = "error", message = "Lưu thông tin thất bại" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = "error", message = "Có lỗi xảy ra: " + ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(SanPhamRequest requestModel)
+        {
+            try
+            {
+                //requestModel.UpdateBy = User.Identity;
+                //call api
+                int result = await _sanPhamApiService.Delete(requestModel);
+                if (result > 0)
+                {
+                    return Json(new { result = "success", message = "Xóa thành công" });
+                }
+                return Json(new { result = "error", message = "Xóa thất bại" });
             }
             catch (Exception ex)
             {

@@ -124,4 +124,16 @@
             if (callback) callback(res);
         })
     }
+    delete(data, callback) {
+        let { endpoints } = this;
+        $.fn.swalConfirm("Xoá!", "Bạn chắc chắn muốn xóa?", res => {
+            if (res.value) {
+                $.fn.loading();
+                $.fn.postData(endpoints.delete, data, (res) => {
+                    $.fn.offLoading();
+                    if (callback) callback(res);
+                });
+            }
+        })
+    }
 }

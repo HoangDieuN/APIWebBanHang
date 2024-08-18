@@ -71,7 +71,7 @@
                     })
                 });
             } else {
-                $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");
+                $.fn.showAlert('Không tìm thấy thông tin đã chọn', 'warning');
             }
         })
         //delete
@@ -85,7 +85,7 @@
                     table.ajax.reload(null, false);
                 });
             } else {
-                $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");
+                $.fn.showAlert('Không tìm thấy thông tin đã chọn', 'warning');
             }
         })
     },

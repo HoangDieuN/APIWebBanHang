@@ -48,6 +48,8 @@
     <Compile Include="Account\IAccountApiService.cs" />
     <Compile Include="AttachedFile\AttachedFileApiService.cs" />
     <Compile Include="AttachedFile\IAttachedFileApiService.cs" />
+    <Compile Include="BaiViet\BaiVietApiService.cs" />
+    <Compile Include="BaiViet\IBaiVietApiService.cs" />
     <Compile Include="DanhMucSanPham\DMSanPhamApiService.cs" />
     <Compile Include="DanhMucSanPham\IDMSanPhamApiService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,5 +70,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

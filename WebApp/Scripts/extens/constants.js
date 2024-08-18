@@ -59,7 +59,8 @@ const OPT_DM_SANPHAM = "OPT_DM_SANPHAM";
 
 //#region constants status code
 const moduleConst = {
-    sanPham: "SanPham"
+    sanPham: "SanPham",
+    baiViet:"BaiViet"
 }
 const statusConst = {
     inProgress: 0,
@@ -68,5 +69,9 @@ const statusConst = {
     cancel: 3,
     editRequest: 4,
     draft: 9
+}
+const activeConst = {
+    isactive: true,
+    notactive:false
 }
 //#endregion constants status code
