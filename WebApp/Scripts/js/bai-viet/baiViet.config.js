@@ -138,7 +138,6 @@
 
     //#region actions
     pvForm(id, callback) {
-
         let { endpoints } = this;
         $.fn.loading();
         $.fn.getData(endpoints.pvForm(id), {}, res => {

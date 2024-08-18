@@ -102,7 +102,7 @@
                     })
                 });
             } else {
-                $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");
+                $.fn.showAlert(res.message, 'warning');
             }
         })
         //delete
@@ -115,7 +115,7 @@
                     table.ajax.reload(null, false);
                 });
             } else {
-                $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");
+                $.fn.showAlert(res.message, 'warning');
             }
         })
 
@@ -138,7 +138,7 @@
         let table = baiViet.getTable();
         let selected = table.selectedIds();
         if (selected.length == 0) {
-            $.fn.toastrMessage("Vui lòng chọn mục không duyệt", "Thông báo", "warning");
+            $.fn.showAlert(res.message, 'warning');
             return;
         }
         let ids = selected.join(",");
@@ -153,7 +153,7 @@
                     if (res.result == "success") {
                         _this.loadTable();
                     }
-                    $.fn.toastrMessage(res.message, "Thông báo", res.result);
+                    $.fn.showAlert(res.message, 'warning');
                 });
             }
         })

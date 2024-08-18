@@ -1,7 +1,7 @@
 ﻿var viewIndex = {
     elmTable: "#tbl-danhsach",
     elmTableToolbar: "#tbl-danhsach-toolbar",
-    danhMucSanPham: new DanhMucSanPham(),
+    user: new User(),
     keywordsFilter: { elm: "#txt-keywords" },
 
     init: function () {
@@ -9,9 +9,9 @@
         let { elmTable } = this;
         //table init
 
-        this.danhMucSanPham.dataTableInit({
+        this.user.dataTableInit({
             elm: elmTable,
-            url: this.danhMucSanPham.endpoints.fetchList,
+            url: this.user.endpoints.fetchList,
             type: "index",
             callback: this.tableEvents
         })
@@ -21,7 +21,7 @@
     pageEvents: function () {
         debugger
         let _this = viewIndex;
-        let { danhMucSanPham } = _this;
+        let { user } = _this;
 
         $("#form-filter .select2").on("select2:select select2:clear", function () {
             let name = $(this).attr("id");
@@ -38,10 +38,10 @@
         })
         //add
         $("#btn-add").on("click", function () {
-            danhMucSanPham.pvForm(0, (res) => {
+            user.pvForm(0, (res) => {
                 showModal({
                     elm: "#modal",
-                    title: "Thêm mới danh mục sản phẩm",
+                    title: "Thêm mới tài khoản",
                     content: res,
                     size: "lg",
                     button: modalButton.save
@@ -53,18 +53,18 @@
     },
     tableEvents: function () {
         let _this = viewIndex;
-        let { danhMucSanPham, elmTable } = _this;
+        let { user, elmTable } = _this;
         //edit
         $(`${elmTable} .btn-edit`).off().on("click", function () {
             debugger
-            let table = danhMucSanPham.getTable();
+            let table = user.getTable();
             let tr = $(this).closest("tr");
             let row = table.row(tr).data();
             if (row.Id) {
-                danhMucSanPham.pvForm(row.Id, (res) => {
+                user.pvForm(row.Id, (res) => {
                     showModal({
                         elm: "#modal",
-                        title: "CẬP NHẬT DANH MỤC SẢN PHẨM",
+                        title: "CẬP NHẬT TÀI KHOẢN NGƯỜI DÙNG",
                         content: res,
                         size: "lg",
                         button: modalButton.save
@@ -77,11 +77,11 @@
         //delete
         $(`${elmTable} .btn-del`).off().on("click", function () {
             debugger
-            let table = danhMucSanPham.getTable();
+            let table = user.getTable();
             let tr = $(this).closest("tr");
             let row = table.row(tr).data();
             if (row.Id) {
-                danhMucSanPham.delete({ ids: row.Id }, () => {
+                user.delete({ ids: row.Id }, () => {
                     table.ajax.reload(null, false);
                 });
             } else {
@@ -99,14 +99,14 @@
     loadTable: function () {
         debugger
         let _this = viewIndex;
-        let { danhMucSanPham, keywordsFilter } = _this;
-        danhMucSanPham.setKeywords($(keywordsFilter.elm).val());
-        danhMucSanPham.table.ajax.reload();
+        let { user, keywordsFilter } = _this;
+        user.setKeywords($(keywordsFilter.elm).val());
+        user.table.ajax.reload();
     },
 
 }
 
 $(function () {
     viewIndex.init();
-    window.$loadListDanhMucSanPham = viewIndex.loadTable;
+    window.$loadListTaiKhoan = viewIndex.loadTable;
 })

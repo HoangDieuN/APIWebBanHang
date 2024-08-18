@@ -23,20 +23,35 @@
                     required: !0,
                     maxlength: 200
                 },
+                RoleId: {
+                    required: !0,
+                    maxlength: 200
+                }
             },
             messages: {
-                TenDanhMucSP: {
+                HoTen: {
                     required: "Vui lòng nhập thông tin",
                     maxlength: "Không được vượt quá 200 ký tự"
                 },
-                MaDanhMucSP: {
+                UserName: {
                     required: "Vui lòng nhập thông tin",
                     maxlength: "Không được vượt quá 200 ký tự"
                 },
-                MoTa: {
+                Password: {
                     required: "Vui lòng nhập thông tin",
                     maxlength: "Không được vượt quá 200 ký tự"
                 },
+                DiaChi: {
+                    required: "Vui lòng nhập thông tin",
+                    maxlength: "Không được vượt quá 200 ký tự"
+                },
+                Email: {
+                    required: "Vui lòng nhập thông tin",
+                    maxlength: "Không được vượt quá 200 ký tự"
+                },
+                RoleId: {
+                    required: "Vui lòng nhập thông tin"
+                }
             },
 
         }
@@ -46,10 +61,10 @@
                 type: "index",
                 columns: () => [
                     { data: "Stt", title: "STT", name: "Stt", width: 25 },
-                    { data: "TenDanhMucSP", title: "Tên danh mục sản phẩm", name: "TenDanhMucSP", width: 150 },
-                    { data: "MaDanhMucSP", title: "Mã danh mục", name: "MaDanhMucSP", width: 100 },
-                    { data: "MoTa", title: "Mô tả", name: "MoTa", width: 100 },
-
+                    { data: "HoTen", title: "Họ tên", name: "HoTen", width: 150 },
+                    { data: "UserName", title: "Tên tài khoản", name: "UserName", width: 100 },
+                    { data: "DiaChi", title: "Địa chỉ", name: "DiaChi", width: 100 },
+                    { data: "Email", title: "Email", name: "Email", width: 100 },
                     {
                         data: "Id", title: "Thao tác", name: "action", width: 80,
                         render: function (data, type, row) {
@@ -60,8 +75,16 @@
                        `
                             strButton += `<button type="button" class="btn btn-sm btn-outline-danger btn-icon waves-effect waves-light btn-del" title="Xoá">
                             ${featherIcons.trash}
-                        </button>`;
-
+                        </button> `
+                            strButton +=`<button type="button" class="btn btn-sm btn-outline-info btn-icon waves-effect waves-light btn-role" title="Phân vai trò">
+                                            <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="9" cy="7" r="4"></circle>
+                                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                            </svg>
+                                        </button>`
+                                ;
                             return `<div class="d-flex align-items-center gap-1">
                                 ${strButton}
                             </div>`;
@@ -72,15 +95,15 @@
         ];
         //endpoints
         this.endpoints = {
-            fetchList: "/Admin/DMSanPham/ListDanhMucSanPham",
+            fetchList: "/Admin/Account/ListAccount",
             pvForm: (id) => {
                 let params = { id };
                 const searchParams = new URLSearchParams(params);
-                return `/Admin/DMSanPham/_FormDMSanPham?${searchParams.toString()}`;
+                return `/Admin/Account/_FormAccount?${searchParams.toString()}`;
             },
-            save: "/Admin/DMSanPham/Save",
-            delete: "/Admin/DMSanPham/Delete",
-            fetchOptions: "DMSanPham/SelectDanhMucSanPham"
+            save: "/Admin/Account/Save",
+            delete: "/Admin/Account/Delete",
+            fetchOptions: "Admin/Account/SelectRole"
         }
     }
     //#region properties
@@ -159,12 +182,12 @@
     }
     allOptions(callback) {
         let { endpoints } = this;
-        let data = window.categories[OPT_DM_SANPHAM];
+        let data = window.categories[OPT_Role];
         if (data != null && data !== undefined && data.length > 0) {
             if (callback) callback(data);
         } else {
             $.fn.postData(endpoints.fetchOptions, {}, (res) => {
-                window.categories[OPT_DM_SANPHAM] = res.data;
+                window.categories[OPT_Role] = res.data;
                 if (callback) callback(res.data);
             });
         }

@@ -90,8 +90,7 @@
         })
     },
     selectInit: function () {
-        let _this = viewIndex;
-        
+        let _this = viewIndex;      
     },
     handleSelectChange: function (name, value) {
         let _this = viewIndex;    
