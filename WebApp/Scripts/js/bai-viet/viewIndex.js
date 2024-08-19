@@ -26,6 +26,7 @@
         })
         //seach
         $("#btn-search").on("click", function () {
+            debugger
             _this.loadTable();
         })
         //add
@@ -127,6 +128,7 @@
         let _this = viewIndex;
     },
     loadTable: function () {
+        debugger
         let _this = viewIndex;
         let { baiViet, keywordsFilter } = _this;
         baiViet.setKeywords($(keywordsFilter.elm).val());

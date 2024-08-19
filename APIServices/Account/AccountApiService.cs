@@ -66,5 +66,42 @@ namespace APIServices
                 return null;
             }
         }
+        public async Task<int> Creat(User user)
+        {
+            try
+            {
+                int result = 0;
+                Response response = await RestfulApi<Response>.PostAsync($"api/user/register", user, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<int>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"AccountApiService Error: {ex.Message}");
+                return 0;
+            }
+        }
+        public async Task<int> Update(User user)
+        {
+            try
+            {
+                int result = 0;
+                Response response = await RestfulApi<Response>.PostAsync($"api/user/update", user, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<int>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"AccountApiService Error: {ex.Message}");
+                return 0;
+            }
+        }
     }
+    
 }

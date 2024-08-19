@@ -15,5 +15,6 @@ namespace Repositories
 
         //for login
         Task<User> GetUserByUserName(LoginModel loginModel);
+        Task<int> Update(User requestModel);
     }
 }

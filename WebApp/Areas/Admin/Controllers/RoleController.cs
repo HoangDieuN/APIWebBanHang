@@ -50,8 +50,8 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 options.Add(new
                 {
-                    id = item.TenViet,
-                    text = item.RoleName,
+                    id = item.Id,
+                    text = item.TenViet,
                     data = item
                 });
             }

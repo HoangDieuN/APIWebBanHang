@@ -3,7 +3,6 @@
     elmTableToolbar: "#tbl-danhsach-toolbar",
     user: new User(),
     keywordsFilter: { elm: "#txt-keywords" },
-
     init: function () {
         debugger
         let { elmTable } = this;
@@ -22,7 +21,6 @@
         debugger
         let _this = viewIndex;
         let { user } = _this;
-
         $("#form-filter .select2").on("select2:select select2:clear", function () {
             let name = $(this).attr("id");
             let value = $(this).val();
@@ -43,7 +41,7 @@
                     elm: "#modal",
                     title: "Thêm mới tài khoản",
                     content: res,
-                    size: "lg",
+                    size: "xl",
                     button: modalButton.save
                 })
             });
@@ -103,7 +101,6 @@
         user.setKeywords($(keywordsFilter.elm).val());
         user.table.ajax.reload();
     },
-
 }
 
 $(function () {

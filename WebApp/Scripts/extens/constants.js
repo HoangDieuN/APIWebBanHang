@@ -61,7 +61,8 @@ const OPT_Role = "OPT_Role";
 //#region constants status code
 const moduleConst = {
     sanPham: "SanPham",
-    baiViet:"BaiViet"
+    baiViet: "BaiViet",
+    avatar:"Avatar"
 }
 const statusConst = {
     inProgress: 0,

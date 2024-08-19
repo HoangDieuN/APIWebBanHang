@@ -4,13 +4,12 @@
     alertDiv.className = `alert alert-${type} bg-${type} text-light border-0 alert-dismissible fade show`;
     alertDiv.style.position = 'fixed';
     alertDiv.style.top = '70px';
-    alertDiv.style.right = '-300px'; // Bắt đầu từ ngoài màn hình
+    alertDiv.style.right = '-300px';
     alertDiv.style.zIndex = '1050';
     alertDiv.style.width = 'auto';
     alertDiv.style.maxWidth = '300px';
     alertDiv.style.opacity = '0.6';
-    alertDiv.style.transition = 'right 0.5s ease-in-out'; // Thêm hiệu ứng chuyển động
-
+    alertDiv.style.transition = 'right 0.5s ease-in-out'; 
     switch (type) {
         case 'success':
             alertDiv.innerHTML = `
@@ -48,5 +47,5 @@
         setTimeout(() => {
             alertDiv.remove();
         }, 500); // Thời gian để hoàn thành hiệu ứng chuyển động
-    }, 2500);
+    }, 4000);
 };

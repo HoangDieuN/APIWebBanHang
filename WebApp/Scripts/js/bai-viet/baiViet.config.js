@@ -120,7 +120,7 @@
                 url,
                 type: "POST",
                 data: (params) => {
-                    params.keywords = this.getKeywords();           
+                    params.keywords = this.getKeywords();         
                 }
             },
             columns: tableColumnsConfig.columns(),

@@ -24,12 +24,8 @@
                     maxlength: 200
                 },
                 RoleId: {
-                    required: !0,
-                    maxlength: 200
-                },
-                RoleName: {
-                    required: !0,
-                }
+                    required: !0
+                },      
             },
             messages: {
                 HoTen: {
@@ -52,12 +48,10 @@
                     required: "Vui lòng nhập thông tin",
                     maxlength: "Không được vượt quá 200 ký tự"
                 },
-
                 RoleId: {
                     required: "Vui lòng nhập thông tin"
                 }
             },
-
         }
         //table columns
         this.tableColumnsConfig = [
@@ -66,11 +60,10 @@
                 columns: () => [
                     { data: "Stt", title: "STT", name: "Stt", width: 25 },
                     { data: "HoTen", title: "Họ tên", name: "HoTen", width: 150 },
-                    { data: "UserName", title: "Tên tài khoản", name: "UserName", width: 100 },
+                    { data: "UserName", title: "Tên tài khoản", name: "UserName", width: 120 },
                     { data: "DiaChi", title: "Địa chỉ", name: "DiaChi", width: 100 },
                     { data: "Email", title: "Email", name: "Email", width: 100 },
-                    { data: "TenViet", title: "Tên quyền tv", name: "TenViet", width: 100 },
-                    { data: "RoleName", title: "Tên quyền", name: "RoleName", width: 100 },
+                    { data: "TenViet", title: "Tên quyền", name: "TenViet", width: 100 },
                     {
                         data: "Id", title: "Thao tác", name: "action", width: 80,
                         render: function (data, type, row) {
@@ -186,19 +179,6 @@
             }
         })
     }
-    allOptions(callback) {
-        let { endpoints } = this;
-        let data = window.categories[OPT_Role];
-        if (data != null && data !== undefined && data.length > 0) {
-            if (callback) callback(data);
-        } else {
-            $.fn.postData(endpoints.fetchOptions, {}, (res) => {
-                window.categories[OPT_Role] = res.data;
-                if (callback) callback(res.data);
-            });
-        }
-    }
-
     //#region action
 
     //#end region action

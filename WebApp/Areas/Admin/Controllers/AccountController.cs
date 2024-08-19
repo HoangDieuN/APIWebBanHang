@@ -1,6 +1,7 @@
 ﻿using APIServices;
 using Microsoft.IdentityModel.Tokens;
 using Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -17,9 +18,11 @@ namespace WebApp.Areas.Admin.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountApiService _accountApiService;
-        public AccountController(IAccountApiService accountApiService)
+        private readonly IAttachedFileApiService _attachedFileApiService;
+        public AccountController(IAccountApiService accountApiService, IAttachedFileApiService attachedFileApiService)
         {
             _accountApiService = accountApiService;
+            _attachedFileApiService = attachedFileApiService;
         }
         // GET: Admin/Account
         public ActionResult Index()
@@ -105,6 +108,84 @@ namespace WebApp.Areas.Admin.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+        [HttpPost]
+        public async Task<ActionResult> Save(User requestModel)
+        {
+            try
+            {
+                int result = 0;
+                //list  file đính kèm chưa lưu
+                string jsonFiles = Request.Params["attachedFiles"] ?? "[]";
+                List<AttachedFile> listFiles = JsonConvert.DeserializeObject<List<AttachedFile>>(jsonFiles, Common.JsonSettings);
 
+                if (requestModel.Id > 0)
+                {
+                    //requestModel.UpdateBy = User.ID_cb;
+                    //call api update người dùng
+                    result = await _accountApiService.Update(requestModel);
+                }
+                else
+                {
+                    //requestModel.CreatedBy = User.ID_cb;
+                    //call api insert người dùng
+                    result = await _accountApiService.Creat(requestModel);
+
+                }
+                if (result > 0)
+                {
+                    #region file đính kèm
+                    var files = Request.Files;
+
+                    //list file cần lưu vào bảng attached file
+                    List<AttachedFile> listAttachedFiles = new List<AttachedFile>();
+
+                    int productId = requestModel.Id > 0 ? requestModel.Id : result;
+
+                    if (listFiles != null && listFiles.Count > 0)
+                    {
+                        listFiles = listFiles.Where(x => x.IsUploaded != 1).ToList();
+
+                        //add thông tin file cần lưu
+                        if (listFiles.Count > 0)
+                        {
+                            //lưu file
+                            foreach (var file in listFiles)
+                            {
+                                //get file theo key
+                                var fileInQueue = files.GetMultiple($"{file.Id}").Where(x => x.FileName == file.FileName).FirstOrDefault();
+                                string filePath = FileManageHelper.SaveFile(this, fileInQueue, ModuleConstants.Avatar);
+                                //add file to list
+                                listAttachedFiles.Add(new AttachedFile()
+                                {
+                                    FileGroupCode = ModuleConstants.Avatar,
+                                    ProductID = productId,
+                                    FileKey = file.FileKey,
+                                    FileName = file.FileName,
+                                    FileType = file.FileType,
+                                    FileSize = file.FileSize,
+                                    FilePath = filePath
+                                });
+                            }
+                            //cập nhật vào bảng attached file
+                            await _attachedFileApiService.Create(new AttachedFile()
+                            {
+                                ListAttachedFile = listAttachedFiles,
+                                UpdatedBy = "HoangDieu"
+                            });
+                        }
+                    }
+                    #endregion file đính kèm
+                    #region user role
+                    #endregion user role
+                    return Json(new { result = "success", message = "Lưu thông tin thành công" });
+                }
+                return Json(new { result = "error", message = "Lưu thông tin thất bại" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = "error", message = "Có lỗi xảy ra: " + ex.Message });
+            }
+
+        }
     }
 }

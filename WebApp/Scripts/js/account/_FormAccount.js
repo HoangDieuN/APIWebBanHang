@@ -6,7 +6,7 @@
     fileUpload: new CommonUploadFile({}),
     validateRules: {},
     viewFileConfig: [
-        { key: "FileAnh", isView: 0 }
+        { key: "Avatar", isView: 0 }
     ],
     roleSelect: { elm: "#form-taikhoan #RoleId" },
     loadLisTaiKhoan: function () {
@@ -30,10 +30,6 @@
         $(`${elmModal} .btn-save`).off().on("click", function () {
             _this.save();
         })
-        //input mask
-        $.fn.allInputMask();
-        //select year
-        $.fn.singleDatePicker(`${elmForm} .date-inputmask`, {});
         //select init
         _this.selectInit();
         //file upload init
@@ -41,21 +37,21 @@
     },
     //select init
     selectInit: function () {
-        let _this = _formSanPham;
-        let { danhMucSanPham, danhMucSanPhamSelect } = _this;
-        //danh mục sản phẩm
-        danhMucSanPham.allOptions((data) => {
+        let _this = _formAccount;
+        let { user, roleSelect } = _this;
+        //chọn quyền
+        this.role.allOptions((data) => {
             let obj = { data };
-            $.fn.initSelect2(danhMucSanPhamSelect.elm, obj);
+            $.fn.initSelect2(roleSelect.elm, obj);
         })
     },
     fileUploadInit: function () {
         debugger
-        let _this = _formSanPham;
+        let _this = _formAccount;
         let { fileUpload, elmForm, viewFileConfig } = _this;
         //file upload
         let productId = $(`${elmForm} #Id`).val();
-        fileUpload.getListByGroupProduct(moduleConst.sanPham, productId, () => {
+        fileUpload.getListByGroupProduct(moduleConst.avatar, productId, () => {
             $.map(viewFileConfig, item => {
                 let strHtml = fileUpload.render({
                     name: item.key,
@@ -69,7 +65,7 @@
         })
     },
     eventUploadFile: function () {
-        let _this = _formSanPham;
+        let _this = _formAccount;
         let { fileUpload, viewFileConfig } = _this;
         //init event
         fileUpload.initEvent();
@@ -94,7 +90,7 @@
     },
     //validate init
     validateInit: function () {
-        let _this = _formSanPham;
+        let _this = _formAccount;
         let { validateRules, elmForm } = _this;
         $.fn.validateForm(`${elmForm} .form-info`, validateRules);
         //render required
@@ -102,7 +98,7 @@
     },
     //validate form
     validateForm: function () {
-        let _this = _formSanPham;
+        let _this = _formAccount;
         let { elmForm, fileUpload, validateRules } = _this;
         let error = {
             isValid: true,
@@ -125,8 +121,8 @@
     //save
     save: function () {
         debugger
-        let _this = _formSanPham;
-        let { sanPham, fileUpload, elmForm, elmModal } = _this;
+        let _this = _formAccount;
+        let { user, fileUpload, elmForm, elmModal } = _this;
         let data = $.fn.serializeObject($(`${elmForm} .form-info`));
         //form data
         let formData = new FormData();
@@ -145,10 +141,10 @@
         let error = _this.validateForm(data);
         if (error.isValid) {
             $.fn.loading();
-            sanPham.save(formData, res => {
+            user.save(formData, res => {
                 $.fn.offLoading();
                 if (res.result == "success") {
-                    _this.loadListSanPham();
+                    _this.loadListTaiKhoan();
                     closeModal(elmModal);
                 }
                 $.fn.showAlert(res.message, 'success');
@@ -160,5 +156,5 @@
 }
 
 $(function () {
-    _formSanPham.init();
+    _formAccount.init();
 })

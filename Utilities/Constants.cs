@@ -33,5 +33,7 @@ namespace Utilities
     {
         public const string SanPhamCode = "SanPham";
         public const string BaiVietCode = "BaiViet";
+        public const string Avatar = "Avatar";
+
     }
 }
