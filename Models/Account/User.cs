@@ -19,5 +19,7 @@ namespace Models
         public bool IsDisabled {  get; set; }
         public string DeletedBy {  get; set; }
         public DateTime? DeletedDate { get; set; }
+        public string TenViet { get; set; }
+
     }
 }

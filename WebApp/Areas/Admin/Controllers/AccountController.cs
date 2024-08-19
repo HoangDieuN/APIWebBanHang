@@ -26,7 +26,37 @@ namespace WebApp.Areas.Admin.Controllers
         {
             return View();
         }
+        
+        [HttpPost]
+        public async Task<ActionResult> ListTaiKhoan(UserRequest requestModel)
+        {
+            //call api
+            UserPaging model = await _accountApiService.GetAll(requestModel);
 
+            return Json(new
+            {
+                data = model.ListTaiKhoan,
+                recordsTotal = model.Total,
+                recordsFiltered = model.Total,
+                draw = requestModel.Draw == 0 ? 1 : requestModel.Draw,
+                result = "success",
+                message = "Tải dữ liệu thành công"
+            });
+        }
+        [HttpGet]
+        public async Task<ActionResult> _FormAccount(int id)
+        {
+            User user = new User();
+            if (id > 0)
+            {
+                User result = await _accountApiService.GetById(id);
+                if (result != null)
+                {
+                    user = result;
+                }
+            }
+            return PartialView(user);
+        }
         [AllowAnonymous]
         public ActionResult Login()
         {         

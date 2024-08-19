@@ -8,6 +8,6 @@ namespace Models
 {
     public class UserPaging : BasePaging
     {
-        List<User> ListUser { get; set; } = new List<User>();
+        public List<User> ListTaiKhoan { get; set; } = new List<User>();
     }
 }

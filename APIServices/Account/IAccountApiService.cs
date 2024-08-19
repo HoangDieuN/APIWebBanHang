@@ -9,6 +9,8 @@ namespace APIServices
 {
     public interface IAccountApiService
     {
+        Task<UserPaging> GetAll(UserRequest requestModel);
+        Task<User> GetById(int id);
         Task<User> Login(LoginModel loginModel);
     }
 }

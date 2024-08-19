@@ -1,0 +1,22 @@
+﻿@using Models
+@using Utilities
+@model Role
+
+<div id="form-role">
+    <form class="form-info">
+        @Html.HiddenFor(x => x.UserId)
+        <div class="form-group row">
+            <label class="col-md-3 col-sm-12 col-form-label" for="RoleCode">Tên vai trò<span class="text-danger"></span></label>
+            <div class="col-md-9 col-sm-12">
+                <select class="form-control select2" id="RoleId" name="RoleId">
+                    <option value=""></option>
+                    @if (Model.RoleId > 0)
+                    {
+                        <option value="@Model.RoleId" selected>@Model.TenViet</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Scripts/js/role/_FormRole.js?v@(DateTime.Now.Ticks)"></script>

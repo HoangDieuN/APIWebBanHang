@@ -32,8 +32,8 @@
             ignore: []
         }
         this.endpoints = {
-            fetchOptions: "/Role/SelectRole",
-            save: "/Role/SaveUserRole",
+            fetchOptions: "/Admin/Role/SelectRole",
+            save: "/Admin/Role/SaveUserRole",
         }
     }
 
@@ -47,6 +47,7 @@
     //#endregion properties
 
     openFormRole(idCB, callback) {
+        debugger
         $.fn.offLoading();
         $.fn.postData(ACT_ROLE_FORM, {
             userID: idCB
@@ -62,6 +63,7 @@
     }
 
     saveUserRole(data, callback) {
+        debugger
         let { endpoints } = this;
         $.fn.postFormData(endpoints.save, data, callback);
     }

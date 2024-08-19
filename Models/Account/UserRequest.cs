@@ -8,6 +8,6 @@ namespace Models
 { 
     public class UserRequest : BaseRequest
     {
-       
+       public int Id { get; set; }
     }
 }

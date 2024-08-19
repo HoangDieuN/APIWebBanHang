@@ -30,5 +30,41 @@ namespace APIServices
                 return null;
             }
         }
+        public async Task<UserPaging> GetAll(UserRequest requestModel)
+        {
+            try
+            {
+                UserPaging result = new UserPaging();
+                Response response = await RestfulApi<Response>.PostAsync($"api/user/get-all", requestModel, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<UserPaging>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"AccountApiService Error: {ex.Message}");
+                return new UserPaging();
+            }
+        }
+        public async Task<User> GetById(int id)
+        {
+            try
+            {
+                User result = null;
+                Response response = await RestfulApi<Response>.PostAsync($"api/user/get-by-userid/{id}",null, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<User>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"AccountApiService Error: {ex.Message}");
+                return null;
+            }
+        }
     }
 }

@@ -26,6 +26,9 @@
                 RoleId: {
                     required: !0,
                     maxlength: 200
+                },
+                RoleName: {
+                    required: !0,
                 }
             },
             messages: {
@@ -49,6 +52,7 @@
                     required: "Vui lòng nhập thông tin",
                     maxlength: "Không được vượt quá 200 ký tự"
                 },
+
                 RoleId: {
                     required: "Vui lòng nhập thông tin"
                 }
@@ -65,6 +69,8 @@
                     { data: "UserName", title: "Tên tài khoản", name: "UserName", width: 100 },
                     { data: "DiaChi", title: "Địa chỉ", name: "DiaChi", width: 100 },
                     { data: "Email", title: "Email", name: "Email", width: 100 },
+                    { data: "TenViet", title: "Tên quyền tv", name: "TenViet", width: 100 },
+                    { data: "RoleName", title: "Tên quyền", name: "RoleName", width: 100 },
                     {
                         data: "Id", title: "Thao tác", name: "action", width: 80,
                         render: function (data, type, row) {
@@ -95,15 +101,15 @@
         ];
         //endpoints
         this.endpoints = {
-            fetchList: "/Admin/Account/ListAccount",
+            fetchList: "/Admin/Account/ListTaiKhoan",
             pvForm: (id) => {
-                let params = { id };
+                let params = {id};
                 const searchParams = new URLSearchParams(params);
                 return `/Admin/Account/_FormAccount?${searchParams.toString()}`;
             },
             save: "/Admin/Account/Save",
             delete: "/Admin/Account/Delete",
-            fetchOptions: "Admin/Account/SelectRole"
+            fetchOptions: "Admin/Role/SelectRole"
         }
     }
     //#region properties

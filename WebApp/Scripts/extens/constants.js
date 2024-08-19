@@ -42,6 +42,7 @@ const ACT_FILEMANAGE_FILEPATHDECODE = "/Admin/FileManage/FilePathDecode";
 
 
 const OPT_DM_SANPHAM = "OPT_DM_SANPHAM";
+const OPT_Role = "OPT_Role";
 
 
 

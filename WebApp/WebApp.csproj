@@ -639,7 +639,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Role\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\root\" />
   </ItemGroup>
@@ -1025,6 +1024,8 @@
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\BaiViet\Index.cshtml" />
     <Content Include="Areas\Admin\Views\BaiViet\_FormBaiViet.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\_FormRole.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_FormAccount.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

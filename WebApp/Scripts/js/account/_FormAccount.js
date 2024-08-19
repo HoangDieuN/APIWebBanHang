@@ -13,18 +13,18 @@
         if ($loadLisTaiKhoan) $loadLisTaiKhoan();
     },
     init: function () {
-        let { sanPham, viewFileConfig, fileUpload } = this;
+        let { user, viewFileConfig, fileUpload } = this;
         //config view file
         fileUpload.setViewConfig(viewFileConfig);
         //validate init
-        this.validateRules = $.fn.cloneObject(sanPham.validateRules);
+        this.validateRules = $.fn.cloneObject(user.validateRules);
         this.validateInit();
         //page events
         this.pageEvents();
     },
     //page event
     pageEvents: function () {
-        let _this = _formSanPham;
+        let _this = _formAccount;
         let { elmForm, elmModal } = _this;
 
         $(`${elmModal} .btn-save`).off().on("click", function () {
@@ -33,7 +33,7 @@
         //input mask
         $.fn.allInputMask();
         //select year
-        $.fn.yearOnly(`${elmForm} .year-inputmask`, {});
+        $.fn.singleDatePicker(`${elmForm} .date-inputmask`, {});
         //select init
         _this.selectInit();
         //file upload init
