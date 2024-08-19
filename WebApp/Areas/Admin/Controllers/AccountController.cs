@@ -19,10 +19,13 @@ namespace WebApp.Areas.Admin.Controllers
     {
         private readonly IAccountApiService _accountApiService;
         private readonly IAttachedFileApiService _attachedFileApiService;
-        public AccountController(IAccountApiService accountApiService, IAttachedFileApiService attachedFileApiService)
+        private readonly IRoleApiService _roleApiService;
+        public AccountController(IAccountApiService accountApiService, IAttachedFileApiService attachedFileApiService, 
+            IRoleApiService roleApiService)
         {
             _accountApiService = accountApiService;
             _attachedFileApiService = attachedFileApiService;
+            _roleApiService = roleApiService;
         }
         // GET: Admin/Account
         public ActionResult Index()
@@ -175,8 +178,24 @@ namespace WebApp.Areas.Admin.Controllers
                         }
                     }
                     #endregion file đính kèm
-                    #region user role
+
+                    #region tạo user role
+                    if(requestModel.Id == 0)
+                    {
+                        Role newRole = new Role();
+                        newRole.UserId = result;
+                        newRole.RoleId = requestModel.RoleId;
+                        await _roleApiService.CreatUserRole(newRole);
+                    }
+                    else
+                    {
+                        Role newRole = new Role();
+                        newRole.UserId = requestModel.Id;
+                        newRole.RoleId = requestModel.RoleId;
+                        await _roleApiService.UpdateUserRole(newRole);
+                    }
                     #endregion user role
+
                     return Json(new { result = "success", message = "Lưu thông tin thành công" });
                 }
                 return Json(new { result = "error", message = "Lưu thông tin thất bại" });

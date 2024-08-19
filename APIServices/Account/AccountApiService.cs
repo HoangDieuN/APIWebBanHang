@@ -53,7 +53,7 @@ namespace APIServices
             try
             {
                 User result = null;
-                Response response = await RestfulApi<Response>.PostAsync($"api/user/get-by-userid/{id}",null, CommonConstants.ApiUrl);
+                Response response = await RestfulApi<Response>.GetAsync($"api/user/get-by-userid/{id}",null, CommonConstants.ApiUrl);
                 if (response.code == ResponseCode.SUCCESS)
                 {
                     result = JsonConvert.DeserializeObject<User>(response.result.ToString());

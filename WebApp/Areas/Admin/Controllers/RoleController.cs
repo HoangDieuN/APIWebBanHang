@@ -38,6 +38,7 @@ namespace WebApp.Areas.Admin.Controllers
             return PartialView(requestModel);
         }
         #endregion PartialViews
+
         #region Select
         [HttpPost]
         public async Task<ActionResult> SelectRole()
@@ -64,6 +65,44 @@ namespace WebApp.Areas.Admin.Controllers
             });
         }
         #endregion Select
+        #region Action
+        [HttpPost]
+        public async Task<ActionResult> SaveUserRole(Role requestModel)
+        {
+            try
+            {
+                //save
+                int result = await _roleApiService.UpdateUserRole(requestModel);
+                if (result > 0)
+                {
+                    return Json(new { result = "success", message = Constants.MSG_ERR_UPDATE_SUCCESS });
+                }
+                return Json(new { result = "error", message = Constants.MSG_ERR_UPDATE_FAILED });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = "error", message = $"Có lỗi xảy ra: {ex.Message}" });
+            }
+        }
+        [HttpPost]
+        public async Task<ActionResult> CreatUserRole(Role requestModel)
+        {
+            try
+            {
+                //save
+                int result = await _roleApiService.CreatUserRole(requestModel);
+                if (result > 0)
+                {
+                    return Json(new { result = "success", message = Constants.MSG_ERR_UPDATE_SUCCESS });
+                }
+                return Json(new { result = "error", message = Constants.MSG_ERR_UPDATE_FAILED });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = "error", message = $"Có lỗi xảy ra: {ex.Message}" });
+            }
+        }
+        #endregion Action
     }
 
 }

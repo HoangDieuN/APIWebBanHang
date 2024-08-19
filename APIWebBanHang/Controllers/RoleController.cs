@@ -58,7 +58,28 @@ namespace APIWebBanHang.Controllers
             }
             return res;
         }
-
+        [Route("creat-user-role")]
+        [HttpPost]
+        public async Task<object> CreatUserRole(Role requestModel)
+        {
+            Response res = new Response();
+            try
+            {
+                
+                int result = await _roleRepository.CreatUserRole(requestModel);
+                res.code = ResponseCode.SUCCESS;
+                res.message = ResponseDetail.SUCCESSDETAIL;
+                res.result = result;
+                return res;
+            }
+            catch (Exception ex)
+            {
+                res.code = ResponseCode.UNKNOWN_ERROR;
+                res.message = ResponseDetail.UNKNOWN_ERRORDETAIL + " - " + ex.Message;
+                res.result = null;
+            }
+            return res;
+        }
         [Route("update-user-role")]
         [HttpPost]
         public async Task<object> UpdateUserRole(Role requestModel)

@@ -35,7 +35,7 @@ namespace Repositories
             try
             {
                 DynamicParameters parameter = new DynamicParameters();
-                parameter.Add("UserID", requestModel.UserId);
+                parameter.Add("UserId", requestModel.UserId);
                 var result = await _baseRepository.GetList<Role>("Role_GetByUser", parameter);
                 return result.FirstOrDefault();
             }
@@ -45,15 +45,31 @@ namespace Repositories
                 return null;
             }
         }
-
         public async Task<int> UpdateUserRole(Role requestModel)
         {
             try
             {
                 DynamicParameters parameter = new DynamicParameters();
-                parameter.Add("UserID", requestModel.UserId);
-                parameter.Add("RoleCode", requestModel.RoleId);
+                parameter.Add("UserId", requestModel.UserId);
+                parameter.Add("RoleId", requestModel.RoleId);
                 var result = await _baseRepository.GetValue<int>("UserRole_Update", parameter);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"RoleRepository Error: {ex.Message}");
+                return 0;
+            }
+        }
+        public async Task<int> CreatUserRole(Role requestModel)
+        {
+            try
+            {
+                DynamicParameters parameter = new DynamicParameters();
+                parameter.Add("UserId", requestModel.UserId);
+                parameter.Add("RoleId", requestModel.RoleId);
+                parameter.Add("CreatedBy", requestModel.CreatedBy);
+                var result = await _baseRepository.GetValue<int>("User_CreatUserRole", parameter);
                 return result;
             }
             catch (Exception ex)

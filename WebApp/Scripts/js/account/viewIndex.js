@@ -64,7 +64,7 @@
                         elm: "#modal",
                         title: "CẬP NHẬT TÀI KHOẢN NGƯỜI DÙNG",
                         content: res,
-                        size: "lg",
+                        size: "xl",
                         button: modalButton.save
                     })
                 });
