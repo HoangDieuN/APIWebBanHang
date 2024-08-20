@@ -34,6 +34,7 @@
         this.endpoints = {
             fetchOptions: "/Admin/Role/SelectRole",
             save: "/Admin/Role/SaveUserRole",
+            formRole:"Role/_FormRole"
         }
     }
 
@@ -46,11 +47,11 @@
     }
     //#endregion properties
 
-    openFormRole(idCB, callback) {
+    openFormRole(id, callback) {
         debugger
         $.fn.offLoading();
-        $.fn.postData(ACT_ROLE_FORM, {
-            userID: idCB
+        $.fn.postData(this.endpoints.formRole, {
+            userId: id
         }, (res) => {
             showModal({
                 elm: "#modal",

@@ -13,6 +13,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using Utilities;
+
+
 namespace WebApp.Areas.Admin.Controllers
 {
     public class AccountController : Controller
@@ -30,6 +32,12 @@ namespace WebApp.Areas.Admin.Controllers
         // GET: Admin/Account
         public ActionResult Index()
         {
+            //if (Session["user"] != null)
+            //{
+            //    return Redirect("Admin/Account/Login");
+            //}
+            //User user = (User)Session["user"];
+            //ViewBag.UserName = user.UserName;
             return View();
         }
         
@@ -74,8 +82,10 @@ namespace WebApp.Areas.Admin.Controllers
             User user = await _accountApiService.Login(loginModel);
             if (user != null)
             {
+                //tạo token( tạm thời chưa cần dùng)
                 var token = Generate(user);
-
+                //lưu session
+                Session["user"] = user;
                 return Json(new
                 {
                     data = user,
@@ -205,6 +215,56 @@ namespace WebApp.Areas.Admin.Controllers
                 return Json(new { result = "error", message = "Có lỗi xảy ra: " + ex.Message });
             }
 
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(UserRequest requestModel)
+        {
+            try
+            {
+                //requestModel.UpdateBy = User.ID_cb;
+                //call api
+                int result = await _accountApiService.Delete(requestModel);
+                if (result > 0)
+                {
+                    RoleRequest roleRequest = new RoleRequest();
+                    roleRequest.UserId = int.Parse(requestModel.Ids);
+                    await _roleApiService.DeleteUserRole(roleRequest);
+                    return Json(new { result = "success", message = "Xóa thành công" });
+                }
+                return Json(new { result = "error", message = "Xóa thất bại" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = "error", message = "Có lỗi xảy ra: " + ex.Message });
+            }
+        }
+        [HttpGet]
+        public async Task<ActionResult> GetById(int id)
+        {
+            try
+            {
+                //get danh sách cán bộ
+                User model = await _accountApiService.GetById(id);
+                if (model != null)
+                {
+                    return Json(new
+                    {
+                        data = model,
+                        result = "success",
+                        message = "Tải dữ liệu thành công"
+                    }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new
+                {
+                    result = "error",
+                    message = "Không tìm thấy thông tin"
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = "error", message = $"Có lỗi xảy ra: {ex.Message}" }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Repositories
     {
         //đăng kí hoặc tạo mới 1 user
         Task<int> Creat(User requestModel);
+        Task<int> Delete(UserRequest requestModel);
         Task<UserPaging> GetAll(UserRequest requestModel);
         Task<User> GetUserByUserId(int id);
 

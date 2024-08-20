@@ -100,9 +100,11 @@
                 const searchParams = new URLSearchParams(params);
                 return `/Admin/Account/_FormAccount?${searchParams.toString()}`;
             },
+            fetchById: id => `/Amin/Account/GetById?id=${id}`,
             save: "/Admin/Account/Save",
             delete: "/Admin/Account/Delete",
-            fetchOptions: "Admin/Role/SelectRole"
+            fetchOptions: "Admin/Role/SelectRole",
+            
         }
     }
     //#region properties
@@ -153,7 +155,10 @@
         })
         this.setTable(table);
     }
-
+    fetchById(id, callback) {
+        let { endpoints } = this;
+        $.fn.getData(endpoints.fetchById(id), {}, callback);
+    }
     pvForm(id, callback) {
         let { endpoints } = this;
         $.fn.loading();

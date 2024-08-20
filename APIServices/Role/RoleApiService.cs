@@ -84,7 +84,24 @@ namespace APIServices
                 return 0;
             }
         }
-
+        public async Task<int> DeleteUserRole(RoleRequest requestModel)
+        {
+            try
+            {
+                int result = 0;
+                Response response = await RestfulApi<Response>.DeleteAsync($"api/vai-tro/delete", requestModel);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<int>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"RoleApiService Error: {ex.Message}");
+                return 0;
+            }
+        }
         public async Task<int> UpdateImage(Role requestModel)
         {
             try

@@ -10,6 +10,7 @@ namespace APIServices
     public interface IAccountApiService
     {
         Task<int> Creat(User user);
+        Task<int> Delete(UserRequest requestModel);
         Task<UserPaging> GetAll(UserRequest requestModel);
         Task<User> GetById(int id);
         Task<User> Login(LoginModel loginModel);

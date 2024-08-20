@@ -80,6 +80,27 @@ namespace APIWebBanHang.Controllers
             }
             return res;
         }
+        [Route("delete")]
+        [HttpDelete]
+        public async Task<object> DeleteUserRole(RoleRequest requestModel)
+        {
+            Response res = new Response();
+            try
+            {
+                int result = await _roleRepository.DeleteUserRole(requestModel);
+                res.code = result > 0 ? ResponseCode.SUCCESS : ResponseCode.UPDATE_ERROR;
+                res.message = result > 0 ? ResponseDetail.SUCCESSDETAIL : ResponseDetail.UPDATE_ERRORDETAIL;
+                res.result = result;
+            }
+            catch (Exception ex)
+            {
+                res.code = ResponseCode.UNKNOWN_ERROR;
+                res.message = ResponseDetail.UNKNOWN_ERRORDETAIL + " - " + ex.Message;
+                res.result = null;
+            }
+            return res;
+        }
+
         [Route("update-user-role")]
         [HttpPost]
         public async Task<object> UpdateUserRole(Role requestModel)

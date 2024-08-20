@@ -1,6 +1,7 @@
 ﻿var viewIndex = {
     elmTable: "#tbl-danhsach",
     elmTableToolbar: "#tbl-danhsach-toolbar",
+    role: new Role(),
     user: new User(),
     keywordsFilter: { elm: "#txt-keywords" },
     init: function () {
@@ -51,7 +52,7 @@
     },
     tableEvents: function () {
         let _this = viewIndex;
-        let { user, elmTable } = _this;
+        let { user,role, elmTable } = _this;
         //edit
         $(`${elmTable} .btn-edit`).off().on("click", function () {
             debugger
@@ -69,6 +70,27 @@
                     })
                 });
             } else {
+                $.fn.showAlert('Không tìm thấy thông tin đã chọn', 'warning');
+            }
+        })
+        //cập nhật quyền
+        $(`${elmTable} .btn-role`).off().on("click", function () {
+            debugger
+            let table = user.getTable();
+            let tr = $(this).closest("tr");
+            let row = table.row(tr).data();
+            if (row.Id) {
+                role.openFormRole(row.Id, (res) => {
+                    showModal({
+                        elm: "#modal",
+                        title: "PHÂN QUYỀN",
+                        content: res,
+                        size: "lg",
+                        button: modalButton.save
+                    })
+                });
+            }
+            else {
                 $.fn.showAlert('Không tìm thấy thông tin đã chọn', 'warning');
             }
         })

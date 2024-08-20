@@ -9,6 +9,7 @@ namespace Repositories
     public interface IRoleRepository
     {
         Task<int> CreatUserRole(Role requestModel);
+        Task<int> DeleteUserRole(RoleRequest requestModel);
         Task<List<Role>> GetAll();
         Task<Role> GetByUser(RoleRequest requestModel);
         Task<int> UpdateImage(Role requestModel);

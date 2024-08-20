@@ -112,6 +112,21 @@ namespace Repositories
                 return null;
             }
         }
-
+        public async Task<int> Delete(UserRequest requestModel)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Ids", requestModel.Ids);
+                parameters.Add("@DeletedBy", requestModel.DeletedBy);
+                var result = await _baseRepository.GetValue<int>("User_Delete", parameters);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"AccountRepository Error: {ex.Message}");
+                return 0;
+            }
+        }
     }
 }

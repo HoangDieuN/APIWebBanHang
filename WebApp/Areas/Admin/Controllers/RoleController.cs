@@ -35,7 +35,7 @@ namespace WebApp.Areas.Admin.Controllers
                     UserId = requestModel.UserId
                 };
             }
-            return PartialView(requestModel);
+            return PartialView(model);
         }
         #endregion PartialViews
 
@@ -102,6 +102,7 @@ namespace WebApp.Areas.Admin.Controllers
                 return Json(new { result = "error", message = $"Có lỗi xảy ra: {ex.Message}" });
             }
         }
+
         #endregion Action
     }
 

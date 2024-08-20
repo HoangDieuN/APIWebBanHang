@@ -1,11 +1,11 @@
 ﻿var _formRole = {
     elmModal: "#modal",
     elmForm: "#form-role",
-    user: new User(),
     role: new Role(),
-    roleSelect: { elm: "#form-role #TenViet" },
-    loadLisTaiKhoan: function () {
-        if ($loadLisTaiKhoan) $loadLisTaiKhoan();
+    user: new User(),
+    roleSelect: { elm: "#form-role #RoleId" },
+    loadListTaiKhoan: function () {
+        if ($loadListTaiKhoan) $loadListTaiKhoan();
     },
     init: function () {
         let { user } = this;
@@ -44,7 +44,7 @@
     //validate form
     validateForm: function () {
         let _this = _formRole;
-        let { elmForm, validateRules, canBo } = _this;
+        let { elmForm, validateRules, user } = _this;
         let error = {
             isValid: true,
             message: "Vui lòng kiểm tra lại thông tin nhập"
@@ -78,7 +78,7 @@
             role.saveUserRole(formData, res => {
                 $.fn.offLoading();
                 if (res.result == "success") {
-                    _this.loadLisTaiKhoan();
+                    _this.loadListTaiKhoan();
                     closeModal(elmModal);
                 }
                 $.fn.showAlert(res.message, 'success');

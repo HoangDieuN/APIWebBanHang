@@ -8,6 +8,9 @@ namespace Models
 { 
     public class UserRequest : BaseRequest
     {
-       public int Id { get; set; }
+       public string Ids { get; set; }
+       public int UserId { get; set; }
+       public string DeletedBy {  get; set; }
+
     }
 }

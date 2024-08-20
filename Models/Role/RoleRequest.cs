@@ -10,6 +10,8 @@ namespace Models
     {
         public int UserId { get; set; }
         public int UserName { get; set; }
+        public string Ids {  get; set; }
+        public string DeletedBy {  get; set; }
 
     }
 }

@@ -61,6 +61,21 @@ namespace Repositories
                 return 0;
             }
         }
+        public async Task<int> DeleteUserRole(RoleRequest requestModel)
+        {
+            try
+            {
+                DynamicParameters parameter = new DynamicParameters();
+                parameter.Add("UserId", requestModel.UserId);
+                var result = await _baseRepository.GetValue<int>("UserRole_Delete", parameter);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"RoleRepository Error: {ex.Message}");
+                return 0;
+            }
+        }
         public async Task<int> CreatUserRole(Role requestModel)
         {
             try
