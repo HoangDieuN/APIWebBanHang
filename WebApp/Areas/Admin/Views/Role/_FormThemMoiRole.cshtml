@@ -1,0 +1,29 @@
+﻿@using Models
+@using Utilities
+@model Role
+
+<div id="form-themmoirole">
+    <div class="row">
+        <div class="col-sm-12 group-label mb-2">
+            <h4>THÔNG TIN QUYỀN </h4>
+        </div>
+    </div>
+    <form class="form-info">
+        @Html.HiddenFor(x => x.Id)
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="RoleName">Tên quyền<span class="text-danger">*</span></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="RoleName" name="RoleName" value="@Model.RoleName">
+            </div>
+            <label class="col-sm-2 col-form-label" for="TenViet">Tên việt<span class="text-danger">*</span></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="TenViet" name="TenViet" value="@Model.TenViet">
+            </div>
+        </div>    
+    </form>
+</div>
+
+<script src="~/Scripts/js/role/_FormThemMoiRole.js?v=@(DateTime.Now.Ticks)"></script>
+
+
+

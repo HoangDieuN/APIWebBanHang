@@ -45,11 +45,11 @@
             fetchOptions: "/Admin/Role/SelectRole",
             save: "/Admin/Role/SaveUserRole",
             fetchList:"/Role/ListQuyen",
-            formRole: "Role/_FormRole",
+            formRole: "/Admin/Role/_FormRole",
             formThemMoiRole: (id) => {
                 let params = { id };
                 const searchParams = new URLSearchParams(params);
-                return `/Role/_FormThemMoiRole?${searchParams.toString()}`;
+                return `/Admin/Role/_FormThemMoiRole?${searchParams.toString()}`;
             },
         }
     }

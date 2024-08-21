@@ -647,6 +647,7 @@
     <Content Include="Scripts\js\role\role.config.js" />
     <Content Include="Scripts\js\role\viewIndex.js" />
     <Content Include="Scripts\js\role\_FormRole.js" />
+    <Content Include="Scripts\js\role\_FormThemMoiRole.js" />
     <Content Include="Scripts\js\san-pham\sanPham.config.js" />
     <Content Include="Scripts\js\san-pham\viewIndex.js" />
     <Content Include="Scripts\js\san-pham\_FormSanPham.js" />
@@ -1058,6 +1059,7 @@
     <Content Include="Areas\Admin\Views\Role\_FormRole.cshtml" />
     <Content Include="Areas\Admin\Views\Account\_FormAccount.cshtml" />
     <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\_FormThemMoiRole.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

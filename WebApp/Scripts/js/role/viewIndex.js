@@ -22,6 +22,7 @@
         let { role } = _this;
         //add
         $("#btn-add").on("click", function () {
+            debugger
             role.formThemMoiRole(0, (res) => {
                 showModal({
                     elm: "#modal",
@@ -35,7 +36,7 @@
     },
     tableEvents: function () {
         let _this = viewIndex;
-        let { danhMucSanPham, elmTable } = _this;
+        let { role, elmTable } = _this;
  
         //delete
         //$(`${elmTable} .btn-del`).off().on("click", function () {
