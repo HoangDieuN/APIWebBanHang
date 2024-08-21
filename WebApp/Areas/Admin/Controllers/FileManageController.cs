@@ -12,7 +12,8 @@ using System.Web.Mvc;
 using Utilities;
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class FileManageController : Controller
+    [Authorization]
+    public class FileManageController : BaseController
     {
         // GET: FileManage
         private readonly IAttachedFileApiService _attachedFileApiService;
@@ -109,7 +110,7 @@ namespace WebApp.Areas.Admin.Controllers
                     int rsAttachedFile = await _attachedFileApiService.Create(new AttachedFile()
                     {
                         ListAttachedFile = listAttachedFiles,
-                        //UpdatedBy = User.ID_cb
+                        UpdatedBy = User.UserName
                     });
                 }
                 else
@@ -212,7 +213,7 @@ namespace WebApp.Areas.Admin.Controllers
         {
             try
             {
-                //attachFile.UpdatedBy = User.ID_cb;
+                attachFile.UpdatedBy = User.UserName;
                 //call api
                 int result = await _attachedFileApiService.Delete(attachFile);
                 if (result > 0)

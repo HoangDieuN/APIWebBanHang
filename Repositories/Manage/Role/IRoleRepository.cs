@@ -11,6 +11,8 @@ namespace Repositories
         Task<int> CreatUserRole(Role requestModel);
         Task<int> DeleteUserRole(RoleRequest requestModel);
         Task<List<Role>> GetAll();
+        Task<RolePaging> GetAllPaging(RoleRequest requestModel);
+        Task<Role> GetById(int id);
         Task<Role> GetByUser(RoleRequest requestModel);
         Task<int> UpdateImage(Role requestModel);
         Task<int> UpdateUserRole(Role requestModel);

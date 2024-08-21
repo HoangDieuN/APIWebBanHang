@@ -104,11 +104,13 @@
     <Compile Include="CallApi\RestfulApi.cs" />
     <Compile Include="CommonConstants.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Helper\AuthorizationAttribute.cs" />
     <Compile Include="Helper\ParamsHelper.cs" />
     <Compile Include="Render\Encryptor.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Helper\FileManageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionConfig\SessionControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

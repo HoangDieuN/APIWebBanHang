@@ -14,5 +14,7 @@ namespace Utilities
         public static string JwtIssuer = ConfigurationManager.AppSettings["JWT:Issuer"];
         public static string JwtAudience = ConfigurationManager.AppSettings["JWT:Audience"];
 
+        public static string User = "User";
+
     }
 }

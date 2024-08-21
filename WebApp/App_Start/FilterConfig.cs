@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace WebApp
 {
-    public class FilterConfig
+    public class FilterConfig : FilterAttribute
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {

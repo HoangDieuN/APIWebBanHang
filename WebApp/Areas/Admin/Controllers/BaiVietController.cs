@@ -11,7 +11,8 @@ using Utilities;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class BaiVietController : Controller
+    [Authorization]
+    public class BaiVietController : BaseController
     {
         private readonly IBaiVietApiService _baiVietApiService;
         private readonly IAttachedFileApiService _attachedFileApiService;
@@ -68,13 +69,13 @@ namespace WebApp.Areas.Admin.Controllers
 
                 if (requestModel.Id > 0)
                 {
-                    //requestModel.UpdateBy = User.ID_cb;
+                    requestModel.UpdatedBy = User.UserName;
                     //call api update sản phẩm
                     result = await _baiVietApiService.Update(requestModel);
                 }
                 else
                 {
-                    //requestModel.CreatedBy = User.ID_cb;
+                    requestModel.CreatedBy = User.UserName;
                     //call api insert sản phẩm
                     result = await _baiVietApiService.Creat(requestModel);
 
@@ -119,7 +120,7 @@ namespace WebApp.Areas.Admin.Controllers
                             await _attachedFileApiService.Create(new AttachedFile()
                             {
                                 ListAttachedFile = listAttachedFiles,
-                                UpdatedBy = "HoangDieu"
+                                UpdatedBy = User.UserName
                             });
                         }
                     }
@@ -139,7 +140,7 @@ namespace WebApp.Areas.Admin.Controllers
         {
             try
             {
-                //requestModel.UpdateBy = User.Identity;
+                requestModel.DeletedBy = User.UserName;
                 //call api
                 int result = await _baiVietApiService.Delete(requestModel);
                 if (result > 0)
@@ -158,7 +159,7 @@ namespace WebApp.Areas.Admin.Controllers
         {
             try
             {
-                //requestModel.IsAvtive = true;
+                requestModel.UpdatedBy = User.UserName;
                 //call api
                 int result = await _baiVietApiService.UpdateActive(requestModel);
                 if (result > 0)

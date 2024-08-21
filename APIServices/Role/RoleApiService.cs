@@ -30,6 +30,42 @@ namespace APIServices
                 return new List<Role>();
             }
         }
+        public async Task<RolePaging> GetAllPaging(RoleRequest roleRequest)
+        {
+            try
+            {
+                RolePaging result = new RolePaging();
+                Response response = await RestfulApi<Response>.PostAsync($"api/vai-tro/danh-sach-paging", roleRequest);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<RolePaging>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"RoleApiService Error: {ex.Message}");
+                return new RolePaging();
+            }
+        }
+        public async Task<Role> GetById(int id)
+        {
+            try
+            {
+                Role result = null;
+                Response response = await RestfulApi<Response>.GetAsync($"api/vai-tro/danh-sach/{id}", null, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<Role>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"RoleApiService Error: {ex.Message}");
+                return null;
+            }
+        }
         public async Task<Role> GetByUser(RoleRequest requestModel)
         {
             try

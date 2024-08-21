@@ -14,10 +14,10 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using Utilities;
 
-
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class AccountController : Controller
+    [Authorization]
+    public class AccountController : BaseController
     {
         private readonly IAccountApiService _accountApiService;
         private readonly IAttachedFileApiService _attachedFileApiService;
@@ -32,12 +32,6 @@ namespace WebApp.Areas.Admin.Controllers
         // GET: Admin/Account
         public ActionResult Index()
         {
-            //if (Session["user"] != null)
-            //{
-            //    return Redirect("Admin/Account/Login");
-            //}
-            //User user = (User)Session["user"];
-            //ViewBag.UserName = user.UserName;
             return View();
         }
         
@@ -76,21 +70,24 @@ namespace WebApp.Areas.Admin.Controllers
         {         
             return View();
         }
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> LoginSubMit(LoginModel loginModel)
         {
             User user = await _accountApiService.Login(loginModel);
             if (user != null)
             {
-                //tạo token( tạm thời chưa cần dùng)
-                var token = Generate(user);
-                //lưu session
-                Session["user"] = user;
+                //tạo token(chưa cần thiết)
+                //Generate(user);
+
+                //tạo sesion
+                SessionControl.AddNormalSession(CommonConstants.User, user, 160);
+
                 return Json(new
                 {
                     data = user,
                     result = "success",
-                    message = "Đăng nhập  thành công"
+                    message = $"Đăng nhập  thành công, xin chào {user.UserName}"
                 });
             }
             return Json(new
@@ -99,7 +96,21 @@ namespace WebApp.Areas.Admin.Controllers
                 message = "Có lỗi xảy ra"
             });
         }
-
+        public ActionResult GetUserInfo()
+        {
+            User userinfor = SessionControl.GetSessionUserInfo<User>();
+            var info = new
+            {
+                Id = userinfor.Id,
+                UserName = userinfor.UserName,
+                HoTen = userinfor.HoTen,
+                DiaChi = userinfor.DiaChi,  
+                Email = userinfor.Email,
+                RoleId = userinfor.RoleId,
+                RoleName = userinfor.RoleName
+            };
+            return Json(new { info });
+        }
         private string Generate(User user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(CommonConstants.JwtKey));
@@ -133,13 +144,13 @@ namespace WebApp.Areas.Admin.Controllers
 
                 if (requestModel.Id > 0)
                 {
-                    //requestModel.UpdateBy = User.ID_cb;
+                    requestModel.DeletedBy = User.UserName;
                     //call api update người dùng
                     result = await _accountApiService.Update(requestModel);
                 }
                 else
                 {
-                    //requestModel.CreatedBy = User.ID_cb;
+                    requestModel.CreatedBy = User.UserName;
                     //call api insert người dùng
                     result = await _accountApiService.Creat(requestModel);
 
@@ -222,7 +233,7 @@ namespace WebApp.Areas.Admin.Controllers
         {
             try
             {
-                //requestModel.UpdateBy = User.ID_cb;
+                requestModel.DeletedBy = User.UserName;
                 //call api
                 int result = await _accountApiService.Delete(requestModel);
                 if (result > 0)
@@ -239,6 +250,12 @@ namespace WebApp.Areas.Admin.Controllers
                 return Json(new { result = "error", message = "Có lỗi xảy ra: " + ex.Message });
             }
         }
+        public ActionResult LogOut()
+        {
+            SessionControl.DeleteNormalSession(CommonConstants.User);
+            return new EmptyResult();
+        }
+
         [HttpGet]
         public async Task<ActionResult> GetById(int id)
         {

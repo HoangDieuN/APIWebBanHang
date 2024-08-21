@@ -9,7 +9,8 @@ using System.Web.Mvc;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class DMSanPhamController : Controller
+    [Authorization]
+    public class DMSanPhamController : BaseController
     {
         private readonly IDMSanPhamApiService _dMSanPhamApiService;
         public DMSanPhamController(IDMSanPhamApiService dMSanPhamApiService)
@@ -58,10 +59,12 @@ namespace WebApp.Areas.Admin.Controllers
                 int result = 0;
                 if(requestModel.Id > 0)
                 {
+                    requestModel.UpdatedBy = User.UserName;
                     result = await _dMSanPhamApiService.Update(requestModel);
                 }
                 else
                 {
+                    requestModel.CreatedBy = User.UserName;
                     result = await _dMSanPhamApiService.Creat(requestModel);
                 }
                 if(result > 0)
@@ -81,6 +84,7 @@ namespace WebApp.Areas.Admin.Controllers
         {
             try
             {
+                requestModel.DeletedBy = User.UserName;
                 int result = await _dMSanPhamApiService.Delete(requestModel);
                 if(result > 0)
                 {

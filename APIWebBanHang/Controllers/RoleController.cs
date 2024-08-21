@@ -37,7 +37,46 @@ namespace APIWebBanHang.Controllers
             }
             return res;
         }
-
+        [Route("danh-sach-paging")]
+        [HttpPost]
+        public async Task<object> GetAllPaging(RoleRequest roleRequest)
+        {
+            Response res = new Response();
+            try
+            {
+                RolePaging result = await _roleRepository.GetAllPaging(roleRequest);
+                res.code = ResponseCode.SUCCESS;
+                res.message = ResponseDetail.SUCCESSDETAIL;
+                res.result = result;
+            }
+            catch (Exception ex)
+            {
+                res.code = ResponseCode.UNKNOWN_ERROR;
+                res.message = ResponseDetail.UNKNOWN_ERRORDETAIL + " - " + ex.Message;
+                res.result = null;
+            }
+            return res;
+        }
+        [Route("danh-sach/{id}")]
+        [HttpPost]
+        public async Task<object> GetById(int id)
+        {
+            Response res = new Response();
+            try
+            {
+                Role result = await _roleRepository.GetById(id);
+                res.code = ResponseCode.SUCCESS;
+                res.message = ResponseDetail.SUCCESSDETAIL;
+                res.result = result;
+            }
+            catch (Exception ex)
+            {
+                res.code = ResponseCode.UNKNOWN_ERROR;
+                res.message = ResponseDetail.UNKNOWN_ERRORDETAIL + " - " + ex.Message;
+                res.result = null;
+            }
+            return res;
+        }
         [Route("nguoi-dung")]
         [HttpPost]
         public async Task<object> GetByUser(RoleRequest requestModel)

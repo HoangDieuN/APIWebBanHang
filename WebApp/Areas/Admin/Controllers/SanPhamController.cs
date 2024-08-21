@@ -9,9 +9,11 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using Utilities;
 
+
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class SanPhamController : Controller
+    [Authorization]
+    public class SanPhamController : BaseController
     {
         private readonly ISanPhamApiService _sanPhamApiService;
         private readonly IAttachedFileApiService _attachedFileApiService;
@@ -68,13 +70,13 @@ namespace WebApp.Areas.Admin.Controllers
 
                 if (requestModel.Id > 0)
                 {
-                    //requestModel.UpdateBy = User.ID_cb;
+                    requestModel.UpdatedBy = User.UserName;
                     //call api update sản phẩm
                     result = await _sanPhamApiService.Update(requestModel);
                 }
                 else
                 {
-                    //requestModel.CreatedBy = User.ID_cb;
+                    requestModel.CreatedBy = User.UserName;
                     //call api insert sản phẩm
                     result = await _sanPhamApiService.Creat(requestModel);
 
@@ -138,7 +140,7 @@ namespace WebApp.Areas.Admin.Controllers
         {
             try
             {
-                //requestModel.UpdateBy = User.Identity;
+                requestModel.DeletedBy = User.UserName;
                 //call api
                 int result = await _sanPhamApiService.Delete(requestModel);
                 if (result > 0)

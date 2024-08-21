@@ -26,7 +26,7 @@ namespace APIWebBanHang
             services.AddControllers();
             services.AddOptions();
             services.AddCors();
-
+          
             #endregion Common
         }
 

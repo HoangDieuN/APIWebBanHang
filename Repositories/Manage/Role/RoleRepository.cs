@@ -2,6 +2,7 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,7 +30,29 @@ namespace Repositories
                 return new List<Role>();
             }
         }
-
+        public async Task<RolePaging> GetAllPaging(RoleRequest requestModel)
+        {
+            try
+            {
+                RolePaging pagedResult = new RolePaging();
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Keywords", requestModel.Keywords);
+                parameters.Add("@Start", requestModel.Start);
+                parameters.Add("@Length", requestModel.Length);
+                parameters.Add("@Count", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var result = await _baseRepository.GetMultipleList("Role_GetAllPaging", parameters, read =>
+                {
+                    pagedResult.ListQuyen = read.Read<Role>().ToList();
+                    pagedResult.Total = parameters.Get<int>("@Count");
+                });
+                return pagedResult;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"RoleRepository Error: {ex.Message}");
+                return new RolePaging();
+            }
+        }
         public async Task<Role> GetByUser(RoleRequest requestModel)
         {
             try
@@ -37,6 +60,21 @@ namespace Repositories
                 DynamicParameters parameter = new DynamicParameters();
                 parameter.Add("UserId", requestModel.UserId);
                 var result = await _baseRepository.GetList<Role>("Role_GetByUser", parameter);
+                return result.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"RoleRepository Error: {ex.Message}");
+                return null;
+            }
+        }
+        public async Task<Role> GetById(int id)
+        {
+            try
+            {
+                DynamicParameters parameter = new DynamicParameters();
+                parameter.Add("@Id", id);
+                var result = await _baseRepository.GetList<Role>("Role_GetById", parameter);
                 return result.FirstOrDefault();
             }
             catch (Exception ex)
