@@ -11,5 +11,6 @@ namespace Models
         public string Ids { get; set; }
         public int Nam { get; set; }
         public int DanhMucId { get; set; }
+        public string MaDMSanPham { get; set; }
     }
 }

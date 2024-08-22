@@ -209,8 +209,13 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\BaiVietController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DMSanPhamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -644,6 +649,7 @@
     <Content Include="Scripts\js\danh-muc-san-pham\danhMucSanPham.config.js" />
     <Content Include="Scripts\js\danh-muc-san-pham\viewIndex.js" />
     <Content Include="Scripts\js\danh-muc-san-pham\_FormDMSanPham.js" />
+    <Content Include="Scripts\js\index_home\Layout.js" />
     <Content Include="Scripts\js\role\role.config.js" />
     <Content Include="Scripts\js\role\viewIndex.js" />
     <Content Include="Scripts\js\role\_FormRole.js" />
@@ -673,6 +679,11 @@
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\root\" />
+    <Folder Include="Views\Authentication\" />
+    <Folder Include="Views\BaiViet\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Menu\" />
+    <Folder Include="Views\_PartialMenuSanPham\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -1061,6 +1072,9 @@
     <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Role\_FormThemMoiRole.cshtml" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\_PartialMenuTop.cshtml" />
+    <Content Include="Views\DMSanPham\_PartialMenuDanhMucSanPham.cshtml" />
+    <Content Include="Views\DMSanPham\_PartialMenuArrivalsDMSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\APIServices\APIServices.csproj">

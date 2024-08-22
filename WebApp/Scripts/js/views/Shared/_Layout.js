@@ -1,8 +1,4 @@
 ﻿$(function () {
-    // $('#modal, #sub-modal').on('fadeInComplete', function () {
-    //     $($.fn.dataTable.tables(true)).DataTable()
-    //         .columns.adjust();
-    // });
 
     $('#modal button.close, #modal .nv-modal-close').on('click', function () {
         $.fn.closeMainModal();

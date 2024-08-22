@@ -1,8 +1,34 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using Models;
+@{
+    ViewBag.Title = "Shop online";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
+<link rel="stylesheet" type="text/css" href="~/Content/assetkh/styles/main_styles.css">
+<!-- Slider -->
 
-<h1>Trang chủ người dùng</h1>
+<div class="main_slider" style="background-image:url(Content/assetkh/images/slider_1.jpg)">
+    <div class="container fill_height">
+        <div class="row align-items-center fill_height">
+            <div class="col">
+                <div class="main_slider_content">
+                    <h6>Spring / Summer Collection 2024</h6>
+                    <h1>Get up to 30% Off New Arrivals</h1>
+                    <div class="red_button shop_now_button"><a href="#">shop now</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Menu _PartialDMSanPham -->
+<div id="_partialViewDsDanhMucSanPham"></div>
+<!-- New Arrivals -->
+
+<div class="new_arrivals">
+    <div class="container">
+        <div id="_partialMenuArrvals"></div>
+    </div>
+</div>
+
+

@@ -6,13 +6,17 @@ using System.Web.Mvc;
 
 namespace WebApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
             return View();
         }
 
+        public ActionResult _PartialMenuTop()
+        {
+            return PartialView("~/Views/Home/_PartialMenuTop.cshtml");
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

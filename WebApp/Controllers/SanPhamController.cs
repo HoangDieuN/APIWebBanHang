@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace WebApp.Controllers
 {
-    public class SanPhamController : Controller
+    public class SanPhamController : BaseController
     {
         private readonly ISanPhamApiService _sanPhamApiService;
         public SanPhamController(ISanPhamApiService sanPhamApiService)
@@ -22,7 +22,12 @@ namespace WebApp.Controllers
         {
             return View();
         }
-  
+        [HttpGet]
+        public async Task<ActionResult> MenuSanPhamByMaDMSanPham(SanPhamRequest sanPhamRequest)
+        {
+            //SanPhamPaging ds = await _sanPhamApiService.get
+            return PartialView();
+        }
         [HttpPost]
         public async Task<ActionResult> ListSanPham(SanPhamRequest requestModel)
         {
