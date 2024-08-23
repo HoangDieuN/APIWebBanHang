@@ -19,10 +19,11 @@ namespace Models
         public float PhanTramGiam { get; set; }
         public string GroupFile { get; set; }
         public bool IsActive { get; set; }
-
+        public string LinkAnh { get; set; }
         public string Ids { get; set; }
         #region extent properties
         public string TenDanhMucSP { get; set; }
+        public string MaDanhMucSP { get; set; }
         #endregion
 
     }

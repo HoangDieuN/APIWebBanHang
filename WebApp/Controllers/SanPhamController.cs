@@ -25,8 +25,14 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<ActionResult> MenuSanPhamByMaDMSanPham(SanPhamRequest sanPhamRequest)
         {
-            //SanPhamPaging ds = await _sanPhamApiService.get
-            return PartialView();
+            SanPhamPaging ds = await _sanPhamApiService.GetAll(sanPhamRequest);
+            return PartialView("_MenuSanPhamByMaDMSanPham",ds);
+        }
+        [HttpGet]
+        public async Task<ActionResult> MenuSanPhamDangSale(SanPhamRequest sanPhamRequest)
+        {
+            SanPhamPaging ds = await _sanPhamApiService.GetAll(sanPhamRequest);
+            return PartialView("_MenuSanPhamDangSale", ds);
         }
         [HttpPost]
         public async Task<ActionResult> ListSanPham(SanPhamRequest requestModel)

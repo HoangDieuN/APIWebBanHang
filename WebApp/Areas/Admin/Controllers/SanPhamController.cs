@@ -120,7 +120,7 @@ namespace WebApp.Areas.Admin.Controllers
                             await _attachedFileApiService.Create(new AttachedFile()
                             {
                                 ListAttachedFile = listAttachedFiles,
-                                UpdatedBy = "HoangDieu"
+                                UpdatedBy = User.UserName
                             });
                         }
                     }

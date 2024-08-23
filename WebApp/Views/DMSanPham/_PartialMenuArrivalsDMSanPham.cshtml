@@ -1,12 +1,13 @@
 ﻿@using Models
 @model DanhMucSanPhamPaging
 
+<!-- New Arrivals -->
 @if (Model.ListDanhMucSanPham != null && Model.ListDanhMucSanPham.Any())
 {
     <div class="row">
         <div class="col text-center">
             <div class="section_title new_arrivals_title">
-                <h2>New Arrivals</h2>
+                <h2>Sản phẩm theo danh mục</h2>
             </div>
         </div>
     </div>
@@ -17,7 +18,7 @@
                     <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
                     @foreach (var item in Model.ListDanhMucSanPham)
                     {
-                        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".@item.Id">@item.TenDanhMucSP</li>
+                        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".@item.MaDanhMucSP">@item.TenDanhMucSP</li>
                     }
                 </ul>
             </div>
@@ -31,4 +32,6 @@
         </div>
     </div>
 }
+<script src="~/Content/assetkh/plugins/Isotope/isotope.pkgd.min.js"></script>
 
+<script src="~/Content/assetkh/js/custom.js"></script>

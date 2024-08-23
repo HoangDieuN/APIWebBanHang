@@ -17,6 +17,10 @@ namespace WebApp.Controllers
         {
             return PartialView("~/Views/Home/_PartialMenuTop.cshtml");
         }
+        public ActionResult _PartialMenuBenefit()
+        {
+            return PartialView("~/Views/Home/_PartialMenuBenefit.cshtml");
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

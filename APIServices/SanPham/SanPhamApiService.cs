@@ -30,6 +30,24 @@ namespace APIServices
                 return new SanPhamPaging();
             }
         }
+        public async Task<SanPhamPaging> GetAllByDanhMucId(int id)
+        {
+            try
+            {
+                SanPhamPaging result = new SanPhamPaging();
+                Response response = await RestfulApi<Response>.PostAsync($"api/san-pham/danh-sach-by-danhmucid/{id}", null, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<SanPhamPaging>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"SanPhamApiService Error: {ex.Message}");
+                return new SanPhamPaging();
+            }
+        }
         public async Task<int> Creat(SanPham requestModel)
         {
             try

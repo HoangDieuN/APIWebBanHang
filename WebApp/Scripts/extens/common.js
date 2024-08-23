@@ -162,15 +162,6 @@ $.fn.formatCurrency = (n, currency) => {
     return str;
 }
 
-// //download file
-// $.fn.downloadFileWithPath = (filePath) => {
-//     if (filePath != null && filePath != "")
-//         window.open(`${ACT_FILEMANAGE_DOWNLOAD}${filePath}`);
-//     else {
-//         $.fn.toastrMessage("Không tìm thấy file", "Thông báo", "error");
-//     }
-// }
-
 //download file
 $.fn.downloadFile = (params) => {
     $.fn.loading();

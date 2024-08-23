@@ -39,7 +39,7 @@ namespace APIWebBanHang.Controllers
             }
             return res;
         }
-
+ 
 
         [Route("danh-sach/{id}")]
         [HttpGet]

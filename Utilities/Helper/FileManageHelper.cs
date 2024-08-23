@@ -55,8 +55,8 @@ namespace Utilities
                 if (File.Exists(fileLocation))
                     File.Delete(fileLocation);
                 file.SaveAs(fileLocation);
-                string path = Encryptor.Encrypt($"{fileDirectory}/{fileName}", encryptKey);
-                return path;
+                //string path = Encryptor.Encrypt($"{fileDirectory}/{fileName}", encryptKey);
+                return filePath;
             }
             catch (Exception ex)
             {
