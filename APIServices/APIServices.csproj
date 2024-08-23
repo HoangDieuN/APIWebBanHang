@@ -52,6 +52,8 @@
     <Compile Include="BaiViet\IBaiVietApiService.cs" />
     <Compile Include="DanhMucSanPham\DMSanPhamApiService.cs" />
     <Compile Include="DanhMucSanPham\IDMSanPhamApiService.cs" />
+    <Compile Include="DMModule\DMModuleApiService.cs" />
+    <Compile Include="DMModule\IDMModuleApiService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role\IRoleApiService.cs" />
     <Compile Include="Role\RoleApiService.cs" />

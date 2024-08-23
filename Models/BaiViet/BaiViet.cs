@@ -14,7 +14,7 @@ namespace Models
         public string MoTa { get; set; }
         public string NoiDung { get; set; }
         public bool IsActive { get; set; }
-        public string DeletedBy {  get; set; }
         public DateTime? DeletedDate{ get; set; }
+        public string FilePath { get; set; }
     }
 }

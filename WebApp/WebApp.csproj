@@ -651,6 +651,8 @@
     <Content Include="Scripts\js\danh-muc-san-pham\viewIndex.js" />
     <Content Include="Scripts\js\danh-muc-san-pham\_FormDMSanPham.js" />
     <Content Include="Scripts\js\dm_module\dm_module.config.js" />
+    <Content Include="Scripts\js\dm_module\viewIndex.js" />
+    <Content Include="Scripts\js\dm_module\_FormDMModule.js" />
     <Content Include="Scripts\js\index_home\Layout.js" />
     <Content Include="Scripts\js\role\role.config.js" />
     <Content Include="Scripts\js\role\viewIndex.js" />
@@ -679,7 +681,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\DMModule\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\root\" />
     <Folder Include="Views\Authentication\" />
@@ -1072,6 +1073,8 @@
     <Content Include="Areas\Admin\Views\Account\_FormAccount.cshtml" />
     <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Role\_FormThemMoiRole.cshtml" />
+    <Content Include="Areas\Admin\Views\DMModule\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DMModule\_FormDMModule.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\_PartialMenuTop.cshtml" />
     <Content Include="Views\DMSanPham\_PartialMenuDanhMucSanPham.cshtml" />

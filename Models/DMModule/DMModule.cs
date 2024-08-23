@@ -10,5 +10,7 @@ namespace Models
     {      
         public string ModuleCode { get; set; }
         public string ModuleName { get; set; }
+        public string TenViet { get; set; }
+        public string MoTa {  get; set; }
     }
 }

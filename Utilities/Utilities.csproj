@@ -106,6 +106,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Helper\AuthorizationAttribute.cs" />
     <Compile Include="Helper\ParamsHelper.cs" />
+    <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Render\Encryptor.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Helper\FileManageHelper.cs" />

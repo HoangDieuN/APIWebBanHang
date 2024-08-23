@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Danh sách module";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section naviheader{
+    <!-- Left navbar links -->
+    <div class="pagetitle">
+        <h1>Danh mục module trang web</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Module</a></li>
+                <li class="breadcrumb-item active">Danh sách </li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+}
+
+<!-- row -->
+<!--<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header align-items-center d-flex mb-1">
+                <h4 class="card-title mb-0 flex-grow-1"><i class="ri-filter-line"></i> TIÊU CHÍ TÌM KIẾM</h4>
+            </div>
+            <div class="card-body pt-0">
+                <form class="basic-form" id="form-filter">
+                    <div class="form-group row">
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Từ khoá, tên danh mục" id="txt-keywords" />
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-outline-info" id="btn-search">
+                                            <i class="ri-search-line align-bottom"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>-->
+<!-- row -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 text-uppercase flex-grow-1">Danh sách module</h4>
+            </div>
+            <div class="card-body">
+                <div class="align-items-center d-flex mb-2" id="tbl-danhsach-toolbar">
+                    <div class="flex-grow-1">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-primary" id="btn-add"><i class="ri-add-circle-line align-bottom"></i> Thêm mới</button>
+
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0"></div>
+                </div>
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover align-middle mb-0" id="tbl-danhsach"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="nv-modal xl" id="modal"></div>
+@section scripts {
+    <script src="~/Scripts/js/dm_module/dm_module.config.js?v=@(DateTime.Now.Ticks)"></script>
+    <script src="~/Scripts/js/dm_module/viewIndex.js?v=@(DateTime.Now.Ticks)"></script>
+}
+

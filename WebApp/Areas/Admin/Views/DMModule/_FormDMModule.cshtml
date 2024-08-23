@@ -1,0 +1,33 @@
+﻿@using Models
+@using Utilities
+@model DMModule
+
+<div id="form-dmmodule">
+    <div class="row">
+        <div class="col-sm-12 group-label mb-2">
+            <h4>THÔNG TIN MODULE </h4>
+        </div>
+    </div>
+    <form class="form-info">
+        @Html.HiddenFor(x => x.Id)
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="TenViet">Tên module<span class="text-danger">*</span></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="TenViet" name="TenViet" value="@Model.TenViet">
+            </div>
+            <label class="col-sm-2 col-form-label" for="ModuleName">Mã danh mục <span class="text-danger">*</span></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="ModuleName" name="ModuleName" value="@Model.ModuleName">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="MoTa">Mô tả<span class="text-danger">*</span></label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="MoTa" name="MoTa" value="@Model.MoTa">
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Scripts/js/dm_module/_FormDMModule.js?v=@(DateTime.Now.Ticks)"></script>
+
+

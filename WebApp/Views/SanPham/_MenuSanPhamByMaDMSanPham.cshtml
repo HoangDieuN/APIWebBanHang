@@ -7,7 +7,7 @@
         <div class="product-item @item.MaDanhMucSP">
             <div class="product discount product_filter">
                 <div class="product_image">
-                    <img src="#" alt="@item.MaSanPham">
+                    <img src="@Url.Content(@item.FilePath)" alt="@item.MaSanPham">
                 </div>
                 <div class="favorite favorite_left"></div>
                 @if (item.PhanTramGiam > 0)

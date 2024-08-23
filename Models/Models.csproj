@@ -123,6 +123,8 @@
     <Compile Include="Account\UserPaging.cs" />
     <Compile Include="Account\UserRequest.cs" />
     <Compile Include="DMModule\DMModule.cs" />
+    <Compile Include="DMModule\DMModulePaging.cs" />
+    <Compile Include="DMModule\DMModuleRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseModel\Response.cs" />
     <Compile Include="Role\Role.cs" />
