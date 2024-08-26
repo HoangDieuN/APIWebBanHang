@@ -12,12 +12,27 @@ namespace WebApp
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //router danh mục sản phẩm
+            routes.MapRoute(
+             name: "DMSanPham",
+            url: "danh-muc-san-pham/{id}",
+            defaults: new { controller = "DMSanPhams", action = "DanhSachSanPhamByDanhMucId" },
+            namespaces: new[] { "WebBanHangOnline.Controllers" }
+            );
+
             //router sản phẩm
             routes.MapRoute(
-           name: "SanPham",
-           url: "san-pham",
-           defaults: new { controller = "SanPham", action = "Index" }
-       );
+             name: "SanPham",
+            url: "san-pham",
+            defaults: new { controller = "SanPhams", action = "Index" },
+            namespaces: new[] { "WebBanHangOnline.Controllers" }
+            );
+            routes.MapRoute(
+            name: "detailSanPham",
+            url: "chi-tiet/{alias}-p{id}",
+            defaults: new { controller = "SanPhams", action = "SanPham_Detail", alias = UrlParameter.Optional },
+            namespaces: new[] { "WebBanHangOnline.Controllers" }
+          );
             routes.MapRoute(
             "Default",
             "{controller}/{action}/{id}",

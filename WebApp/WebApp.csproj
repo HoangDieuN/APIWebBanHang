@@ -213,9 +213,10 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\BaiVietController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\DMSanPhamController.cs" />
+    <Compile Include="Controllers\DMModuleController.cs" />
+    <Compile Include="Controllers\DMSanPhamsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\SanPhamsController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -654,6 +655,7 @@
     <Content Include="Scripts\js\dm_module\viewIndex.js" />
     <Content Include="Scripts\js\dm_module\_FormDMModule.js" />
     <Content Include="Scripts\js\index_home\Layout.js" />
+    <Content Include="Scripts\js\index_home\viewIndexForSanPham.js" />
     <Content Include="Scripts\js\role\role.config.js" />
     <Content Include="Scripts\js\role\viewIndex.js" />
     <Content Include="Scripts\js\role\_FormRole.js" />
@@ -1076,13 +1078,18 @@
     <Content Include="Areas\Admin\Views\DMModule\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DMModule\_FormDMModule.cshtml" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\_PartialMenuTop.cshtml" />
-    <Content Include="Views\DMSanPham\_PartialMenuDanhMucSanPham.cshtml" />
-    <Content Include="Views\DMSanPham\_PartialMenuArrivalsDMSanPham.cshtml" />
-    <Content Include="Views\SanPham\_MenuSanPhamByMaDMSanPham.cshtml" />
-    <Content Include="Views\SanPham\_MenuSanPhamDangSale.cshtml" />
+    <Content Include="Views\DMSanPhams\_PartialMenuDanhMucSanPham.cshtml" />
+    <Content Include="Views\DMSanPhams\_PartialMenuArrivalsDMSanPham.cshtml" />
+    <Content Include="Views\SanPhams\_MenuSanPhamByMaDMSanPham.cshtml" />
+    <Content Include="Views\SanPhams\_MenuSanPhamDangSale.cshtml" />
     <Content Include="Views\BaiViet\_MenuBaiViet.cshtml" />
     <Content Include="Views\Home\_PartialMenuBenefit.cshtml" />
+    <Content Include="Views\DMModule\_MenuTop.cshtml" />
+    <Content Include="Views\SanPhams\Index.cshtml" />
+    <Content Include="Views\DMSanPhams\_PartialMenuLeft.cshtml" />
+    <Content Include="Views\SanPhams\_DanhSachSanPham.cshtml" />
+    <Content Include="Views\DMSanPhams\_DanhSachSanPhamByDanhMucId.cshtml" />
+    <Content Include="Views\SanPhams\SanPham_Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\APIServices\APIServices.csproj">

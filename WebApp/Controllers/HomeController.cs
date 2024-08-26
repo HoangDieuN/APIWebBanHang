@@ -12,11 +12,6 @@ namespace WebApp.Controllers
         {
             return View();
         }
-
-        public ActionResult _PartialMenuTop()
-        {
-            return PartialView("~/Views/Home/_PartialMenuTop.cshtml");
-        }
         public ActionResult _PartialMenuBenefit()
         {
             return PartialView("~/Views/Home/_PartialMenuBenefit.cshtml");

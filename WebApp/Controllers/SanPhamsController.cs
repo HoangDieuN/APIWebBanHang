@@ -9,10 +9,10 @@ using System.Web.Mvc;
 
 namespace WebApp.Controllers
 {
-    public class SanPhamController : BaseController
+    public class SanPhamsController : BaseController
     {
         private readonly ISanPhamApiService _sanPhamApiService;
-        public SanPhamController(ISanPhamApiService sanPhamApiService)
+        public SanPhamsController(ISanPhamApiService sanPhamApiService)
         {
             _sanPhamApiService = sanPhamApiService;
         }
@@ -22,34 +22,33 @@ namespace WebApp.Controllers
         {
             return View();
         }
+        //danh sách sản phẩm cho trang sản phẩm index
+        [HttpGet]
+        public async Task<ActionResult> DanhSachSanPham(SanPhamRequest sanPhamRequest)
+        {
+            SanPhamPaging ds = await _sanPhamApiService.GetAll(sanPhamRequest);
+            return PartialView("_DanhSachSanPham", ds);
+        }
+        //menu sản phẩm theo danh mục cho layout
         [HttpGet]
         public async Task<ActionResult> MenuSanPhamByMaDMSanPham(SanPhamRequest sanPhamRequest)
         {
             SanPhamPaging ds = await _sanPhamApiService.GetAll(sanPhamRequest);
             return PartialView("_MenuSanPhamByMaDMSanPham",ds);
         }
+        //menu sản phẩm đang sale cho layout
         [HttpGet]
         public async Task<ActionResult> MenuSanPhamDangSale(SanPhamRequest sanPhamRequest)
         {
             SanPhamPaging ds = await _sanPhamApiService.GetAll(sanPhamRequest);
             return PartialView("_MenuSanPhamDangSale", ds);
         }
-        [HttpPost]
-        public async Task<ActionResult> ListSanPham(SanPhamRequest requestModel)
+        //xem chi tiết sản phẩm
+        [HttpGet]
+        public async Task<ActionResult> SanPham_Detail(int id)
         {
-            //call api
-            SanPhamPaging model = await _sanPhamApiService.GetAll(requestModel);
-
-            return Json(new
-            {
-                data = model.ListSanPham,
-                recordsTotal = model.Total,
-                recordsFiltered = model.Total,
-                draw = requestModel.Draw == 0 ? 1 : requestModel.Draw,
-                result = "success",
-                message = "Tải dữ liệu thành công"
-            });
+            SanPham result = await _sanPhamApiService.GetById(id);
+            return View("_ChiTietSanPham", result);
         }
-
     }
 }

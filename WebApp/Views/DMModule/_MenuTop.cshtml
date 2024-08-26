@@ -1,0 +1,17 @@
+﻿@using Models
+@model DMModulePaging
+
+@if (Model.ListModule != null && Model.ListModule.Any())
+{
+    <ul class="navbar_menu">
+        @foreach (var item in Model.ListModule)
+        {
+            if (item.ModuleCode.Equals("trang-chu"))
+            {
+                item.ModuleCode = "";
+            }
+            <li><a href="/@item.ModuleCode">@item.TenViet</a></li>
+        }
+
+    </ul>
+}

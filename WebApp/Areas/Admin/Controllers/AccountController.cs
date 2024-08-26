@@ -261,7 +261,7 @@ namespace WebApp.Areas.Admin.Controllers
         {
             try
             {
-                //get danh sách cán bộ
+                //get danh sách người dùng
                 User model = await _accountApiService.GetById(id);
                 if (model != null)
                 {

@@ -1,6 +1,17 @@
 ﻿$(function () {
     $.ajax({
-        url: '/DMSanPham/MenuDMSanPham',
+        url: '/DMModule/MenuTop',
+        type: 'GET',
+        success: function (result) {
+            $('#_partialMenuTop').html(result);
+        },
+        error: function (xhr, status, error) {
+            alert(error);
+        }
+    });
+
+    $.ajax({
+        url: '/DMSanPhams/MenuDMSanPham',
         type: 'GET',
         success: function (result) {
             $('#_partialViewDsDanhMucSanPham').html(result);
@@ -11,7 +22,7 @@
     });
 
     $.ajax({
-        url: '/DMSanPham/MenuArrivalsDMSanPham',
+        url: '/DMSanPhams/MenuArrivalsDMSanPham',
         type: 'GET',
         success: function (result) {
             $('#_partialMenuArrvals').html(result);
@@ -21,7 +32,7 @@
         }
     });
     $.ajax({
-        url: '/SanPham/MenuSanPhamByMaDMSanPham',
+        url: '/SanPhams/MenuSanPhamByMaDMSanPham',
         type: 'GET',
         success: function (result) {
             $('#_partialSanPhamByMaDMSanPham').html(result);
@@ -31,7 +42,7 @@
         }
     });
     $.ajax({
-        url: '/SanPham/MenuSanPhamDangSale',
+        url: '/SanPhams/MenuSanPhamDangSale',
         type: 'GET',
         success: function (result) {
             $('#_partialViewDsSanPhamDangSale').html(result);

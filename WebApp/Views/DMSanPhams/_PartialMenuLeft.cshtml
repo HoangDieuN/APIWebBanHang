@@ -1,0 +1,21 @@
+﻿@using Models
+@model Models.DanhMucSanPhamPaging
+
+@if (Model.ListDanhMucSanPham != null && Model.ListDanhMucSanPham.Any())
+{
+
+    <ul class="sidebar_categories">
+        @foreach (var item in Model.ListDanhMucSanPham)
+        {
+            if (ViewBag.CateId == item.Id)
+            {
+                <li class="active"><a href="/danh-muc-san-pham/@item.Id"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>@item.TenDanhMucSP</a></li>
+            }
+            else
+            {
+                <li><a href="/danh-muc-san-pham/@item.Id">@item.TenDanhMucSP</a></li>
+
+            }
+        }
+    </ul>
+}
