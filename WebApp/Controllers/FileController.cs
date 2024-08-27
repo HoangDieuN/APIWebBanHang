@@ -26,7 +26,6 @@ namespace WebApp.Controllers
             requestFile.FileGroupCode = ModuleConstants.SanPhamCode;
             List<AttachedFile> listAnh = await _attachedFileApiService.GetByGroupProduct(requestFile);
             return PartialView("_ViewFileAnhSanPham", listAnh);
-        }
-       
+        }    
     }
 }

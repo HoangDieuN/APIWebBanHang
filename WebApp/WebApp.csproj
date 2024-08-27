@@ -219,6 +219,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamsController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -655,6 +656,7 @@
     <Content Include="Scripts\js\dm_module\dm_module.config.js" />
     <Content Include="Scripts\js\dm_module\viewIndex.js" />
     <Content Include="Scripts\js\dm_module\_FormDMModule.js" />
+    <Content Include="Scripts\js\index_home\jsforShopping.js" />
     <Content Include="Scripts\js\index_home\Layout.js" />
     <Content Include="Scripts\js\index_home\viewIndexForSanPham.js" />
     <Content Include="Scripts\js\role\role.config.js" />
@@ -1092,6 +1094,8 @@
     <Content Include="Views\DMSanPhams\_DanhSachSanPhamByDanhMucId.cshtml" />
     <Content Include="Views\SanPhams\SanPham_Detail.cshtml" />
     <Content Include="Views\File\_ViewFileAnhSanPham.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Partial_Item_Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\APIServices\APIServices.csproj">

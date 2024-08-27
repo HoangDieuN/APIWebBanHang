@@ -21,6 +21,7 @@ namespace Models
         public bool IsActive { get; set; }
         public string FilePath { get; set; }
         public string Ids { get; set; }
+
         #region extent properties
         public string TenDanhMucSP { get; set; }
         public string MaDanhMucSP { get; set; }

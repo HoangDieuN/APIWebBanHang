@@ -15,7 +15,7 @@
                     <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
                 }
                 <div class="product_info">
-                    <h6 class="product_name"><a href="#">@item.TenSanPham</a></h6>
+                    <h6 class="product_name"><a href="/chi-tiet/@item.TenSanPham-p@(item.Id)">@item.TenSanPham</a></h6>
                     @if (item.PhanTramGiam > 0)
                     {
                         <div class="product_price"><span>@item.GiaGoc</span></div>
@@ -26,7 +26,7 @@
                     }
                 </div>
             </div>
-            <div class="red_button add_to_cart_button"><a href="#" class="btn_addtocart" data-id="@item.Id">add to cart</a></div>
+            <div class="red_button add_to_cart_button"><a href="#" class="btnAddToCart" data-id="@item.Id">add to cart</a></div>
         </div>
     }
 }

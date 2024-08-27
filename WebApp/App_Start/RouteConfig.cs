@@ -20,19 +20,27 @@ namespace WebApp
             namespaces: new[] { "WebBanHangOnline.Controllers" }
             );
 
-            //router sản phẩm
+            //trang danh sách sản phẩm
             routes.MapRoute(
              name: "SanPham",
             url: "san-pham",
             defaults: new { controller = "SanPhams", action = "Index" },
             namespaces: new[] { "WebBanHangOnline.Controllers" }
             );
+            //single page cho sản phẩm
             routes.MapRoute(
             name: "detailSanPham",
             url: "chi-tiet/{tensanpham}-p{id}",
             defaults: new { controller = "SanPhams", action = "SanPham_Detail"},
             namespaces: new[] { "WebBanHangOnline.Controllers" }
-          );
+            );
+            //giỏ hàng
+            routes.MapRoute(
+            name: "ShoppingCart",
+            url: "gio-hang",
+            defaults: new { controller = "ShoppingCart", action = "Index"},
+            namespaces: new[] { "WebBanHangOnline.Controllers" }
+            );
             routes.MapRoute(
             "Default",
             "{controller}/{action}/{id}",

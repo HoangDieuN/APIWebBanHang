@@ -133,6 +133,7 @@
     <Compile Include="SanPham\SanPham.cs" />
     <Compile Include="SanPham\SanPhamPaging.cs" />
     <Compile Include="SanPham\SanPhamRequest.cs" />
+    <Compile Include="ShoppingCart\ShoppingCart.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
