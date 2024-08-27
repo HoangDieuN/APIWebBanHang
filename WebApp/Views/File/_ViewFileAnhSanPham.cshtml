@@ -1,0 +1,45 @@
+﻿@using Models
+@model List<AttachedFile>
+<link rel="stylesheet" type="text/css" href="~/Content/assetkh/styles/bootstrap4/bootstrap.min.css">
+<link href="~/Content/assetkh/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assetkh/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assetkh/styles/single_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assetkh/styles/single_responsive.css">
+@if (Model != null && Model.Any())
+{
+    <div class="single_product_pics">
+        <div class="row">
+            <div class="col-lg-3 thumbnails_col order-lg-1 order-2">
+                <div class="single_product_thumbnails">
+                    <ul>
+                        @foreach (var item in Model)
+                        {
+                            if (item != null)
+                            {
+                                <li class="active"><img src="@Url.Content(@item.FilePath)" alt="" data-image="@Url.Content(@item.FilePath)"></li>
+                            }
+                            else
+                            {
+                                <li><img src="@Url.Content(@item.FilePath)" alt="" data-image="@Url.Content(@item.FilePath)"></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 image_col order-lg-2 order-1">
+                <div class="single_product_image">
+                    <div class="single_product_image_background" style="background-image:url(@Url.Content(@Model.FirstOrDefault().FilePath)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Content/assetkh/js/jquery-3.2.1.min.js"></script>
+<script src="~/Content/assetkh/styles/bootstrap4/popper.js"></script>
+<script src="~/Content/assetkh/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="~/Content/assetkh/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="~/Content/assetkh/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="~/Content/assetkh/plugins/easing/easing.js"></script>
+<script src="~/Content/assetkh/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="~/Content/assetkh/js/single_custom.js"></script>

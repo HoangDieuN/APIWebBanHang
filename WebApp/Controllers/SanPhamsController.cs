@@ -6,15 +6,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Utilities;
 
 namespace WebApp.Controllers
 {
     public class SanPhamsController : BaseController
     {
         private readonly ISanPhamApiService _sanPhamApiService;
-        public SanPhamsController(ISanPhamApiService sanPhamApiService)
+        private readonly IAttachedFileApiService _attachedFileApiService;
+
+        public SanPhamsController(ISanPhamApiService sanPhamApiService, IAttachedFileApiService attachedFileApiService)
         {
             _sanPhamApiService = sanPhamApiService;
+            _attachedFileApiService = attachedFileApiService;
         }
 
         // GET: SanPham
@@ -45,10 +49,11 @@ namespace WebApp.Controllers
         }
         //xem chi tiết sản phẩm
         [HttpGet]
-        public async Task<ActionResult> SanPham_Detail(int id)
+        public async Task<ActionResult> SanPham_Detail(string tensanpham, int id)
         {
+            //lấy thông tin sản phẩm
             SanPham result = await _sanPhamApiService.GetById(id);
-            return View("_ChiTietSanPham", result);
+            return View("SanPham_Detail", result);
         }
     }
 }

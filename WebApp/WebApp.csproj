@@ -215,6 +215,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DMModuleController.cs" />
     <Compile Include="Controllers\DMSanPhamsController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamsController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -1090,6 +1091,7 @@
     <Content Include="Views\SanPhams\_DanhSachSanPham.cshtml" />
     <Content Include="Views\DMSanPhams\_DanhSachSanPhamByDanhMucId.cshtml" />
     <Content Include="Views\SanPhams\SanPham_Detail.cshtml" />
+    <Content Include="Views\File\_ViewFileAnhSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\APIServices\APIServices.csproj">

@@ -29,8 +29,8 @@ namespace WebApp
             );
             routes.MapRoute(
             name: "detailSanPham",
-            url: "chi-tiet/{alias}-p{id}",
-            defaults: new { controller = "SanPhams", action = "SanPham_Detail", alias = UrlParameter.Optional },
+            url: "chi-tiet/{tensanpham}-p{id}",
+            defaults: new { controller = "SanPhams", action = "SanPham_Detail"},
             namespaces: new[] { "WebBanHangOnline.Controllers" }
           );
             routes.MapRoute(
