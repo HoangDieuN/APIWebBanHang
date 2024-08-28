@@ -1096,6 +1096,10 @@
     <Content Include="Views\File\_ViewFileAnhSanPham.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Partial_Item_Cart.cshtml" />
+    <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
+    <Content Include="Views\ShoppingCart\Partial_Item_ThanhToan.cshtml" />
+    <Content Include="Views\ShoppingCart\Partial_CheckOut.cshtml" />
+    <Content Include="Views\ShoppingCart\CheckOutSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\APIServices\APIServices.csproj">

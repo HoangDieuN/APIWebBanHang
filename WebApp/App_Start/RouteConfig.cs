@@ -34,6 +34,13 @@ namespace WebApp
             defaults: new { controller = "SanPhams", action = "SanPham_Detail"},
             namespaces: new[] { "WebBanHangOnline.Controllers" }
             );
+            //thanh toán
+            routes.MapRoute(
+            name: "CheckOut",
+            url: "thanh-toan",
+            defaults: new { controller = "ShoppingCart", action = "CheckOut" },
+            namespaces: new[] { "WebBanHangOnline.Controllers" }
+            );
             //giỏ hàng
             routes.MapRoute(
             name: "ShoppingCart",

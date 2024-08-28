@@ -52,6 +52,8 @@
     <Compile Include="BaiViet\IBaiVietApiService.cs" />
     <Compile Include="DanhMucSanPham\DMSanPhamApiService.cs" />
     <Compile Include="DanhMucSanPham\IDMSanPhamApiService.cs" />
+    <Compile Include="DatHang\DatHangApiService.cs" />
+    <Compile Include="DatHang\IDatHangApiService.cs" />
     <Compile Include="DMModule\DMModuleApiService.cs" />
     <Compile Include="DMModule\IDMModuleApiService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +61,8 @@
     <Compile Include="Role\RoleApiService.cs" />
     <Compile Include="SanPham\ISanPhamApiService.cs" />
     <Compile Include="SanPham\SanPhamApiService.cs" />
+    <Compile Include="ThongTinDatHang\IThongTinDatHangApiService.cs" />
+    <Compile Include="ThongTinDatHang\ThongTinDatHangApiService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

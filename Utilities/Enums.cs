@@ -14,5 +14,13 @@ namespace Utilities
             BaiViet = 2,
             QuyTrinh = 3
         }
+        public enum statusConst{
+            inProgress = 0,
+            accept = 1,
+            deny = 2,
+            cancel = 3,
+            editRequest = 4,
+            draft = 9
+        }
     }
 }

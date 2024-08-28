@@ -122,6 +122,9 @@
     <Compile Include="Account\User.cs" />
     <Compile Include="Account\UserPaging.cs" />
     <Compile Include="Account\UserRequest.cs" />
+    <Compile Include="DatHang\DatHang.cs" />
+    <Compile Include="DatHang\DatHangPaging.cs" />
+    <Compile Include="DatHang\DatHangRequest.cs" />
     <Compile Include="DMModule\DMModule.cs" />
     <Compile Include="DMModule\DMModulePaging.cs" />
     <Compile Include="DMModule\DMModuleRequest.cs" />
@@ -133,7 +136,12 @@
     <Compile Include="SanPham\SanPham.cs" />
     <Compile Include="SanPham\SanPhamPaging.cs" />
     <Compile Include="SanPham\SanPhamRequest.cs" />
+    <Compile Include="ShoppingCart\DatHangViewModel.cs" />
+    <Compile Include="ShoppingCart\KhachHangViewModel.cs" />
     <Compile Include="ShoppingCart\ShoppingCart.cs" />
+    <Compile Include="ThongTinDatHang\ThongTinDatHang.cs" />
+    <Compile Include="ThongTinDatHang\ThongTinDatHangPaging.cs" />
+    <Compile Include="ThongTinDatHang\ThongTinDatHangRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
