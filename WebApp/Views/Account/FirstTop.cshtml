@@ -1,0 +1,25 @@
+﻿<li class="account">
+    @if (ViewBag.UserName == "Khách")
+    {
+        <a href="#">
+            My Account
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="account_selection">
+            <li><a href="/account/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+            <li><a href="/account/Register"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+        </ul>
+    }
+    else
+    {
+        <a href="#">
+            Welcome: @ViewBag.UserName
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="account_selection">
+            <li><a href="/account/profile"><i class="fa fa-sign-in" aria-hidden="true"></i>Profile</a></li>
+            <li><a href="/account/logoff"><i class="fa fa-user-plus" aria-hidden="true"></i> Logout</a></li>
+        </ul>
+    }
+
+</li>

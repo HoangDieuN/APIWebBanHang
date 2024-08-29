@@ -1,0 +1,121 @@
+﻿@using Models
+@model User
+
+@{
+    ViewBag.Title = "Đăng kí";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/assetkh/styles/main_styles.css">
+<div class="container" style="margin-top: 160px;">
+    <hr />
+    <h2>@ViewBag.Title</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <section id="registerForm">
+                <form method="post" action="/Account/Register">
+                    <div class="form-group">
+                        <label for="UserName">Tên người dùng:</label>
+                        <input type="text" id="UserName" name="UserName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="HoTen">Họ tên:</label>
+                        <input type="text" id="HoTen" name="HoTen" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Mật khẩu:</label>
+                        <input type="password" id="Password" name="Password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="SoDT">Số điện thoai:</label>
+                        <input type="text" id="SoDT" name="SoDT" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="DiaChi">Địa chỉ:</label>
+                        <input type="text" id="DiaChi" name="DiaChi" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email:</label>
+                        <input type="email" id="Email" name="Email" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Đăng kí</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const userNameInput = document.getElementById("UserName");
+        const hoTenInput = document.getElementById("HoTen");
+        const passwordInput = document.getElementById("Password");
+        const soDTInput = document.getElementById("SoDT");
+        const diaChiInput = document.getElementById("DiaChi");
+        const emailInput = document.getElementById("Email");
+
+        // Kiểm tra các trường bắt buộc
+        if (!userNameInput.value) {
+            alert("Vui lòng nhập tên người dùng.");
+            return;
+        }
+        if (!passwordInput.value) {
+            alert("Vui lòng nhập mật khẩu.");
+            return;
+        }
+        if (!hoTenInput.value) {
+            alert("Vui lòng nhập họ tên.");
+            return;
+        }
+        if (!soDTInput.value) {
+            alert("Vui lòng nhập số điện thoại.");
+            return;
+        }
+        if (!diaChiInput.value) {
+            alert("Vui lòng nhập địa chỉ.");
+            return;
+        }
+        if (!emailInput.value) {
+            alert("Vui lòng nhập email.");
+            return;
+        }
+        // Tạo đối tượng user từ các trường input
+        const user = {
+            UserName: userNameInput.value,
+            HoTen: hoTenInput.value,
+            Password: passwordInput.value,
+            SoDT: soDTInput.value,
+            DiaChi: diaChiInput.value,
+            Email: emailInput.value
+        };
+
+        // Gửi dữ liệu đến controller Register bằng AJAX
+        fetch("/Account/Register", {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    // Xử lý khi đăng ký thành công
+                    alert("Đăng ký thành công!");
+                    window.location.href = "/";
+                } else {
+                    // Xử lý khi có lỗi từ server
+                    alert("Đăng ký thất bại. Vui lòng thử lại sau.");
+                }
+            })
+            .catch(error => {
+                console.error("Lỗi khi gửi dữ liệu đến server:", error);
+            });
+    });
+});
+
+</script>
+}

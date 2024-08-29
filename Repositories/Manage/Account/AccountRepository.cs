@@ -27,6 +27,7 @@ namespace Repositories
                 parameters.Add("@Password", requestModel.Password);
                 parameters.Add("@Email", requestModel.Email);
                 parameters.Add("@DiaChi", requestModel.DiaChi);
+                parameters.Add("@SoDT", requestModel.SoDT);
                 parameters.Add("@CreatedBy", requestModel.CreatedBy);
                 var result = await _baseRepository.GetValue<int>("User_Creat", parameters);
                 return result;
@@ -37,6 +38,7 @@ namespace Repositories
                 return 0;
             }
         }
+    
         public async Task<int> Update(User requestModel)
         {
             try
@@ -47,6 +49,7 @@ namespace Repositories
                 parameters.Add("@HoTen", requestModel.HoTen);
                 parameters.Add("@Password", requestModel.Password);
                 parameters.Add("@Email", requestModel.Email);
+                parameters.Add("@SoDT", requestModel.SoDT);
                 parameters.Add("@DiaChi", requestModel.DiaChi);
                 parameters.Add("@UpdatedBy", requestModel.UpdatedBy);
                 var result = await _baseRepository.GetValue<int>("User_Update", parameters);
