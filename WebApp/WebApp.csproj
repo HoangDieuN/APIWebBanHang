@@ -204,6 +204,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaiVietController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DatHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\DMModuleController.cs" />
     <Compile Include="Areas\Admin\Controllers\DMSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\FileManageController.cs" />
@@ -653,6 +654,8 @@
     <Content Include="Scripts\js\danh-muc-san-pham\danhMucSanPham.config.js" />
     <Content Include="Scripts\js\danh-muc-san-pham\viewIndex.js" />
     <Content Include="Scripts\js\danh-muc-san-pham\_FormDMSanPham.js" />
+    <Content Include="Scripts\js\dat-hang\datHang.config.js" />
+    <Content Include="Scripts\js\dat-hang\viewIndex.js" />
     <Content Include="Scripts\js\dm_module\dm_module.config.js" />
     <Content Include="Scripts\js\dm_module\viewIndex.js" />
     <Content Include="Scripts\js\dm_module\_FormDMModule.js" />
@@ -1079,6 +1082,7 @@
     <Content Include="Areas\Admin\Views\Role\_FormThemMoiRole.cshtml" />
     <Content Include="Areas\Admin\Views\DMModule\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DMModule\_FormDMModule.cshtml" />
+    <Content Include="Areas\Admin\Views\DatHang\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\DMSanPhams\_PartialMenuDanhMucSanPham.cshtml" />
     <Content Include="Views\DMSanPhams\_PartialMenuArrivalsDMSanPham.cshtml" />

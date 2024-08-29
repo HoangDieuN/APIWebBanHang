@@ -73,7 +73,7 @@ namespace Repositories
                 parameters.Add("@Start", requestModel.Start);
                 parameters.Add("@Length", requestModel.Length);
                 parameters.Add("@Count", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                var result = await _baseRepository.GetMultipleList("DanhMucSanPham_GetAll", parameters, read =>
+                var result = await _baseRepository.GetMultipleList("DatHang_GetAll", parameters, read =>
                 {
                     pagedResult.ListDatHang = read.Read<DatHang>().ToList();
                     pagedResult.Total = parameters.Get<int>("@Count");

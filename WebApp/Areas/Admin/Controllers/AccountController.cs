@@ -250,10 +250,11 @@ namespace WebApp.Areas.Admin.Controllers
                 return Json(new { result = "error", message = "Có lỗi xảy ra: " + ex.Message });
             }
         }
+        [HttpGet]
         public ActionResult LogOut()
         {
             SessionControl.DeleteNormalSession(CommonConstants.User);
-            return new EmptyResult();
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpGet]
