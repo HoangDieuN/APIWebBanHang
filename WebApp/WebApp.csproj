@@ -87,6 +87,12 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -212,7 +218,7 @@
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BaiVietController.cs" />
+    <Compile Include="Controllers\BaiVietsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DMModuleController.cs" />
     <Compile Include="Controllers\DMSanPhamsController.cs" />
@@ -625,6 +631,7 @@
     <Content Include="Content\assets2\libs\treegrid\dist\js\jquery.treegrid.js" />
     <Content Include="Content\assets2\libs\treegrid\dist\js\jquery.treegrid.min.js" />
     <Content Include="Content\assets2\libs\wnumb\wNumb.min.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -639,6 +646,8 @@
     <Content Include="Scripts\extens\inputmask.js" />
     <Content Include="Scripts\extens\modal.js" />
     <Content Include="Scripts\extens\notiflix.js" />
+    <Content Include="Scripts\extens\paging\paginate.js" />
+    <Content Include="Scripts\extens\paging\paginate.min.js" />
     <Content Include="Scripts\extens\select2.js" />
     <Content Include="Scripts\extens\starter.js" />
     <Content Include="Scripts\extens\sweetalert.js" />
@@ -661,6 +670,7 @@
     <Content Include="Scripts\js\dm_module\_FormDMModule.js" />
     <Content Include="Scripts\js\index_home\jsforShopping.js" />
     <Content Include="Scripts\js\index_home\Layout.js" />
+    <Content Include="Scripts\js\index_home\viewIndexForBaiViet.js" />
     <Content Include="Scripts\js\index_home\viewIndexForSanPham.js" />
     <Content Include="Scripts\js\role\role.config.js" />
     <Content Include="Scripts\js\role\viewIndex.js" />
@@ -1088,7 +1098,7 @@
     <Content Include="Views\DMSanPhams\_PartialMenuArrivalsDMSanPham.cshtml" />
     <Content Include="Views\SanPhams\_MenuSanPhamByMaDMSanPham.cshtml" />
     <Content Include="Views\SanPhams\_MenuSanPhamDangSale.cshtml" />
-    <Content Include="Views\BaiViet\_MenuBaiViet.cshtml" />
+    <Content Include="Views\BaiViets\_MenuBaiViet.cshtml" />
     <Content Include="Views\Home\_PartialMenuBenefit.cshtml" />
     <Content Include="Views\DMModule\_MenuTop.cshtml" />
     <Content Include="Views\SanPhams\Index.cshtml" />
@@ -1106,6 +1116,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\FirstTop.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\BaiViets\Index.cshtml" />
+    <Content Include="Views\BaiViets\_DanhSachBaiViet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\APIServices\APIServices.csproj">

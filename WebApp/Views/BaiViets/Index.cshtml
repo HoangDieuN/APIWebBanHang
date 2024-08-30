@@ -1,0 +1,110 @@
+﻿@using Models
+@model BaiVietPaging
+@{
+    ViewBag.Title = "Danh sách bài viết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/assetkh/styles/main_styles.css">
+
+<!-- Slider -->
+<style>
+    .news_section_container {
+        margin-top: 180px;
+    }
+
+    .row-item-new {
+        margin-bottom: 20px;
+    }
+
+    .title-news {
+        font-size: 24px;
+        border-bottom: 1px solid;
+        padding: 15px 0;
+        margin-bottom: 25px;
+    }
+
+    .img-box img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+<div class="container news_section_container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="title-news"> Bài viết</h1>
+        </div>
+    </div>
+    <!--Danh sách bài viết-->
+    <div id="_danhSachBaiViet"></div>
+    <div id="pagination" class="mt-3"></div>
+</div>
+
+<script src="~/Content/assetkh/js/jquery-3.2.1.min.js"></script>
+<script src="~/Scripts/js/index_home/viewIndexForBaiViet.js"></script>
+<script src="~/Scripts/extens/paging/paginate.js"></script>
+<script src="~/Scripts/extens/paging/paginate.min.js"></script>
+<script>
+    $(document).ready(function () {
+        LoadListBaiViet();
+
+        function LoadListBaiViet() {
+            $.ajax({
+                url: '/BaiViets/DanhSachBaiViet',
+                type: 'GET',
+                success: function (res) {
+                    if (res.result === "success" && res.recordsTotal > 0) {
+                        var items = res.data;
+                        var html = '';
+                        for (let i = 0; i < res.recordsTotal; i++) {
+                            var item = items[i];
+                            if (item.IsActive) {
+                                html += `
+                            <div class="row row-item-new">
+                                <div class="col-md-3">
+                                    <div class="img-box">
+                                        <a href="/BaiViet/Details/${item.Id}" title="${item.TenBaiViet}">
+                                            <img src="${item.FilePath.substring(1)}" alt="${item.TenBaiViet}" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="content-box">
+                                        <h3>
+                                            <a href="/BaiViet/Details/${item.Id}" title="${item.TenBaiViet}">
+                                                ${item.TenBaiViet}
+                                            </a>
+                                        </h3>
+                                        <div class="description-box">
+                                            ${item.MoTa}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                            }
+                        }
+                     ;
+                        $('#_danhSachBaiViet').html(html);
+                        let options = {
+                            numberPerPage:2, //Cantidad de datos por pagina
+                            goBar: true, //Barra donde puedes digitar el numero de la pagina al que quiere ir
+                            pageCounter: true, //Contador de paginas, en cual estas, de cuantas paginas
+                        };
+
+                 
+
+                        paginate.init('#pagination', options);
+                    } else {
+                        alert("Không có dữ liệu bài viết.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error: ", error);
+                    console.error("Status: ", status);
+                    console.error("Response: ", xhr.responseText);
+                    alert("Đã xảy ra lỗi khi tải danh sách bài viết.");
+                }
+            });
+        }
+    });
+
+</script>

@@ -15,6 +15,7 @@ namespace Utilities
         public static string JwtAudience = ConfigurationManager.AppSettings["JWT:Audience"];
 
         public static string User = "User";
+        public static string BaiViet = "BaiViet";
 
     }
 }

@@ -52,7 +52,7 @@
         }
     });
     $.ajax({
-        url: '/BaiViet/MenuBaiViet',
+        url:'/BaiViets/MenuBaiViet',
         type: 'GET',
         success: function (result) {
             $('#_partialViewDsBaiViet').html(result);
