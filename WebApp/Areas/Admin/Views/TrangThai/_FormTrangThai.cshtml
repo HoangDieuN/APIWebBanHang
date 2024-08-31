@@ -1,0 +1,23 @@
+﻿@using Models
+@using Utilities
+@model TrangThai
+
+<div id="form-trangthai">
+    <form class="form-info">
+        @Html.HiddenFor(x => x.DatHangId)
+        <div class="form-group row">
+            <label class="col-md-3 col-sm-12 col-form-label" for="TenTrangThai">Tên trạng thái<span class="text-danger"></span></label>
+            <div class="col-md-9 col-sm-12">
+                <select class="form-control select2" id="StatusId" name="StatusId">
+                    <option value=""></option>
+                    @if (Model.StatusId > 0)
+                    {
+                        <option value="@Model.StatusId" selected>@Model.TenTrangThai</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Scripts/js/trang-thai/_FormTrangThai.js?v@(DateTime.Now.Ticks)"></script>
+

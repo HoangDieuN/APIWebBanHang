@@ -49,6 +49,24 @@ namespace APIServices
                 return 0;
             }
         }
+        public async Task<int> UpdateStatus(DatHangRequest requestModel)
+        {
+            try
+            {
+                int result = 0;
+                Response response = await RestfulApi<Response>.PutAsync("api/dat-hang/update-status", requestModel, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<int>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"DatHangApiService Error: {ex.Message}");
+                return 0;
+            }
+        }
         public async Task<DatHangPaging> GetAll(DatHangRequest requestModel)
         {
             try

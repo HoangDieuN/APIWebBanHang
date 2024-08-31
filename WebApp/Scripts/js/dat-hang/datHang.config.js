@@ -62,14 +62,14 @@
                         data: "Id", title: "Thao tác", name: "action", width: 50,
                         render: function (data, type, row) {
                             let strButton = ``;
-                            strButton += `<button type="button" class="btn btn-sm btn-outline-warning btn-icon waves-effect waves-light btn-edit" title="Sửa">
+                            strButton += `<button type="button" class="btn btn-sm btn-outline-warning btn-icon waves-effect waves-light btn-edit" title="Cập nhật trang thái">
                             ${featherIcons.edit3}
                         </button>
                        `
                             strButton += `<button type="button" class="btn btn-sm btn-outline-danger btn-icon waves-effect waves-light btn-del" title="Xoá">
                             ${featherIcons.trash}
                         </button>`
-                            strButton += `<button type="button" class="btn btn-sm btn-outline-info btn-icon waves-effect waves-light btn-del" title="Xem đơn hàng">
+                            strButton += `<button type="button" class="btn btn-sm btn-outline-info btn-icon waves-effect waves-light btn-view" title="Xem đơn hàng">
                             ${featherIcons.eye}
                         </button>`
                                 ;
@@ -85,7 +85,7 @@
         //endpoints
         this.endpoints = {
             fetchList: "/Admin/DatHang/ListDatHang",
-
+            updateStatus:"/Admin/DatHang/UpdateStatus"
         }
     }
     //#region properties

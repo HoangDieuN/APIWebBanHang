@@ -63,6 +63,8 @@
     <Compile Include="SanPham\SanPhamApiService.cs" />
     <Compile Include="ThongTinDatHang\IThongTinDatHangApiService.cs" />
     <Compile Include="ThongTinDatHang\ThongTinDatHangApiService.cs" />
+    <Compile Include="TrangThai\ITrangThaiApiService.cs" />
+    <Compile Include="TrangThai\TrangThaiApiService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

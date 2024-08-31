@@ -10,7 +10,6 @@ namespace Models
     {
         public string RoleName { get; set; }
         public string TenViet { get; set; }
-        public string DeletedBy { get; set; }
         public DateTime? DeletedDate { get; set; }
         public int UserId {  get; set; }
         public int RoleId { get; set; }

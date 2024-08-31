@@ -217,6 +217,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TrangThaiController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaiVietsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -679,6 +680,8 @@
     <Content Include="Scripts\js\san-pham\sanPham.config.js" />
     <Content Include="Scripts\js\san-pham\viewIndex.js" />
     <Content Include="Scripts\js\san-pham\_FormSanPham.js" />
+    <Content Include="Scripts\js\trang-thai\trangThai.config.js" />
+    <Content Include="Scripts\js\trang-thai\_FormTrangThai.js" />
     <Content Include="Scripts\js\views\Shared\_Layout.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1093,6 +1096,7 @@
     <Content Include="Areas\Admin\Views\DMModule\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DMModule\_FormDMModule.cshtml" />
     <Content Include="Areas\Admin\Views\DatHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TrangThai\_FormTrangThai.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\DMSanPhams\_PartialMenuDanhMucSanPham.cshtml" />
     <Content Include="Views\DMSanPhams\_PartialMenuArrivalsDMSanPham.cshtml" />

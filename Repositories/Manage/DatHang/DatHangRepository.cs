@@ -63,6 +63,24 @@ namespace Repositories
                 return 0;
             }
         }
+        public async Task<int> UpdateStatus(DatHangRequest requestModel)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Ids", requestModel.Ids);
+                parameters.Add("@Status", requestModel.Status);
+                parameters.Add("@PhanHoi", requestModel.PhanHoi);
+                parameters.Add("@UpdatedBy", requestModel.UpdatedBy);
+                var result = await _baseRepository.GetValue<int>("DatHang_UpdateStatus", parameters);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"DatHangRepository Error: {ex.Message}");
+                throw;
+            }
+        }
         public async Task<DatHangPaging> GetAll(DatHangRequest requestModel)
         {
             try

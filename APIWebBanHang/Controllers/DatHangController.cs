@@ -103,6 +103,27 @@ namespace APIWebBanHang.Controllers
             }
             return res;
         }
+
+        [Route("update-status")]
+        [HttpPut]
+        public async Task<object> UpdateStatus(DatHangRequest requestModel)
+        {
+            Response res = new Response();
+            try
+            {
+                int result = await _datHangRepository.UpdateStatus(requestModel);
+                res.code = result > 0 ? ResponseCode.SUCCESS : ResponseCode.UPDATE_ERROR;
+                res.message = result > 0 ? ResponseDetail.SUCCESSDETAIL : ResponseDetail.UPDATE_ERRORDETAIL;
+                res.result = result;
+            }
+            catch (Exception ex)
+            {
+                res.code = ResponseCode.UNKNOWN_ERROR;
+                res.message = ResponseDetail.UNKNOWN_ERRORDETAIL + " - " + ex.Message;
+                res.result = null;
+            }
+            return res;
+        }
         [Route("delete")]
         [HttpDelete]
         public async Task<object> Delete(DatHangRequest requestModel)

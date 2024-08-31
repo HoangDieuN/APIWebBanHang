@@ -142,6 +142,9 @@
     <Compile Include="ThongTinDatHang\ThongTinDatHang.cs" />
     <Compile Include="ThongTinDatHang\ThongTinDatHangPaging.cs" />
     <Compile Include="ThongTinDatHang\ThongTinDatHangRequest.cs" />
+    <Compile Include="TrangThai\TrangThai.cs" />
+    <Compile Include="TrangThai\TrangThaiPaging.cs" />
+    <Compile Include="TrangThai\TrangThaiRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

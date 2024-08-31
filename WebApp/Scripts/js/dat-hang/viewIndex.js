@@ -1,6 +1,7 @@
 ﻿var viewIndex = {
     elmTable: "#tbl-danhsach",
     elmTableToolbar: "#tbl-danhsach-toolbar",
+    trangThai:new TrangThai(),
     datHang: new DatHang(),
     keywordsFilter: { elm: "#txt-keywords" },
 
@@ -42,24 +43,25 @@
     },
     tableEvents: function () {
         let _this = viewIndex;
-        let { datHang, elmTable } = _this;
-        //edit
+        let { trangThai,datHang, elmTable } = _this;
+        //cập nhật trạng thái
         $(`${elmTable} .btn-edit`).off().on("click", function () {
             debugger
             let table = datHang.getTable();
             let tr = $(this).closest("tr");
             let row = table.row(tr).data();
             if (row.Id) {
-                datHang.pvForm(row.Id, (res) => {
+                trangThai.openFormTrangThai(row.Id, (res) => {
                     showModal({
                         elm: "#modal",
-                        title: "CẬP NHẬT TRẠNG THÁI ĐƠN HÀNG",
+                        title: "CẬP NHẬT TRANG THÁI ĐƠN HÀNG",
                         content: res,
                         size: "lg",
                         button: modalButton.save
                     })
                 });
-            } else {
+            }
+            else {
                 $.fn.showAlert('Không tìm thấy thông tin đã chọn', 'warning');
             }
         })

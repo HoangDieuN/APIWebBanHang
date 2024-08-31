@@ -13,5 +13,6 @@ namespace Repositories
         Task<DatHangPaging> GetAll(DatHangRequest requestModel);
         Task<DatHang> GetById(int id);
         Task<int> Update(DatHang requestModel);
+        Task<int> UpdateStatus(DatHangRequest requestModel);
     }
 }
