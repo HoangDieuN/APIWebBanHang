@@ -39,7 +39,26 @@ namespace APIWebBanHang.Controllers
             return res;
         }
 
-
+        [Route("danh-sach-active")]
+        [HttpPost]
+        public async Task<object> GetAllActive(BaiVietRequest requestModel)
+        {
+            Response res = new Response();
+            try
+            {
+                BaiVietPaging result = await _baiVietRepository.GetAllActive(requestModel);
+                res.code = ResponseCode.SUCCESS;
+                res.message = ResponseDetail.SUCCESSDETAIL;
+                res.result = result;
+            }
+            catch (Exception ex)
+            {
+                res.code = ResponseCode.UNKNOWN_ERROR;
+                res.message = ResponseDetail.UNKNOWN_ERRORDETAIL + "-" + ex.Message;
+                res.result = null;
+            }
+            return res;
+        }
         [Route("danh-sach/{id}")]
         [HttpGet]
         public async Task<object> GetById(int id)

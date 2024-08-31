@@ -30,6 +30,24 @@ namespace APIServices
                 return new BaiVietPaging();
             }
         }
+        public async Task<BaiVietPaging> GetAllActive(BaiVietRequest requestModel)
+        {
+            try
+            {
+                BaiVietPaging result = new BaiVietPaging();
+                Response response = await RestfulApi<Response>.PostAsync($"api/bai-viet/danh-sach-active", requestModel, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<BaiVietPaging>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"BaiVietApiService Error: {ex.Message}");
+                return new BaiVietPaging();
+            }
+        }
         public async Task<int> Creat(BaiViet requestModel)
         {
             try

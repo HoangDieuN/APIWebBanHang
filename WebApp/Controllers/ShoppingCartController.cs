@@ -49,6 +49,7 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         public ActionResult Partial_CheckOut()
         {
+            var user = Session["User"] as User;
             return PartialView();
         }
         [AllowAnonymous]
@@ -73,17 +74,28 @@ namespace WebApp.Controllers
             var code = new { Success = false, Code = -1 };
             if (ModelState.IsValid)
             {
+                var user = Session["User"] as User;
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
                 if (cart != null && cart.Items.Any())
                 {
-                    //thêm mới đơn đặt hàng
+                    //thêm mới đơn đặt hàng             
                     DatHang newDonHang = new DatHang();
-                    newDonHang.TenKhachHang = requestModel.HoTen;
+                    // Nếu người dùng đã đăng nhập
+                    if(user != null)
+                    {
+                        newDonHang.TenKhachHang = user.HoTen;
+                        newDonHang.UserId = user.Id;
+                        newDonHang.Email = user.Email;
+                    }
+                    else
+                    {
+                        newDonHang.TenKhachHang = requestModel.HoTen;
+                        newDonHang.Email = requestModel.Email;
+                    }
+                    newDonHang.SoDT = requestModel.SoDT;
+                    newDonHang.DiaChi = requestModel.DiaChi;     
                     Guid newMa = Guid.NewGuid();
                     newDonHang.MaDon = newMa.ToString();
-                    newDonHang.SoDT = requestModel.SoDT;
-                    newDonHang.DiaChi = requestModel.DiaChi;
-                    newDonHang.Email = requestModel.Email;
                     newDonHang.TongDon = cart.Items.Sum(x => (x.GiaGoc * x.Quantity));
                     newDonHang.Quantity = cart.Items.Count();
                     newDonHang.Status = (int)Enums.statusConst.inProgress;

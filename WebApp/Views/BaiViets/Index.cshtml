@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" href="~/Content/assetkh/styles/main_styles.css">
+<script src="~/Scripts/extens/paging/paginate.min.js"></script>
+<script src="~/Content/assetkh/js/jquery-3.2.1.min.js"></script>
 
 <!-- Slider -->
 <style>
@@ -27,6 +29,27 @@
         max-width: 100%;
         max-height: 100%;
     }
+
+    .pagination {
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 20px !important;
+    }
+
+        .pagination a, .pagination span {
+            margin: 0 5px !important;
+            padding: 10px 15px !important;
+            border: 1px solid #ddd !important;
+            color: #007bff !important;
+            text-decoration: none !important;
+            cursor: pointer !important; /* Đảm bảo các liên kết có thể nhấp */
+        }
+
+        .pagination .current-page {
+            background-color: #007bff !important;
+            color: white !important;
+            border-color: #007bff !important;
+        }
 </style>
 <div class="container news_section_container">
     <div class="row">
@@ -36,75 +59,83 @@
     </div>
     <!--Danh sách bài viết-->
     <div id="_danhSachBaiViet"></div>
-    <div id="pagination" class="mt-3"></div>
+    <div id="pagination" class="pagination"></div>
 </div>
 
-<script src="~/Content/assetkh/js/jquery-3.2.1.min.js"></script>
-<script src="~/Scripts/js/index_home/viewIndexForBaiViet.js"></script>
 <script src="~/Scripts/extens/paging/paginate.js"></script>
-<script src="~/Scripts/extens/paging/paginate.min.js"></script>
 <script>
     $(document).ready(function () {
-        LoadListBaiViet();
+        debugger
+        LoadListBaiViet(1);
 
-        function LoadListBaiViet() {
+        function LoadListBaiViet(page) {
             $.ajax({
                 url: '/BaiViets/DanhSachBaiViet',
                 type: 'GET',
+                data: { page: page },
                 success: function (res) {
+                    debugger
                     if (res.result === "success" && res.recordsTotal > 0) {
                         var items = res.data;
                         var html = '';
-                        for (let i = 0; i < res.recordsTotal; i++) {
+                        for (let i = 0; i < items.length; i++) {
                             var item = items[i];
-                            if (item.IsActive) {
-                                html += `
-                            <div class="row row-item-new">
-                                <div class="col-md-3">
-                                    <div class="img-box">
-                                        <a href="/BaiViet/Details/${item.Id}" title="${item.TenBaiViet}">
-                                            <img src="${item.FilePath.substring(1)}" alt="${item.TenBaiViet}" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="content-box">
-                                        <h3>
+
+                            html += `
+                                <div class="row row-item-new">
+                                    <div class="col-md-3">
+                                        <div class="img-box">
                                             <a href="/BaiViet/Details/${item.Id}" title="${item.TenBaiViet}">
-                                                ${item.TenBaiViet}
+                                                <img src="${item.FilePath.substring(1)}" alt="${item.TenBaiViet}" />
                                             </a>
-                                        </h3>
-                                        <div class="description-box">
-                                            ${item.MoTa}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="content-box">
+                                            <h3>
+                                                <a href="/BaiViet/Details/${item.Id}" title="${item.TenBaiViet}">
+                                                    ${item.TenBaiViet}
+                                                </a>
+                                            </h3>
+                                            <div class="description-box">
+                                                ${item.MoTa}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>`;
-                            }
+                                `;
+
                         }
-                     ;
+                        html += '<div id ="pagination">phân trang</div>'
                         $('#_danhSachBaiViet').html(html);
-                        let options = {
-                            numberPerPage:2, //Cantidad de datos por pagina
-                            goBar: true, //Barra donde puedes digitar el numero de la pagina al que quiere ir
-                            pageCounter: true, //Contador de paginas, en cual estas, de cuantas paginas
-                        };
-
-                 
-
-                        paginate.init('#pagination', options);
+                        renderPagination(res.totalPages, page);
                     } else {
                         alert("Không có dữ liệu bài viết.");
                     }
                 },
                 error: function (xhr, status, error) {
-                    console.error("Error: ", error);
-                    console.error("Status: ", status);
-                    console.error("Response: ", xhr.responseText);
                     alert("Đã xảy ra lỗi khi tải danh sách bài viết.");
                 }
             });
         }
-    });
 
+        function renderPagination(totalPages, currentPage) {
+            var paginationHtml = '';
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    paginationHtml += `<span class="current-page">${i}</span>`;
+                } else {
+                    paginationHtml += `<a href="#" class="page-link" data-page="${i}">${i}</a>`;
+                }
+            }
+            $('#pagination').html(paginationHtml);
+
+            $('.page-link').click(function (e) {
+                e.preventDefault();
+                var page = $(this).data('page');
+                LoadListBaiViet(page);
+            });
+        }
+
+    });
 </script>

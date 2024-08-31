@@ -81,6 +81,29 @@ namespace Repositories
                 return new BaiVietPaging();
             }
         }
+        public async Task<BaiVietPaging> GetAllActive(BaiVietRequest requestModel)
+        {
+            try
+            {
+                BaiVietPaging pagedResult = new BaiVietPaging();
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Keywords", requestModel.Keywords);
+                parameters.Add("@Start", requestModel.Start);
+                parameters.Add("@Length", requestModel.Length);
+                parameters.Add("@Count", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var result = await _baseRepository.GetMultipleList("BaiViet_GetAllActive", parameters, read =>
+                {
+                    pagedResult.ListBaiViet = read.Read<BaiViet>().ToList();
+                    pagedResult.Total = parameters.Get<int>("@Count");
+                });
+                return pagedResult;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"BaiVietRepository Error: {ex.Message}");
+                return new BaiVietPaging();
+            }
+        }
         public async Task<BaiViet> GetById(int id)
         {
             try

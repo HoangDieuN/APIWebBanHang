@@ -30,17 +30,19 @@ namespace WebApp.Controllers
         {
             try
             {
-                BaiVietPaging ds = await _baiVietApiService.GetAll(baiVietRequest);
-
+                baiVietRequest.PageSize = 2;
+                BaiVietPaging dsactive = await _baiVietApiService.GetAllActive(baiVietRequest);
                 return Json(new
                 {
-                    data = ds.ListBaiViet,
-                    recordsTotal = ds.Total,
-                    recordsFiltered = ds.Total,
+                    data = dsactive.ListBaiViet.Skip(baiVietRequest.PageSize * (baiVietRequest.Page - 1)).Take(baiVietRequest.PageSize).ToList(),
+
+                    recordsTotal = dsactive.Total,
+                    recordsFiltered = dsactive.Total,
                     draw = baiVietRequest.Draw == 0 ? 1 : baiVietRequest.Draw,
+                    totalPages = (int)Math.Ceiling((double)dsactive.Total / baiVietRequest.PageSize),
                     result = "success",
                     message = "Tải dữ liệu thành công"
-                }, JsonRequestBehavior.AllowGet); 
+                }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -51,7 +53,6 @@ namespace WebApp.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
         }
-
 
 
         //menu bài viết cho trang chủ
