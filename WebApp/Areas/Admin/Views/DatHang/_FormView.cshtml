@@ -1,0 +1,56 @@
+﻿@using Models
+@using Utilities
+@model DatHang
+
+<div id="form-baiviet">
+    <div class="row">
+        <div class="col-sm-12 group-label mb-2">
+            <h4>THÔNG TIN ĐƠN HÀNG </h4>
+        </div>
+    </div>
+    <form class="form-info">
+        @Html.HiddenFor(x => x.Id)
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="MaDon">Mã đơn hàng<span class="text-danger">*</span></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="MaDon" name="MaDon" value="@Model.MaDon">
+            </div>
+            <label class="col-sm-2 col-form-label" for="TenKhachHang">Tên khách hàng<span class="text-danger">*</span></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="TenKhachHang" name="TenKhachHang" value="@Model.TenKhachHang">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="SoDT">Số điện thoại<span class="text-danger">*</span></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="SoDT" name="SoDT" value="@Model.SoDT">
+            </div>
+            <label class="col-sm-2 col-form-label" for="DiaChi">Địa chỉ<span class="text-danger">*</span></label>
+            <div class="col-sm-4">
+                <textarea rows="4" class="form-control" id="DiaChi" name="DiaChi">@Model.DiaChi</textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="CreatedDate">Ngày tạo<span class="text-danger">*</span></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="CreatedDate" name="CreatedDate" value="@Model.CreatedDate">
+            </div>
+            <label class="col-sm-2 col-form-label" for="TenTrangThai">Trạng thái<span class="text-danger">*</span></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="TenTrangThai" name="TenTrangThai" value="@Model.TenTrangThai">
+            </div>
+        </div>
+
+    </form>
+    <div class="row">
+        <div class="col-sm-12 group-label mb-2 mt-2">
+            <h4>DANH SÁCH SẢN PHẨM</h4>
+        </div>
+    </div>
+    @Html.Action("PvDanhSachSanpPhamTheoDon", "ThongTinDatHang", new { DatHangId = Model.Id})
+</div>
+<script src="~/Scripts/js/dat-hang/_FormView.js?v=@(DateTime.Now.Ticks)"></script>
+
+
+
+

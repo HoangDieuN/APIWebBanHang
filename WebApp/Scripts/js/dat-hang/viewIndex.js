@@ -65,6 +65,26 @@
                 $.fn.showAlert('Không tìm thấy thông tin đã chọn', 'warning');
             }
         })
+        // xem sản phẩm
+        $(`${elmTable} .btn-view`).off().on("click", function () {
+            debugger
+            let table = datHang.getTable();
+            let tr = $(this).closest("tr");
+            let row = table.row(tr).data();
+            if (row.Id) {
+                datHang.formView(row.Id, (res) => {
+                    showModal({
+                        elm: "#modal",
+                        title: "THÔNG TIN ĐƠN HÀNG",
+                        content: res,
+                        size: "xl",
+                        button: modalButton.save
+                    })
+                });
+            } else {
+                $.fn.showAlert('Không tìm thấy thông tin đã chọn', 'warning');
+            }
+        })
         //delete
         $(`${elmTable} .btn-del`).off().on("click", function () {
             debugger

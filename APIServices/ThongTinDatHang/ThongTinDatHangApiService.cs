@@ -105,5 +105,23 @@ namespace APIServices
                 return null;
             }
         }
+        public async Task<ThongTinDatHang> GetByDatHangId(ThongTinDatHangRequest requestModel)
+        {
+            try
+            {
+                ThongTinDatHang result = null;
+                Response response = await RestfulApi<Response>.GetAsync($"api/thong-tin-dat-hang/danh-sach-by-dathangid", requestModel, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<ThongTinDatHang>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"ThongTinDatHangApiService Error: {ex.Message}");
+                return null;
+            }
+        }
     }
 }

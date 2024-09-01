@@ -37,6 +37,20 @@ namespace WebApp.Areas.Admin.Controllers
                 message = "Tải dữ liệu thành công"
             });
         }
+        [HttpGet]
+        public async Task<ActionResult> _FormView(int id)
+        {
+            DatHang model = new DatHang();
+            if (id > 0)
+            {
+                DatHang result = await _datHangApiService.GetById(id);
+                if (result != null)
+                {
+                    model = result;
+                }
+            }
+            return PartialView(model);
+        }
         [HttpPost]
         public async Task<ActionResult> UpdateStatus(DatHangRequest requestModel)
         {

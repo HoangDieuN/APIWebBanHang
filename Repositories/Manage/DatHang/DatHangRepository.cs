@@ -29,7 +29,7 @@ namespace Repositories
                 parameters.Add("@Email", requestModel.Email);
                 parameters.Add("@TongDon", requestModel.TongDon);
                 parameters.Add("@Quantity", requestModel.Quantity);
-                parameters.Add("@Status", requestModel.Status);
+                //parameters.Add("@Status", requestModel.Status);
                 parameters.Add("@UserId", requestModel.UserId);
                 var result = await _baseRepository.GetValue<int>("DatHang_Creat", parameters);
                 return result;

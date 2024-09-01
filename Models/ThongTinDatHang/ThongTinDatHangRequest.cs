@@ -9,5 +9,6 @@ namespace Models
     public class ThongTinDatHangRequest :BaseRequest
     {
         public string Ids {  get; set; }
+        public int DatHangId {  get; set; }
     }
 }

@@ -53,11 +53,12 @@
             {
                 type: "index",
                 columns: () => [
-                    { data: "Stt", title: "STT", name: "Stt", width: 15 },
+                    { data: "Stt", title: "STT", name: "Stt", width: 5 },
                     { data: "MaDon", title: "Mã đơn", name: "MaDon", width: 200 },
                     { data: "TenKhachHang", title: "Tên khách hàng", name: "TenKhachHang", width: 100 },
                     { data: "SoDT", title: "Số điện thoại", name: "SoDT", width: 100 },
                     { data: "DiaChi", title: "Địa chỉ", name: "DiaChi", width: 150 },
+                    { data: "TenTrangThai", title: "Trạng thái", name: "TenTrangThai", width: 110 },
                     {
                         data: "Id", title: "Thao tác", name: "action", width: 50,
                         render: function (data, type, row) {
@@ -85,7 +86,13 @@
         //endpoints
         this.endpoints = {
             fetchList: "/Admin/DatHang/ListDatHang",
-            updateStatus:"/Admin/DatHang/UpdateStatus"
+            updateStatus: "/Admin/DatHang/UpdateStatus",
+            formViewListSanPham: (id) => {
+                let params = { id };
+                const searchParams = new URLSearchParams(params);
+                return `/Admin/DatHang/_FormView?${searchParams.toString()}`;
+            },
+            delete:"/Admin/DatHang/Delete"
         }
     }
     //#region properties
@@ -137,19 +144,15 @@
         this.setTable(table);
     }
 
-    //pvForm(id, callback) {
-    //    let { endpoints } = this;
-    //    $.fn.loading();
-    //    $.fn.getData(endpoints.pvForm(id), {}, res => {
-    //        $.fn.offLoading();
-    //        if (callback) callback(res);
-    //    })
-    //}
-    //save(data, callback) {
-    //    let { endpoints } = this;
-    //    $.fn.loading();
-    //    $.fn.postFormData(endpoints.save, data, callback);
-    //}
+    formView(id, callback) {
+        let { endpoints } = this;
+        $.fn.loading();
+        $.fn.getData(endpoints.formViewListSanPham(id), {}, res => {
+            $.fn.offLoading();
+            if (callback) callback(res);
+        })
+    }
+
     delete(data, callback) {
         let { endpoints } = this;
         $.fn.swalConfirm("Xoá!", "Bạn chắc chắn muốn xóa?", res => {
