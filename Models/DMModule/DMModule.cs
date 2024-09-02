@@ -12,5 +12,7 @@ namespace Models
         public string ModuleName { get; set; }
         public string TenViet { get; set; }
         public string MoTa {  get; set; }
+        public bool IsActive { get; set; }
+
     }
 }

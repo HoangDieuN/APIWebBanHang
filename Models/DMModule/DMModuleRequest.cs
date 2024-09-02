@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class DMModuleRequest :BaseRequest
+    public class DMModuleRequest : BaseRequest
     {
-        public string Ids {  get; set; }
+        public string Ids { get; set; }
+        public bool IsActive {  get; set; }
+        public string PhanHoi { get; set; }
     }
 }

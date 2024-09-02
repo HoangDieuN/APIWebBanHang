@@ -12,7 +12,9 @@ namespace Repositories
         Task<int> Creat(SanPham requestModel);
         Task<int> Delete(SanPhamRequest requestModel);
         Task<SanPhamPaging> GetAll(SanPhamRequest requestModel);
+        Task<SanPhamPaging> GetAllActive(SanPhamRequest requestModel);
         Task<SanPham> GetById(int id);
         Task<int> Update(SanPham requestModel);
+        Task<int> UpdateActive(SanPhamRequest requestModel);
     }
 }

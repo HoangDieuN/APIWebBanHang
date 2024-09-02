@@ -106,6 +106,7 @@
                 $.fn.showAlert(res.message, 'warning');
             }
         })
+
         //delete
         $(`${elmTable} .btn-del`).off().on("click", function () {
             let table = baiViet.getTable();

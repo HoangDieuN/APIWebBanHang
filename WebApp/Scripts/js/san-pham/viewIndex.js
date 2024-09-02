@@ -77,6 +77,60 @@
                 $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");
             }
         })
+        //hiển thị sản phẩm
+        $(`${elmTable} .btn-active`).off().on("click", function () {
+            debugger
+            let table = sanPham.getTable();
+            let tr = $(this).closest("tr");
+            let row = table.row(tr).data();
+            if (row.Id) {
+                $.fn.swalTextArea("Xác nhận!", "Lý do hiển thị:", "", cf => {
+                    if (cf.value) {
+                        $.fn.loading();
+                        sanPham.updateActive({
+                            ids:row.Id,
+                            isactive: activeConst.isactive,
+                            phanHoi: cf.value
+                        }, res => {
+                            $.fn.offLoading();
+                            if (res.result == "success") {
+                                table.ajax.reload(null, false);
+                            }
+                            $.fn.showAlert(res.message, 'success');
+                        })
+                    }
+                })
+            } else {
+                $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");
+            }
+        })
+        // tắt hiển thị sản phẩm
+        $(`${elmTable} .btn-unactive`).off().on("click", function () {
+            debugger
+            let table = sanPham.getTable();
+            let tr = $(this).closest("tr");
+            let row = table.row(tr).data();
+            if (row.Id) {
+                $.fn.swalTextArea("Xác nhận!", "Lý do không hiển thị:", "", cf => {
+                    if (cf.value) {
+                        $.fn.loading();
+                        sanPham.updateActive({
+                            ids: row.Id,
+                            isactive: activeConst.notactive,
+                            phanHoi: cf.value
+                        }, res => {
+                            $.fn.offLoading();
+                            if (res.result == "success") {
+                                table.ajax.reload(null, false);
+                            }
+                            $.fn.showAlert(res.message, 'success');
+                        })
+                    }
+                })
+            } else {
+                $.fn.toastrMessage("Không tìm thấy thông tin đã chọn", "Thông báo", "warning");
+            }
+        })
         //delete
         $(`${elmTable} .btn-del`).off().on("click", function () {
             let table = sanPham.getTable();

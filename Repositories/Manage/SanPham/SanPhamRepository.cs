@@ -94,6 +94,31 @@ namespace Repositories
                 return new SanPhamPaging();
             }
         }
+        public async Task<SanPhamPaging> GetAllActive(SanPhamRequest requestModel)
+        {
+            try
+            {
+                SanPhamPaging pagedResult = new SanPhamPaging();
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Keywords", requestModel.Keywords);
+                parameters.Add("@DanhMucId", requestModel.DanhMucId);
+                parameters.Add("@Nam", requestModel.Nam);
+                parameters.Add("@Start", requestModel.Start);
+                parameters.Add("@Length", requestModel.Length);
+                parameters.Add("@Count", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var result = await _baseRepository.GetMultipleList("SanPham_GetAllActive", parameters, read =>
+                {
+                    pagedResult.ListSanPham = read.Read<SanPham>().ToList();
+                    pagedResult.Total = parameters.Get<int>("@Count");
+                });
+                return pagedResult;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"SanPhamRepository Error: {ex.Message}");
+                return new SanPhamPaging();
+            }
+        }
         public async Task<SanPham> GetById(int id)
         {
             try
@@ -124,6 +149,24 @@ namespace Repositories
             {
                 Debug.WriteLine($"SanPhamRepository Error: {ex.Message}");
                 return 0;
+            }
+        }
+        public async Task<int> UpdateActive(SanPhamRequest requestModel)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Ids", requestModel.Ids);
+                parameters.Add("@IsActive", requestModel.IsActive);
+                parameters.Add("@PhanHoi", requestModel.PhanHoi);
+                parameters.Add("@UpdatedBy", requestModel.UpdatedBy);
+                var result = await _baseRepository.GetValue<int>("SanPham_UpdateActive", parameters);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"SanPhamRepository Error: {ex.Message}");
+                throw;
             }
         }
     }

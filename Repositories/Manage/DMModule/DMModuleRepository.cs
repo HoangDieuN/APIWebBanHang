@@ -83,6 +83,29 @@ namespace Repositories
                 return new DMModulePaging();
             }
         }
+        public async Task<DMModulePaging> GetAllActive(DMModuleRequest requestModel)
+        {
+            try
+            {
+                DMModulePaging pagedResult = new DMModulePaging();
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Keywords", requestModel.Keywords);
+                parameters.Add("@Start", requestModel.Start);
+                parameters.Add("@Length", requestModel.Length);
+                parameters.Add("@Count", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var result = await _baseRepository.GetMultipleList("DM_Module_GetAllActive", parameters, read =>
+                {
+                    pagedResult.ListModule = read.Read<DMModule>().ToList();
+                    pagedResult.Total = parameters.Get<int>("@Count");
+                });
+                return pagedResult;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"DMModuleRepository Error: {ex.Message}");
+                return new DMModulePaging();
+            }
+        }
         public async Task<DMModule> GetById(int id)
         {
             try
@@ -113,6 +136,24 @@ namespace Repositories
             {
                 Debug.WriteLine($"DMModuleRepository Error: {ex.Message}");
                 return 0;
+            }
+        }
+        public async Task<int> UpdateActive(DMModuleRequest requestModel)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Ids", requestModel.Ids);
+                parameters.Add("@IsActive", requestModel.IsActive);
+                parameters.Add("@PhanHoi", requestModel.PhanHoi);
+                parameters.Add("@UpdatedBy", requestModel.UpdatedBy);
+                var result = await _baseRepository.GetValue<int>("DMModule_UpdateActive", parameters);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"DMModuleRepository Error: {ex.Message}");
+                throw;
             }
         }
     }

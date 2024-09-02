@@ -82,6 +82,25 @@ namespace WebApp.Areas.Admin.Controllers
             }
         }
         [HttpPost]
+        public async Task<ActionResult> UpdateActive(DMModuleRequest requestModel)
+        {
+            try
+            {
+                requestModel.UpdatedBy = User.UserName;
+                //call api
+                int result = await _dMModuleApiService.UpdateActive(requestModel);
+                if (result > 0)
+                {
+                    return Json(new { result = "success", message = "Cập nhật thành công" });
+                }
+                return Json(new { result = "error", message = "Cập nhật thất bại" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = "error", message = "Có lỗi xảy ra: " + ex.Message });
+            }
+        }
+        [HttpPost]
         public async Task<ActionResult> Delete(DMModuleRequest requestModel)
         {
             try

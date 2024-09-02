@@ -54,7 +54,13 @@ namespace WebApp.Controllers
             }
         }
 
-
+        //chi tiết bài viết
+        [HttpGet]
+        public async Task<ActionResult> BaiViet_Detail(string tenbaiviet, int id)
+        {
+            BaiViet result = await _baiVietApiService.GetById(id);
+            return View("BaiViet_Detail", result);
+        }
         //menu bài viết cho trang chủ
         [HttpGet]
         public async Task<ActionResult> MenuBaiViet(BaiVietRequest baiVietRequest)

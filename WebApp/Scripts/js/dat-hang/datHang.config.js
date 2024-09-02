@@ -67,9 +67,9 @@
                             ${featherIcons.edit3}
                         </button>
                        `
-                            strButton += `<button type="button" class="btn btn-sm btn-outline-danger btn-icon waves-effect waves-light btn-del" title="Xoá">
-                            ${featherIcons.trash}
-                        </button>`
+                        //    strButton += `<button type="button" class="btn btn-sm btn-outline-danger btn-icon waves-effect waves-light btn-del" title="Xoá">
+                        //    ${featherIcons.trash}
+                        //</button>`
                             strButton += `<button type="button" class="btn btn-sm btn-outline-info btn-icon waves-effect waves-light btn-view" title="Xem đơn hàng">
                             ${featherIcons.eye}
                         </button>`

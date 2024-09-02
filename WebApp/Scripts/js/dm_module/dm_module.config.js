@@ -47,21 +47,52 @@
                 columns: () => [
                     { data: "Stt", title: "STT", name: "Stt", width: 25 },
                     { data: "TenViet", title: "Tên module", name: "TenViet", width: 150 },
-                    { data: "ModuleName", title: "Mã module", name: "ModuleName", width: 100 },
-                    { data: "ModuleCode", title: "Mã module code", name: "ModuleName", width: 100 },
+                    { data: "ModuleName", title: "Mã module code", name: "ModuleName", width: 100 },
                     { data: "MoTa", title: "Mô tả", name: "MoTa", width: 100 },
+                    {
+                        data: "IsActive",
+                        name: "IsActive",
+                        title: "Trạng thái",
+                        width: 50,
+                        render: (data) => {
+                            let str = "";
+                            if (data) {
+                                str += `<span class="badge bg-success">Hiển thị</span>`;
+                            } else {
+                                str += `<span class="badge bg-warning">Không hiển thị</span>`;
+                            }
+                            return str;
+                        }
+                    },
                     {
                         data: "Id", title: "Thao tác", name: "action", width: 80,
                         render: function (data, type, row) {
                             let strButton = ``;
-                            strButton += `<button type="button" class="btn btn-sm btn-outline-warning btn-icon waves-effect waves-light btn-edit" title="Sửa">
+                            if (row.IsActive == false) {
+                                strButton += `<button type="button" class="btn btn-sm btn-outline-warning btn-icon waves-effect waves-light btn-edit" title="Sửa">
                             ${featherIcons.edit3}
                         </button>
                        `
-                            strButton += `<button type="button" class="btn btn-sm btn-outline-danger btn-icon waves-effect waves-light btn-del" title="Xoá">
+                                strButton += `<button type="button" class="btn btn-sm btn-outline-danger btn-icon waves-effect waves-light btn-del" title="Xoá">
                             ${featherIcons.trash}
+                        </button>
+                         <button type="button" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light btn-active" title="Hiển thị">
+                            ${featherIcons.playCircle}
+                        </button>
+                        `;
+                            }
+                            else {
+                                strButton += `<button type="button" class="btn btn-sm btn-outline-warning btn-icon waves-effect waves-light btn-edit" title="Sửa">
+                            ${featherIcons.edit3}
+                        </button>
+                       `
+                                strButton += `<button type="button" class="btn btn-sm btn-outline-danger btn-icon waves-effect waves-light btn-del" title="Xoá">
+                            ${featherIcons.trash}
+                        </button>   
+                        <button type="button" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light btn-unactive" title=" Không hiển thị">
+                            ${featherIcons.playCircle}
                         </button>`;
-
+                            }
                             return `<div class="d-flex align-items-center gap-1">
                                 ${strButton}
                             </div>`;
@@ -77,6 +108,7 @@
                 const searchParams = new URLSearchParams(params);
                 return `/Admin/DMModule/_FormDMModule?${searchParams.toString()}`;
             },
+            updateActive: "/Admin/DMModule/UpdateActive",
             save: "/Admin/DMModule/Save",
             delete: "/Admin/DMModule/Delete",
             fetchOptions: "/DMModule/SelectModule"
@@ -141,6 +173,10 @@
         let { endpoints } = this;
         $.fn.loading();
         $.fn.postFormData(endpoints.save, data, callback);
+    }
+    updateActive(data, callback) {
+        let { endpoints } = this;
+        $.fn.postData(endpoints.updateActive, data, callback);
     }
     delete(data, callback) {
         let { endpoints } = this;

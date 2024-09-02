@@ -19,6 +19,21 @@
                 }
             },
             messages: {
+                TenBaiViet: {
+                    required: "Vui lòng nhập thông tin",
+                },
+                MoTa: {
+                    required: "Vui lòng nhập thông tin",
+                },
+                ThongTin: {
+                    required: "Vui lòng nhập thông tin",
+                },
+                NoiDung: {
+                    required: "Vui lòng nhập nội dung bài viết",
+                },
+                IsActive: {
+                    required: !0,
+                }
             }
         };
         this.tableColumnsConfig = [

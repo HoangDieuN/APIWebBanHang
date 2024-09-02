@@ -34,6 +34,26 @@ namespace WebApp
             defaults: new { controller = "SanPhams", action = "SanPham_Detail"},
             namespaces: new[] { "WebApp.Controllers" }
             );
+            routes.MapRoute(
+             name: "Contact",
+             url: "lien-he",
+             defaults: new { controller = "LienHe", action = "Index" },
+             namespaces: new[] { "WebBanHangOnline.Controllers" }
+            );
+            //giới thiệu
+            routes.MapRoute(
+            name: "GioiThieu",
+            url: "gioi-thieu",
+            defaults: new { controller = "GioiThieu", action = "Index", alias = UrlParameter.Optional },
+            namespaces: new[] { "WebBanHangOnline.Controllers" }
+            );
+            //chi tiết bài viết
+            routes.MapRoute(
+            name: "detailBaiViet",
+            url: "chi-tiet/bai-viet-{id}",
+            defaults: new { controller = "BaiViets", action = "BaiViet_Detail" },
+            namespaces: new[] { "WebApp.Controllers" }
+           );
             //thanh toán
             routes.MapRoute(
             name: "CheckOut",

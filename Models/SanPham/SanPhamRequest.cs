@@ -12,5 +12,8 @@ namespace Models
         public int Nam { get; set; }
         public int DanhMucId { get; set; }
         public string MaDMSanPham { get; set; }
+        public bool IsActive {  get; set; }
+        public string  PhanHoi{ get; set; }
+
     }
 }

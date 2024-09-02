@@ -39,8 +39,27 @@ namespace APIWebBanHang.Controllers
             }
             return res;
         }
- 
 
+        [Route("danh-sach-active")]
+        [HttpPost]
+        public async Task<object> GetAllActive(SanPhamRequest requestModel)
+        {
+            Response res = new Response();
+            try
+            {
+                SanPhamPaging result = await _sanPhamRepository.GetAllActive(requestModel);
+                res.code = ResponseCode.SUCCESS;
+                res.message = ResponseDetail.SUCCESSDETAIL;
+                res.result = result;
+            }
+            catch (Exception ex)
+            {
+                res.code = ResponseCode.UNKNOWN_ERROR;
+                res.message = ResponseDetail.UNKNOWN_ERRORDETAIL + "-" + ex.Message;
+                res.result = null;
+            }
+            return res;
+        }
         [Route("danh-sach/{id}")]
         [HttpGet]
         public async Task<object> GetById(int id)
@@ -126,6 +145,26 @@ namespace APIWebBanHang.Controllers
             }
             return res;
 
+        }
+        [Route("update-active")]
+        [HttpPut]
+        public async Task<object> UpdateStatus(SanPhamRequest requestModel)
+        {
+            Response res = new Response();
+            try
+            {
+                int result = await _sanPhamRepository.UpdateActive(requestModel);
+                res.code = result > 0 ? ResponseCode.SUCCESS : ResponseCode.UPDATE_ERROR;
+                res.message = result > 0 ? ResponseDetail.SUCCESSDETAIL : ResponseDetail.UPDATE_ERRORDETAIL;
+                res.result = result;
+            }
+            catch (Exception ex)
+            {
+                res.code = ResponseCode.UNKNOWN_ERROR;
+                res.message = ResponseDetail.UNKNOWN_ERRORDETAIL + " - " + ex.Message;
+                res.result = null;
+            }
+            return res;
         }
     }
 }

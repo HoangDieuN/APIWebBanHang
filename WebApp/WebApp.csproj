@@ -225,7 +225,9 @@
     <Compile Include="Controllers\DMModuleController.cs" />
     <Compile Include="Controllers\DMSanPhamsController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LienHeController.cs" />
     <Compile Include="Controllers\SanPhamsController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
@@ -1128,6 +1130,9 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\BaiViets\Index.cshtml" />
     <Content Include="Views\BaiViets\_DanhSachBaiViet.cshtml" />
+    <Content Include="Views\BaiViets\BaiViet_Detail.cshtml" />
+    <Content Include="Views\GioiThieu\Index.cshtml" />
+    <Content Include="Views\LienHe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\APIServices\APIServices.csproj">

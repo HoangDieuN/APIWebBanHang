@@ -30,21 +30,21 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<ActionResult> DanhSachSanPham(SanPhamRequest sanPhamRequest)
         {
-            SanPhamPaging ds = await _sanPhamApiService.GetAll(sanPhamRequest);
+            SanPhamPaging ds = await _sanPhamApiService.GetAllActive(sanPhamRequest);
             return PartialView("_DanhSachSanPham", ds);
         }
         //menu sản phẩm theo danh mục cho layout
         [HttpGet]
         public async Task<ActionResult> MenuSanPhamByMaDMSanPham(SanPhamRequest sanPhamRequest)
         {
-            SanPhamPaging ds = await _sanPhamApiService.GetAll(sanPhamRequest);
+            SanPhamPaging ds = await _sanPhamApiService.GetAllActive(sanPhamRequest);
             return PartialView("_MenuSanPhamByMaDMSanPham",ds);
         }
         //menu sản phẩm đang sale cho layout
         [HttpGet]
         public async Task<ActionResult> MenuSanPhamDangSale(SanPhamRequest sanPhamRequest)
         {
-            SanPhamPaging ds = await _sanPhamApiService.GetAll(sanPhamRequest);
+            SanPhamPaging ds = await _sanPhamApiService.GetAllActive(sanPhamRequest);
             return PartialView("_MenuSanPhamDangSale", ds);
         }
         //xem chi tiết sản phẩm

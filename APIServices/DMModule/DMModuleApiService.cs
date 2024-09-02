@@ -49,12 +49,48 @@ namespace APIServices
                 return 0;
             }
         }
+        public async Task<int> UpdateActive(DMModuleRequest requestModel)
+        {
+            try
+            {
+                int result = 0;
+                Response response = await RestfulApi<Response>.PutAsync("api/dm_module/update-active", requestModel, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<int>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"DMModuleApiService Error: {ex.Message}");
+                return 0;
+            }
+        }
         public async Task<DMModulePaging> GetAll(DMModuleRequest requestModel)
         {
             try
             {
                 DMModulePaging result = new DMModulePaging();
                 Response response = await RestfulApi<Response>.PostAsync("api/dm_module/danh-sach", requestModel, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<DMModulePaging>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"DMModuleApiService Error: {ex.Message}");
+                return new DMModulePaging();
+            }
+        }
+        public async Task<DMModulePaging> GetAllActive(DMModuleRequest requestModel)
+        {
+            try
+            {
+                DMModulePaging result = new DMModulePaging();
+                Response response = await RestfulApi<Response>.PostAsync("api/dm_module/danh-sach-active", requestModel, CommonConstants.ApiUrl);
                 if (response.code == ResponseCode.SUCCESS)
                 {
                     result = JsonConvert.DeserializeObject<DMModulePaging>(response.result.ToString());

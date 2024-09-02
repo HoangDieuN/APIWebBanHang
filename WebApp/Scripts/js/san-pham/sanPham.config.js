@@ -16,7 +16,18 @@
                 },            
             },
             message: {
-
+                TenSanPham: {
+                    required: "Vui lòng nhập thông tin",
+                },
+                MoTa: {
+                    required: "Vui lòng nhập thông tin",
+                },
+                DanhMucId: {
+                    required: "Vui lòng nhập thông tin",
+                },
+                TenDanhMucSP: {
+                    required: "Vui lòng nhập thông tin",
+                },            
             }
         }
         this.tableColumnsConfig = [
@@ -29,16 +40,46 @@
                     { data: "GiaGoc", title: "Gía gốc", name: "GiaGoc", width: 100 },
                     { data: "TenDanhMucSP", title: "Tên danh mục", name: "TenDanhMucSP", width: 150 },
                     { data: "Nam", title: "Năm", name: "Nam", width: 50 },
-
+                    {
+                        data: "IsActive",
+                        name: "IsActive",
+                        title: "Trạng thái",
+                        width: 50,
+                        render: (data) => {
+                            let str = "";
+                            if (data) {
+                                str += `<span class="badge bg-success">Hiển thị</span>`;
+                            } else {
+                                str += `<span class="badge bg-warning">Không hiển thị</span>`;
+                            }
+                            return str;
+                        }
+                    },
                     {
                         data: "Id", title: "Thao tác", name: "action", with: 80,
                         render: function (data, type, row) {
                             let strButton = ``;
-                            strButton += `<button type="button" class="btn btn-sm btn-outline-warning btn-icon waves-effect waves-light btn-edit" title="Sửa">
-                            ${featherIcons.edit3}   </button> <button type="button" class="btn btn-sm btn-outline-danger btn-icon waves-effect waves-light btn-del" title="Xoá">
+                            if (row.IsActive == false) {
+                                strButton += `<button type="button" class="btn btn-sm btn-outline-warning btn-icon waves-effect waves-light btn-edit" title="Sửa">
+                            ${featherIcons.edit3}   </button> 
+                            <button type="button" class="btn btn-sm btn-outline-danger btn-icon waves-effect waves-light btn-del" title="Xoá">
                             ${featherIcons.trash}
-                        </button>`;
-
+                        </button> 
+                        <button type="button" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light btn-active" title="Hiển thị">
+                            ${featherIcons.playCircle}
+                        </button>`
+                                    ;
+                            }
+                            else {
+                                strButton += `<button type="button" class="btn btn-sm btn-outline-warning btn-icon waves-effect waves-light btn-edit" title="Sửa">
+                            ${featherIcons.edit3}   </button> 
+                            <button type="button" class="btn btn-sm btn-outline-danger btn-icon waves-effect waves-light btn-del" title="Xoá">
+                            ${featherIcons.trash}
+                        </button> 
+                        <button type="button" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light btn-unactive" title="Không hiển thị">
+                            ${featherIcons.playCircle}
+                        </button>`
+                            }
                             return `<div class="d-flex align-items-center gap-1">
                              ${strButton}
                                </div>`;
@@ -52,6 +93,7 @@
             fetchList: "/Admin/SanPham/ListSanPham",
             save: "/Admin/SanPham/Save",
             delete: "/Admin/SanPham/Delete",
+            updateActive:"/Admin/SanPham/UpdateActive",
             fetchOptions: "/Admin/DMSanPham/SelectDanhMucSanPham",
             pvForm: (id) => {
                 let params = { id };
@@ -123,6 +165,10 @@
             $.fn.offLoading();
             if (callback) callback(res);
         })
+    }
+    updateActive(data, callback) {
+        let { endpoints } = this;
+        $.fn.postData(endpoints.updateActive, data, callback);
     }
     delete(data, callback) {
         let { endpoints } = this;

@@ -23,7 +23,7 @@ namespace WebApp.Controllers
         }
         public async Task<ActionResult> MenuTop(DMModuleRequest dMModuleRequest)
         {
-            DMModulePaging ds = await _dMModuleApiService.GetAll(dMModuleRequest);
+            DMModulePaging ds = await _dMModuleApiService.GetAllActive(dMModuleRequest);
             return PartialView("_MenuTop", ds);
         }
     }

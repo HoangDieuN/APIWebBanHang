@@ -154,5 +154,24 @@ namespace WebApp.Areas.Admin.Controllers
                 return Json(new { result = "error", message = "Có lỗi xảy ra: " + ex.Message });
             }
         }
+        [HttpPost]
+        public async Task<ActionResult> UpdateActive(SanPhamRequest requestModel)
+        {
+            try
+            {
+                requestModel.UpdatedBy = User.UserName;
+                //call api
+                int result = await _sanPhamApiService.UpdateActive(requestModel);
+                if (result > 0)
+                {
+                    return Json(new { result = "success", message = "Cập nhật thành công" });
+                }
+                return Json(new { result = "error", message = "Cập nhật thất bại" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = "error", message = "Có lỗi xảy ra: " + ex.Message });
+            }
+        }
     }
 }

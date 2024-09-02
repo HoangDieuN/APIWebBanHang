@@ -30,6 +30,24 @@ namespace APIServices
                 return new SanPhamPaging();
             }
         }
+        public async Task<SanPhamPaging> GetAllActive(SanPhamRequest requestModel)
+        {
+            try
+            {
+                SanPhamPaging result = new SanPhamPaging();
+                Response response = await RestfulApi<Response>.PostAsync($"api/san-pham/danh-sach-active", requestModel, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<SanPhamPaging>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"SanPhamApiService Error: {ex.Message}");
+                return new SanPhamPaging();
+            }
+        }
         public async Task<SanPhamPaging> GetAllByDanhMucId(int id)
         {
             try
@@ -58,6 +76,24 @@ namespace APIServices
                 {
                     result = JsonConvert.DeserializeObject<int>(response.result.ToString());
 
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"SanPhamApiService Error: {ex.Message}");
+                return 0;
+            }
+        }
+        public async Task<int> UpdateActive(SanPhamRequest requestModel)
+        {
+            try
+            {
+                int result = 0;
+                Response response = await RestfulApi<Response>.PutAsync("api/san-pham/update-active", requestModel, CommonConstants.ApiUrl);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<int>(response.result.ToString());
                 }
                 return result;
             }
