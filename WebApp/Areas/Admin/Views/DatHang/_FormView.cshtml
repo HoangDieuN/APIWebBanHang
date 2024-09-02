@@ -45,9 +45,9 @@
     <div class="row">
         <div class="col-sm-12 group-label mb-2 mt-2">
             <h4>DANH SÁCH SẢN PHẨM</h4>
+            @Html.Action("PvDanhSachTheoSanPham", "ThongTinDatHang", new { DatHangId = Model.Id })
         </div>
     </div>
-    @Html.Action("PvDanhSachSanpPhamTheoDon", "ThongTinDatHang", new { DatHangId = Model.Id})
 </div>
 <script src="~/Scripts/js/dat-hang/_FormView.js?v=@(DateTime.Now.Ticks)"></script>
 

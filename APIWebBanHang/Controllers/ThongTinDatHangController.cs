@@ -37,7 +37,26 @@ namespace APIWebBanHang.Controllers
             }
             return res;
         }
-
+        [Route("danh-sach-by-dathangid")]
+        [HttpPost]
+        public async Task<object> GetAllByDatHangId(ThongTinDatHangRequest requestModel)
+        {
+            Response res = new Response();
+            try
+            {
+                ThongTinDatHangPaging result = await _thongTinDatHangRepository.GetAllByDatHangId(requestModel);
+                res.code = ResponseCode.SUCCESS;
+                res.message = ResponseDetail.SUCCESSDETAIL;
+                res.result = result;
+            }
+            catch (Exception ex)
+            {
+                res.code = ResponseCode.UNKNOWN_ERROR;
+                res.message = ResponseDetail.UNKNOWN_ERRORDETAIL + "-" + ex.Message;
+                res.result = null;
+            }
+            return res;
+        }
 
         [Route("danh-sach/{id}")]
         [HttpGet]

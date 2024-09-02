@@ -65,7 +65,30 @@ namespace Repositories
                 parameters.Add("@Start", requestModel.Start);
                 parameters.Add("@Length", requestModel.Length);
                 parameters.Add("@Count", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                var result = await _baseRepository.GetMultipleList("DanhMucSanPham_GetAll", parameters, read =>
+                var result = await _baseRepository.GetMultipleList("ThongTinDatHang_GetAll", parameters, read =>
+                {
+                    pagedResult.ListThongTinDatHang = read.Read<ThongTinDatHang>().ToList();
+                    pagedResult.Total = parameters.Get<int>("@Count");
+                });
+                return pagedResult;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"ThongTinDatHangRepository Error: {ex.Message}");
+                return new ThongTinDatHangPaging();
+            }
+        }
+        public async Task<ThongTinDatHangPaging> GetAllByDatHangId(ThongTinDatHangRequest requestModel)
+        {
+            try
+            {
+                ThongTinDatHangPaging pagedResult = new ThongTinDatHangPaging();
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@DatHangId", requestModel.DatHangId);
+                parameters.Add("@Start", requestModel.Start);
+                parameters.Add("@Length", requestModel.Length);
+                parameters.Add("@Count", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var result = await _baseRepository.GetMultipleList("ThongTinDatHang_GetByDatHangId", parameters, read =>
                 {
                     pagedResult.ListThongTinDatHang = read.Read<ThongTinDatHang>().ToList();
                     pagedResult.Total = parameters.Get<int>("@Count");

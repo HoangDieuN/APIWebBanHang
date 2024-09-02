@@ -6,7 +6,7 @@
             {
                 type: "listBySanPham",
                 columns: () => [
-                    { data: "STT", name: "STT", title: "STT" },
+                    { data: "Stt", title: "STT", name: "Stt", width: 25 },
                     { data: "TenSanPham", name: "TenSanPham", title: "Tên sản phẩm" },
                     { data: "Gia", name: "Gia", title: "Gía" },
                     { data: "Quantity", name: "Quantity", title: "Số lượng" },
@@ -30,28 +30,28 @@
             {
                 type: "viewListBySanPham",
                 columns: () => [
-                    { data: "STT", name: "STT", title: "STT" },
+                    { data: "Stt", title: "STT", name: "Stt", width: 25 },
                     { data: "TenSanPham", name: "TenSanPham", title: "Tên sản phẩm" },
                     { data: "Gia", name: "Gia", title: "Gía" },
                     { data: "Quantity", name: "Quantity", title: "Số lượng" },
-                    {
-                        data: "Id", title: "", name: "action", width: 50,
-                        render: function () {
-                            let strButton = "";
-                            strButton += `<button type="button" class="btn btn-sm btn-outline-info btn-icon waves-effect waves-light btn-detail" title="Xem chi tiết">
-                                ${featherIcons.eye}
-                            </button>`;
-                            return `<div class="d-flex align-items-center gap-1">
-                                ${strButton}
-                            </div>`;
-                        }
-                    },
+                    //{
+                    //    data: "Id", title: "", name: "action", width: 50,
+                    //    render: function () {
+                    //        let strButton = "";
+                    //        strButton += `<button type="button" class="btn btn-sm btn-outline-info btn-icon waves-effect waves-light btn-detail" title="Xem chi tiết">
+                    //            ${featherIcons.eye}
+                    //        </button>`;
+                    //        return `<div class="d-flex align-items-center gap-1">
+                    //            ${strButton}
+                    //        </div>`;
+                    //    }
+                    //},
                 ],
             }
         ];
         //endpoints
         this.endpoints = {
-            fetchBySanPham: "/ThongTinDatHang/ListByDatHangId",
+            fetchByDatHangId: "/ThongTinDatHang/ListThongTinDatHangByDatHangId",
         }
     }
     //#region properties
@@ -95,8 +95,7 @@
                 type: "POST",
                 data: (params) => {
                     params.Keywords = this.getKeywords();
-                    params.SanPhamID = this.getSanPham();
-                    params.MaNhomSanPham = this.getMaNhomSanPham();
+                    params.DatHangId = this.getDatHang();
                 }
             },
             columns: columns,
@@ -111,7 +110,7 @@
 
     dataTableClientInit({ elm, type, paging, callback }) {
         debugger
-        let data = this.getListThanhVien();
+        let data = this.getListThongTinDatHang();
         //get columns
         let _tableColumnsConfig = this.tableColumnsConfig.find(x => x.type == type);
         let maxWidth = $(elm).closest(".table-responsive").width();
@@ -146,14 +145,14 @@
     }
 
     reloadClientTable() {
-        let { listThanhVien } = this;
-        let _listTV = [...listThanhVien];
-        _listTV = $.map(_listTV, (item, index) => {
+        let { listThongTinDatHang } = this;
+        let _listTTDH = [...listThongTinDatHang];
+        _listTTDH = $.map(_listTTDH, (item, index) => {
             item.STT = index + 1;
             return item;
         })
         this.table.clear();
-        this.table.rows.add([..._listTV]);
+        this.table.rows.add([..._listTTDH]);
         this.table.draw();
     }
     //#endregion table
@@ -161,10 +160,11 @@
     //#region actions
 
     fetchByDatHangId(data, callback) {
+        debugger
         let { endpoints } = this;
-        $.fn.postData(endpoints.fetchBySanPham, {
+        $.fn.postData(endpoints.fetchByDatHangId, {
             ...data,
-            datHangId: this.getSanPham()
+            datHangId: this.getDatHang()
         }, callback);
     }
     //#endregion actions

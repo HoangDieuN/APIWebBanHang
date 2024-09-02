@@ -13,5 +13,8 @@ namespace Models
         public int SanPhamId {  get; set; }
         public float Gia {  get; set; }
         public int Quantity {  get; set; }
+        #region Extens
+        public string TenSanPham { get; set; }
+        #endregion Extens
     }
 }
