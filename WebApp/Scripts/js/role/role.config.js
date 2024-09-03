@@ -44,7 +44,8 @@
         this.endpoints = {
             fetchOptions: "/Admin/Role/SelectRole",
             save: "/Admin/Role/SaveUserRole",
-            fetchList:"/Role/ListQuyen",
+            fetchList: "/Role/ListQuyen",
+            create: "/Admin/Role/CreateRole",
             formRole: "/Admin/Role/_FormRole",
             formThemMoiRole: (id) => {
                 let params = { id };
@@ -137,6 +138,11 @@
         debugger
         let { endpoints } = this;
         $.fn.postFormData(endpoints.save, data, callback);
+    }
+    creatRole(data, callback) {
+        debugger
+        let { endpoints } = this;
+        $.fn.postFormData(endpoints.create, data, callback);
     }
     allOptions(callback) {
         let { endpoints } = this;

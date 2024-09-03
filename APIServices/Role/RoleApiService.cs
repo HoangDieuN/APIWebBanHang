@@ -102,6 +102,24 @@ namespace APIServices
                 return 0;
             }
         }
+        public async Task<int> CreatRole(Role requestModel)
+        {
+            try
+            {
+                int result = 0;
+                Response response = await RestfulApi<Response>.PostAsync($"api/vai-tro/creat-role", requestModel);
+                if (response.code == ResponseCode.SUCCESS)
+                {
+                    result = JsonConvert.DeserializeObject<int>(response.result.ToString());
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"RoleApiService Error: {ex.Message}");
+                return 0;
+            }
+        }
         public async Task<int> UpdateUserRole(Role requestModel)
         {
             try

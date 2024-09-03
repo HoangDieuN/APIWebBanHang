@@ -12,7 +12,7 @@ using Utilities;
 namespace WebApp.Areas.Admin.Controllers
 {
     [Authorization]
-    public class RoleController : Controller
+    public class RoleController : BaseController
     {
         private readonly IRoleApiService _roleApiService;
         public RoleController(IRoleApiService roleApiService)
@@ -100,6 +100,7 @@ namespace WebApp.Areas.Admin.Controllers
         {
             try
             {
+                requestModel.UpdatedBy = User.UserName;
                 //save
                 int result = await _roleApiService.UpdateUserRole(requestModel);
                 if (result > 0)
@@ -119,6 +120,8 @@ namespace WebApp.Areas.Admin.Controllers
             try
             {
                 //save
+                requestModel.CreatedBy = User.UserName;
+
                 int result = await _roleApiService.CreatUserRole(requestModel);
                 if (result > 0)
                 {
@@ -131,7 +134,26 @@ namespace WebApp.Areas.Admin.Controllers
                 return Json(new { result = "error", message = $"Có lỗi xảy ra: {ex.Message}" });
             }
         }
-
+        //CreateRole
+        [HttpPost]
+        public async Task<ActionResult> CreateRole(Role requestModel)
+        {
+            try
+            {
+                //save
+                requestModel.CreatedBy = User.UserName;
+                int result = await _roleApiService.CreatRole(requestModel);
+                if (result > 0)
+                {
+                    return Json(new { result = "success", message = Constants.MSG_ERR_UPDATE_SUCCESS });
+                }
+                return Json(new { result = "error", message = Constants.MSG_ERR_UPDATE_FAILED });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = "error", message = $"Có lỗi xảy ra: {ex.Message}" });
+            }
+        }
         #endregion Action
     }
 

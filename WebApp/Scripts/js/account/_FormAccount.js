@@ -9,8 +9,8 @@
         { key: "Avatar", isView: 0 }
     ],
     roleSelect: { elm: "#form-taikhoan #RoleId" },
-    loadLisTaiKhoan: function () {
-        if ($loadLisTaiKhoan) $loadLisTaiKhoan();
+    loadListTaiKhoan: function () {
+        if ($loadListTaiKhoan) $loadListTaiKhoan();
     },
     init: function () {
         let { user, viewFileConfig, fileUpload } = this;

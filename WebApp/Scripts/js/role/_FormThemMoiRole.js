@@ -58,7 +58,7 @@
         let error = _this.validateForm(data);
         if (error.isValid) {
             $.fn.loading();
-            role.save(formData, res => {
+            role.creatRole(formData, res => {
                 $.fn.offLoading();
                 if (res.result == "success") {
                     _this.loadListQuyen();

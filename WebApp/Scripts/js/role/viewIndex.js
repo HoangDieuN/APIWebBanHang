@@ -62,5 +62,5 @@
 }
 $(function () {
     viewIndex.init();
-    window.$loadListRole = viewIndex.loadTable;
+    window.$loadListQuyen= viewIndex.loadTable;
 })

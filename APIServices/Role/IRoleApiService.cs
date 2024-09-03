@@ -9,6 +9,7 @@ namespace APIServices
 {
     public interface IRoleApiService
     {
+        Task<int> CreatRole(Role requestModel);
         Task<int> CreatUserRole(Role requestModel);
         Task<int> DeleteUserRole(RoleRequest requestModel);
         Task<List<Role>> GetAll();
