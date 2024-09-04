@@ -7,7 +7,9 @@
 <!-- Product 1 -->
 @if (Model.ListSanPham != null && Model.ListSanPham.Any())
 {
-    foreach (var item in Model.ListSanPham)
+    var uniqueItems = Model.ListSanPham.GroupBy(x => x.Id).Select(g => g.First()).ToList();
+
+    foreach (var item in uniqueItems)
     {
         <div class="product-item @item.MaDanhMucSP">
             <div class="product discount product_filter">

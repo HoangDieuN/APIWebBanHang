@@ -65,7 +65,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<ActionResult> MenuBaiViet(BaiVietRequest baiVietRequest)
         {
-            BaiVietPaging ds = await _baiVietApiService.GetAll(baiVietRequest);
+            BaiVietPaging ds = await _baiVietApiService.GetAllActive(baiVietRequest);
             return PartialView("_MenuBaiViet", ds);
         }
 

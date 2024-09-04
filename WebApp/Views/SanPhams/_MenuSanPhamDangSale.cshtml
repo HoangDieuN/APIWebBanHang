@@ -2,6 +2,7 @@
 @model SanPhamPaging
 @if (Model.ListSanPham != null && Model.ListSanPham.Any())
 {
+    var uniqueItems = Model.ListSanPham.GroupBy(x => x.Id).Select(g => g.First()).ToList();
     <div class="best_sellers">
         <div class="container">
             <div class="row">
@@ -15,8 +16,7 @@
                 <div class="col">
                     <div class="product_slider_container">
                         <div class="owl-carousel owl-theme product_slider">
-
-                            @foreach (var item in Model.ListSanPham)
+                            @foreach (var item in uniqueItems)
                             {
 
                                 <div class="owl-item product_slider_item">
