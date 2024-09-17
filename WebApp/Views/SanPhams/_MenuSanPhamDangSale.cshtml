@@ -18,34 +18,37 @@
                         <div class="owl-carousel owl-theme product_slider">
                             @foreach (var item in uniqueItems)
                             {
-
-                                <div class="owl-item product_slider_item">
-                                    <div class="product-item @item.TenDanhMucSP">
-                                        <div class="product discount product_filter">
-                                            <div class="product_image">
-                                                <img src="@Url.Content(@item.FilePath)" alt="san pham">
-                                            </div>
-                                            <div class="favorite favorite_left"></div>
-                                            @if (item.PhanTramGiam > 0)
-                                            {
-                                                <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
-                                            }
-                                            <div class="product_info">
-                                                <h6 class="product_name"><a href="/chi-tiet/@item.TenSanPham-p@(item.Id)">@item.TenSanPham</a></h6>
+                                if (item.PhanTramGiam > 0)
+                                {
+                                    <div class="owl-item product_slider_item">
+                                        <div class="product-item @item.TenDanhMucSP">
+                                            <div class="product discount product_filter">
+                                                <div class="product_image">
+                                                    <img src="@Url.Content(@item.FilePath)" alt="san pham">
+                                                </div>
+                                                <div class="favorite favorite_left"></div>
                                                 @if (item.PhanTramGiam > 0)
                                                 {
-                                                    <div class="product_price">@item.GiaGoc<span>hi</span></div>
+                                                    <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
+                                                }
+                                                <div class="product_info">
+                                                    <h6 class="product_name"><a href="/chi-tiet/@item.TenSanPham-p@(item.Id)">@item.TenSanPham</a></h6>
+                                                    @if (item.PhanTramGiam > 0)
+                                                    {
+                                                        <div class="product_price">@item.GiaGoc<span>hi</span></div>
 
-                                                }
-                                                else
-                                                {
-                                                    <div class="product_price">@item.GiaGoc</div>
-                                                }
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="product_price">@item.GiaGoc</div>
+                                                    }
+                                                </div>
                                             </div>
+                                            <div class="red_button add_to_cart_button"><a href="#" class="btnAddToCart" data-id="@item.Id">add to cart</a></div>
                                         </div>
-                                        <div class="red_button add_to_cart_button"><a href="#" class="btnAddToCart" data-id="@item.Id">add to cart</a></div>
                                     </div>
-                                </div>
+                                }
+
 
                             }
 

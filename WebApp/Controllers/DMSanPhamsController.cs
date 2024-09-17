@@ -53,7 +53,7 @@ namespace WebApp.Controllers
             SanPhamRequest sanPhamRequest = new SanPhamRequest();
             SanPhamPaging ds = new SanPhamPaging();
             sanPhamRequest.DanhMucId = id.Value;
-            ds = await _sanPhamApiService.GetAll(sanPhamRequest);
+            ds = await _sanPhamApiService.GetAllActive(sanPhamRequest);
             ViewBag.TenDM = ds.ListSanPham.FirstOrDefault().TenDanhMucSP;
             return View("_DanhSachSanPhamByDanhMucId", ds);
         }
