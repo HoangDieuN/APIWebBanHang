@@ -87,7 +87,7 @@ namespace WebApp.Controllers
                 int result = 0;
                 int result2 = 0;
                 result = await _accountApiService.Creat(requestModel);
-                //tạo quyền chp người dùng
+                //tạo quyền cho người dùng
                 Role roleRequest = new Role();
                 roleRequest.UserId = result;
                 roleRequest.RoleId = 2;
@@ -96,7 +96,13 @@ namespace WebApp.Controllers
                 {
                     // Xác thực thành công, tạo phiên đăng nhập
                     SessionControl.AddNormalSession(CommonConstants.User, requestModel, 160);
+                    //string subject = $"Thư xác nhận";
+                    //string strBody = $"HD Shop cảm ơn quý khách";
 
+                    //Send mail cho người dùng
+                    //List<string> listAttachments = new List<string>();
+                    //listAttachments.Add("Cảm ơn quý khách");
+                    //EmailHelper.SendEmail(subject, strBody, requestModel.Email,listAttachments);
                     // Chuyển hướng đến trang chính
                     return RedirectToAction("Index", "Home");
                 }

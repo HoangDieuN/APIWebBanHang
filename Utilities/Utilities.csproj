@@ -105,6 +105,9 @@
     <Compile Include="CommonConstants.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Helper\AuthorizationAttribute.cs" />
+    <Compile Include="Helper\EmailHelper.cs" />
+    <Compile Include="Helper\EmailHelper2.cs" />
+    <Compile Include="Helper\FomartNumber.cs" />
     <Compile Include="Helper\ParamsHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Render\Encryptor.cs" />

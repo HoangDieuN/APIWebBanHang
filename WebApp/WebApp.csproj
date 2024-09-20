@@ -636,6 +636,8 @@
     <Content Include="Content\assets2\libs\treegrid\dist\js\jquery.treegrid.min.js" />
     <Content Include="Content\assets2\libs\wnumb\wNumb.min.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\templates\send1.html" />
+    <Content Include="Content\templates\send2.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1131,6 +1133,7 @@
     <Content Include="Views\BaiViets\BaiViet_Detail.cshtml" />
     <Content Include="Views\GioiThieu\Index.cshtml" />
     <Content Include="Views\LienHe\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\ResultVNPay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\APIServices\APIServices.csproj">

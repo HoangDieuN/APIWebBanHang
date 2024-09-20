@@ -14,5 +14,7 @@ namespace Models
         public string Email { get; set; }
         public int UserId { get; set; }
         public int TypePayment { get; set; }
+        public int TypePaymentVN { get; set; }
+
     }
 }

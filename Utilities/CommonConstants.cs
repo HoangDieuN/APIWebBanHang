@@ -16,6 +16,7 @@ namespace Utilities
 
         public static string User = "User";
         public static string BaiViet = "BaiViet";
+        public static string DonHang = "DonHang";
 
     }
 }
