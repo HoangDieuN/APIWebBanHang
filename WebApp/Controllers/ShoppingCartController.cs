@@ -17,13 +17,15 @@ namespace WebApp.Controllers
         private readonly IAttachedFileApiService _attachedFileApiService;
         private readonly IDatHangApiService _datHangApiService;
         private readonly IThongTinDatHangApiService _thongTinDatHangApiService;
+        private readonly ITrangThaiApiService _trangThaiApiService;
         public ShoppingCartController(ISanPhamApiService sanPhamApiService, IAttachedFileApiService attachedFileApiService,
-            IDatHangApiService datHangApiService, IThongTinDatHangApiService thongTinDatHangApiService)
+            IDatHangApiService datHangApiService, IThongTinDatHangApiService thongTinDatHangApiService, ITrangThaiApiService trangThaiApiService)
         {
             _sanPhamApiService = sanPhamApiService;
             _attachedFileApiService = attachedFileApiService;
             _datHangApiService = datHangApiService;
             _thongTinDatHangApiService = thongTinDatHangApiService;
+            _trangThaiApiService = trangThaiApiService;
         }
         //Xem giỏ hàng
         public ActionResult Index()
@@ -85,19 +87,13 @@ namespace WebApp.Controllers
                     {
                         //Thanh toan thanh cong
                         ViewBag.InnerText = "Giao dịch được thực hiện thành công. Cảm ơn quý khách đã sử dụng dịch vụ";
-                        //log.InfoFormat("Thanh toan thanh cong, OrderId={0}, VNPAY TranId={1}", orderId, vnpayTranId);
                     }
                     else
                     {
-                        //Thanh toan khong thanh cong. Ma loi: vnp_ResponseCode
-                        //ViewBag.InnerText = "Có lỗi xảy ra trong quá trình xử lý.Mã lỗi: " + vnp_ResponseCode;
-                        //log.InfoFormat("Thanh toan loi, OrderId={0}, VNPAY TranId={1},ResponseCode={2}", orderId, vnpayTranId, vnp_ResponseCode);
+            
                     }
-                    //displayTmnCode.InnerText = "Mã Website (Terminal ID):" + TerminalID;
-                    //displayTxnRef.InnerText = "Mã giao dịch thanh toán:" + orderId.ToString();
-                    //displayVnpayTranNo.InnerText = "Mã giao dịch tại VNPAY:" + vnpayTranId.ToString();
+                
                     ViewBag.ThanhToanThanhCong = "Số tiền thanh toán (VND):" + vnp_Amount.ToString();
-                    //displayBankCode.InnerText = "Ngân hàng thanh toán:" + bankCode;
                 }
             }
                 return View();
@@ -203,8 +199,12 @@ namespace WebApp.Controllers
                     {
                         var url = UrlPayMent(requestModel.TypePaymentVN, newDonHang.MaDon);
                         code = new { Success = true, Code = 2, Url = url };
+                        TrangThaiRequest requestTTOnlike = new TrangThaiRequest();
+                        requestTTOnlike.DatHangId = resultdh;
+                        requestTTOnlike.StatusId = 1;
+                        int resultupdate = 0;
+                        resultupdate = await _trangThaiApiService.UpdateTrangThai(requestTTOnlike);
                     }
-                    //return RedirectToAction("CheckOutSuccess");
                 }
             }
             return Json(code);
@@ -244,22 +244,14 @@ namespace WebApp.Controllers
             {
                 vnpay.AddRequestData("vnp_BankCode", "INTCARD");
             }
-
             vnpay.AddRequestData("vnp_CreateDate", order.CreatedDate?.ToString("yyyyMMddHHmmss"));
-
-
             vnpay.AddRequestData("vnp_CurrCode", "VND");
             vnpay.AddRequestData("vnp_IpAddr", Utils.GetIpAddress());
-
-
             vnpay.AddRequestData("vnp_Locale", "vn");
-
-
             vnpay.AddRequestData("vnp_OrderInfo", "Thanh toan don hang:" + order.MaDon);
-            vnpay.AddRequestData("vnp_OrderType", "other"); //default value: other
-
+            vnpay.AddRequestData("vnp_OrderType", "other"); 
             vnpay.AddRequestData("vnp_ReturnUrl", vnp_Returnurl);
-            vnpay.AddRequestData("vnp_TxnRef", order.MaDon.ToString()); // Mã tham chiếu của giao dịch tại hệ thống của merchant. Mã này là duy nhất dùng để phân biệt các đơn hàng gửi sang 
+            vnpay.AddRequestData("vnp_TxnRef", order.MaDon.ToString()); 
 
             urlPayment = vnpay.CreateRequestUrl(vnp_Url, vnp_HashSecret);
 

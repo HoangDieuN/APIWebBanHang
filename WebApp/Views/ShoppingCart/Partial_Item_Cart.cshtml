@@ -31,7 +31,9 @@
                 </td>
                 <td>@item.TenDanhMucSP</td>
                 <td>@item.GiaGoc</td>
-                <td><input type="number" class="form-control" id="Quantity_@item.SanPhamId" value="@item.Quantity" /></td>
+                <td>
+                    <input type="number" class="form-control" id="Quantity_@item.SanPhamId" value="@item.Quantity" min="1" />
+                </td>
                 <th>@item.TongTien</th>
                 <td>
                     <a href="#" data-id="@item.SanPhamId" class="btn btn-sm btn-danger btnDelete">Xóa</a>

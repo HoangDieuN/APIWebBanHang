@@ -1134,6 +1134,7 @@
     <Content Include="Views\GioiThieu\Index.cshtml" />
     <Content Include="Views\LienHe\Index.cshtml" />
     <Content Include="Views\ShoppingCart\ResultVNPay.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\APIServices\APIServices.csproj">

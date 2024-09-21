@@ -71,6 +71,13 @@ namespace WebApp.Controllers
             }
             return View(requestModel);
         }
+        //Profile  
+        [AllowAnonymous]
+        public ActionResult Profile()
+        {
+            var user = Session["User"] as User;
+            return View(user);
+        }
         //Đăng kí
         [AllowAnonymous]
         public ActionResult Register()
