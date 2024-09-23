@@ -192,7 +192,7 @@ namespace WebApp.Controllers
                     contentCustomer = contentCustomer.Replace("{{DiaChiNhanHang}}", newDonHang.DiaChi);
                     contentCustomer = contentCustomer.Replace("{{ThanhTien}}", FomartNumber.FormatNumber(thanhtien, 0));
                     contentCustomer = contentCustomer.Replace("{{TongTien}}", FomartNumber.FormatNumber(TongTien, 0));
-                    //EmailHelper2.SendMail("HD ShopOnline", "Đơn hàng #" + newDonHang.MaDon, contentCustomer.ToString(), newDonHang.Email);
+                    EmailHelper2.SendMail("HD ShopOnline", "Đơn hàng #" + newDonHang.MaDon, contentCustomer.ToString(), newDonHang.Email);
                     cart.ClearCart();
                     code = new { Success = true, Code = 1, Url = "" };
                     if (requestModel.TypePayment == 2)
